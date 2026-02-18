@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+/* ============================================
+   Design System — Souveräne KI
+   Dark-theme only. "Quiet Authority" aesthetic.
+   ============================================ */
+
+:root {
+  /* Backgrounds */
+  --bg-primary: #0A0A0F;
+  --bg-secondary: #12101A;
+  --bg-elevated: #1A1625;
+  --bg-gradient: linear-gradient(180deg, #1A1028 0%, #0A0A0F 50%, #0A0A0F 100%);
+
+  /* Accent Colors */
+  --accent-primary: #E8564A;
+  --accent-secondary: #F4845F;
+  --accent-glow: rgba(232, 86, 74, 0.3);
+  --accent-gradient: linear-gradient(135deg, #E8564A, #F4845F);
+
+  /* Text */
+  --text-primary: #F0EBE3;
+  --text-secondary: #9B95A0;
+  --text-muted: #6B6570;
+
+  /* Borders & Glass */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.12);
+  --glass-bg: rgba(26, 22, 37, 0.7);
+  --glass-blur: 12px;
+
+  /* Typography */
+  --font-heading: 'Inter', 'SF Pro Display', -apple-system, sans-serif;
+  --font-body: 'Inter', 'SF Pro Text', -apple-system, sans-serif;
+  --font-mono-stack: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --text-hero: clamp(2.4rem, 4.8vw, 3.6rem);
+  --text-h1: clamp(2.25rem, 4vw, 3.5rem);
+  --text-h2: clamp(1.75rem, 3vw, 2.5rem);
+  --text-h3: clamp(1.25rem, 2vw, 1.75rem);
+  --text-body: 1rem;
+  --text-body-lg: 1.125rem;
+  --text-small: 0.875rem;
+  --text-caption: 0.75rem;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  --space-section: clamp(4rem, 10vw, 8rem);
+
+  /* Container */
+  --container-max: 1280px;
+  --container-padding: clamp(1rem, 4vw, 2rem);
+}
+
+/* Tailwind 4 theme integration */
+@theme inline {
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-hover: var(--border-hover);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
+}
+
+/* ============================================
+   Base styles
+   ============================================ */
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   Button utilities
+   ============================================ */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #7C3AED, #B83A3A, #F4845F);
+  background-size: 150% 150%;
+  background-position: 0% 50%;
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  padding: 12px 28px;
+  font-weight: 500;
+  font-size: var(--text-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-position: 100% 50%;
+  box-shadow: 0 0 28px rgba(184, 58, 58, 0.35);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-hover);
+  border-radius: 9999px;
+  padding: 12px 28px;
+  font-weight: 500;
+  font-size: var(--text-body);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ============================================
+   Typewriter cursor blink
+   ============================================ */
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+/* ============================================
+   SVG / Hero animation keyframes
+   ============================================ */
+
+@keyframes rotate-cw {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes rotate-ccw {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.05); }
+}
+
+@keyframes float-particle {
+  0%   { opacity: 0; transform: translateY(0); }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-80px); }
+}
+
+@keyframes data-rain {
+  0%   { opacity: 0; transform: translateY(-20px); }
+  10%  { opacity: 0.7; }
+  90%  { opacity: 0.7; }
+  100% { opacity: 0; transform: translateY(60px); }
+}
+
+/* ============================================
+   Scroll animations
+   ============================================ */
+
+.animate-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   Reduced motion
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
