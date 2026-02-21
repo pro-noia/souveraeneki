@@ -12,11 +12,12 @@
   --bg-elevated: #1A1625;
   --bg-gradient: linear-gradient(180deg, #1A1028 0%, #0A0A0F 50%, #0A0A0F 100%);
 
-  /* Accent Colors */
-  --accent-primary: #E8564A;
-  --accent-secondary: #F4845F;
-  --accent-glow: rgba(232, 86, 74, 0.3);
-  --accent-gradient: linear-gradient(135deg, #E8564A, #F4845F);
+  /* Accent Colors — Blue to Violet */
+  --accent-primary: #0066FF;
+  --accent-secondary: #7B2FBE;
+  --accent-light: #3B82F6;
+  --accent-glow: rgba(0, 102, 255, 0.3);
+  --accent-gradient: linear-gradient(135deg, #0066FF, #7B2FBE);
 
   /* Text */
   --text-primary: #F0EBE3;
@@ -65,6 +66,7 @@
   --color-bg-elevated: var(--bg-elevated);
   --color-accent-primary: var(--accent-primary);
   --color-accent-secondary: var(--accent-secondary);
+  --color-accent-light: var(--accent-light);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
@@ -95,7 +97,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #7C3AED, #B83A3A, #F4845F);
+  background: var(--accent-gradient);
   background-size: 150% 150%;
   background-position: 0% 50%;
   color: white;
@@ -111,7 +113,7 @@ body {
 
 .btn-primary:hover {
   background-position: 100% 50%;
-  box-shadow: 0 0 28px rgba(184, 58, 58, 0.35);
+  box-shadow: 0 0 28px var(--accent-glow);
 }
 
 .btn-secondary {

@@ -8,7 +8,7 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{
         background:
-          "radial-gradient(ellipse 80% 60% at 50% 20%, rgba(45, 27, 61, 0.6) 0%, rgba(26, 16, 40, 0.3) 40%, var(--bg-primary) 80%)",
+          "radial-gradient(ellipse 80% 60% at 50% 20%, rgba(0, 50, 160, 0.4) 0%, rgba(40, 20, 80, 0.25) 40%, var(--bg-primary) 80%)",
       }}
     >
       <div className="mx-auto w-full max-w-[var(--container-max)] px-[var(--container-padding)] pt-32 pb-16 lg:pt-24 lg:pb-0">

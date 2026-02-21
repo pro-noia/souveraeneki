@@ -18,7 +18,7 @@ export default function HeroVisual() {
         className="absolute inset-0 rounded-full opacity-30 blur-3xl"
         style={{
           background:
-            "radial-gradient(circle, rgba(100, 60, 180, 0.5) 0%, rgba(180, 60, 120, 0.3) 40%, rgba(232, 86, 74, 0.15) 70%, transparent 100%)",
+            "radial-gradient(circle, rgba(0, 102, 255, 0.4) 0%, rgba(123, 47, 190, 0.3) 40%, rgba(59, 130, 246, 0.15) 70%, transparent 100%)",
         }}
       />
 
@@ -29,10 +29,10 @@ export default function HeroVisual() {
       >
         <defs>
           <radialGradient id="sphere-grad" cx="40%" cy="40%">
-            <stop offset="0%" stopColor="#7C5CFC" />
-            <stop offset="35%" stopColor="#A855F7" />
-            <stop offset="65%" stopColor="#D946A8" />
-            <stop offset="100%" stopColor="#F4845F" />
+            <stop offset="0%" stopColor="#60A5FA" />
+            <stop offset="35%" stopColor="#3B82F6" />
+            <stop offset="65%" stopColor="#0066FF" />
+            <stop offset="100%" stopColor="#7B2FBE" />
           </radialGradient>
 
           <filter id="glow">
@@ -50,7 +50,7 @@ export default function HeroVisual() {
           cy="150"
           r="130"
           fill="none"
-          stroke="rgba(120, 80, 200, 0.2)"
+          stroke="rgba(59, 130, 246, 0.25)"
           strokeWidth="1"
           strokeDasharray="8 6"
           style={{
@@ -65,7 +65,7 @@ export default function HeroVisual() {
           cy="150"
           r="100"
           fill="none"
-          stroke="rgba(180, 80, 160, 0.2)"
+          stroke="rgba(0, 102, 255, 0.2)"
           strokeWidth="1"
           strokeDasharray="12 8"
           style={{
@@ -80,7 +80,7 @@ export default function HeroVisual() {
           cy="150"
           r="70"
           fill="none"
-          stroke="rgba(200, 100, 140, 0.15)"
+          stroke="rgba(123, 47, 190, 0.2)"
           strokeWidth="0.75"
           strokeDasharray="6 10"
           style={{
@@ -106,7 +106,7 @@ export default function HeroVisual() {
             cx={p.cx}
             cy={p.cy}
             r={p.size}
-            fill="rgba(168, 85, 247, 0.6)"
+            fill="rgba(59, 130, 246, 0.6)"
             style={{
               animation: `float-particle ${3 + (i % 3)}s ease-in-out infinite`,
               animationDelay: p.delay,
@@ -122,7 +122,7 @@ export default function HeroVisual() {
             y1="220"
             x2={l.x}
             y2="245"
-            stroke="rgba(168, 85, 247, 0.35)"
+            stroke="rgba(59, 130, 246, 0.35)"
             strokeWidth="1"
             strokeLinecap="round"
             style={{

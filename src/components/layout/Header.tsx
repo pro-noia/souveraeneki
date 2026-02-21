@@ -100,7 +100,7 @@ export default function Header() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-[var(--text-primary)] text-lg font-medium transition-colors duration-200 hover:text-[var(--accent-secondary)]"
+                  className="text-[var(--text-primary)] text-lg font-medium transition-colors duration-200 hover:text-[var(--accent-light)]"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}

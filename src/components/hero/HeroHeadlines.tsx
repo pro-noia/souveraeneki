@@ -73,7 +73,7 @@ export default function HeroHeadlines() {
           className="inline-block w-[3px] ml-1 align-baseline"
           style={{
             height: "0.85em",
-            background: "var(--accent-secondary)",
+            background: "var(--accent-light)",
             animation: "cursor-blink 0.7s step-end infinite",
           }}
           aria-hidden="true"
