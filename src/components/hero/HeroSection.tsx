@@ -1,5 +1,4 @@
 import HeroHeadlines from "./HeroHeadlines";
-import HeroVisual from "./HeroVisual";
 import Link from "next/link";
 
 export default function HeroSection() {
@@ -8,7 +7,7 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{
         background:
-          "radial-gradient(ellipse 80% 60% at 50% 20%, rgba(0, 50, 160, 0.4) 0%, rgba(40, 20, 80, 0.25) 40%, var(--bg-primary) 80%)",
+          "radial-gradient(ellipse 80% 60% at 30% 40%, rgba(0, 50, 160, 0.4) 0%, rgba(40, 20, 80, 0.25) 40%, var(--bg-primary) 80%)",
       }}
     >
       <div className="mx-auto w-full max-w-[var(--container-max)] px-[var(--container-padding)] pt-32 pb-16 lg:pt-24 lg:pb-0">
@@ -40,8 +39,15 @@ export default function HeroSection() {
           </div>
 
           {/* Visual side */}
-          <div className="flex-1 w-full max-w-lg lg:max-w-none">
-            <HeroVisual />
+          <div className="flex-1 w-full max-w-lg lg:max-w-none flex justify-center">
+            <video
+              src="/hero-vault.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-[70%] h-auto rounded-2xl"
+            />
           </div>
         </div>
       </div>
