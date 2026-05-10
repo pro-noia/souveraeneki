@@ -3,13 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const navLinks = [
-  { label: "Produkte", href: "/produkte" },
-  { label: "Lösungen", href: "/loesungen" },
-  { label: "Über uns", href: "/ueber-uns" },
-  { label: "Kontakt", href: "/kontakt" },
-];
-
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -18,9 +11,8 @@ export default function Header() {
       <nav
         className="flex items-center justify-between rounded-full px-6 py-3 border border-[var(--border-subtle)]"
         style={{
-          background: "var(--glass-bg)",
-          backdropFilter: "blur(var(--glass-blur))",
-          WebkitBackdropFilter: "blur(var(--glass-blur))",
+          background: "var(--bg-elevated)",
+          boxShadow: "0 6px 24px oklch(0 0 0 / 0.35)",
         }}
       >
         {/* Logo */}
@@ -31,27 +23,13 @@ export default function Header() {
           Souveräne KI
         </Link>
 
-        {/* Desktop nav links */}
-        <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="text-[var(--text-secondary)] text-[var(--text-small)] font-medium transition-colors duration-200 hover:text-[var(--text-primary)]"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
         {/* Desktop CTAs */}
         <div className="hidden md:flex items-center gap-3">
-          <Link href="/login" className="btn-secondary !py-2 !px-5 text-[var(--text-small)]">
-            Login
+          <Link href="/kontakt" className="btn-secondary !py-2 !px-5 text-[var(--text-small)]">
+            Kontakt
           </Link>
-          <Link href="/demo" className="btn-primary !py-2 !px-5 text-[var(--text-small)]">
-            Demo anfragen
+          <Link href="/#whitepaper" className="btn-primary !py-2 !px-5 text-[var(--text-small)]">
+            Whitepaper
           </Link>
         </div>
 
@@ -88,42 +66,26 @@ export default function Header() {
       {/* Mobile overlay menu */}
       {mobileOpen && (
         <div
-          className="md:hidden mt-2 rounded-2xl border border-[var(--border-subtle)] p-6 flex flex-col gap-6"
+          className="md:hidden mt-2 rounded-2xl border border-[var(--border-subtle)] p-6 flex flex-col gap-3"
           style={{
-            background: "var(--glass-bg)",
-            backdropFilter: "blur(var(--glass-blur))",
-            WebkitBackdropFilter: "blur(var(--glass-blur))",
+            background: "var(--bg-elevated)",
+            boxShadow: "0 12px 40px oklch(0 0 0 / 0.45)",
           }}
         >
-          <ul className="flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-[var(--text-primary)] text-lg font-medium transition-colors duration-200 hover:text-[var(--accent-light)]"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <div className="flex flex-col gap-3">
-            <Link
-              href="/login"
-              className="btn-secondary text-center"
-              onClick={() => setMobileOpen(false)}
-            >
-              Login
-            </Link>
-            <Link
-              href="/demo"
-              className="btn-primary text-center"
-              onClick={() => setMobileOpen(false)}
-            >
-              Demo anfragen
-            </Link>
-          </div>
+          <Link
+            href="/kontakt"
+            className="btn-secondary text-center"
+            onClick={() => setMobileOpen(false)}
+          >
+            Kontakt
+          </Link>
+          <Link
+            href="/#whitepaper"
+            className="btn-primary text-center"
+            onClick={() => setMobileOpen(false)}
+          >
+            Whitepaper
+          </Link>
         </div>
       )}
     </header>
