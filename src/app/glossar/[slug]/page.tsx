@@ -1,38 +1,98 @@
-import Link from "next/link";
-import { words } from "@/components/WordCloud/wordCloudConfig";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import glossarData from "@/data/glossar.json";
+import GlossarPage from "@/components/glossar/GlossarPage";
+import type { GlossarEintrag } from "@/components/glossar/GlossarPage";
 
-interface GlossarPageProps {
+const eintraege = glossarData as GlossarEintrag[];
+
+interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
 export function generateStaticParams() {
-  return words.map((w) => ({ slug: w.slug }));
+  return eintraege.map((e) => ({ slug: e.slug }));
 }
 
-export default async function GlossarPage({ params }: GlossarPageProps) {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const word = words.find((w) => w.slug === slug);
-  const title = word?.text ?? slug;
+  const eintrag = eintraege.find((e) => e.slug === slug);
+
+  if (!eintrag) {
+    return { title: "Nicht gefunden" };
+  }
+
+  return {
+    title: eintrag.meta_title,
+    description: eintrag.meta_description,
+    openGraph: {
+      title: eintrag.meta_title,
+      description: eintrag.meta_description,
+      type: "article",
+      url: `https://xn--souverneki-v5a.de/glossar/${eintrag.slug}`,
+      images: [`/images/glossar/${eintrag.slug}.jpg`],
+    },
+    alternates: {
+      canonical: `https://xn--souverneki-v5a.de/glossar/${eintrag.slug}`,
+    },
+  };
+}
+
+// JSON-LD: DefinedTerm + FAQPage schemas
+function generateJsonLd(eintrag: GlossarEintrag) {
+  const definedTerm = {
+    "@context": "https://schema.org",
+    "@type": "DefinedTerm",
+    name: eintrag.begriff,
+    description: eintrag.meta_description,
+    url: `https://xn--souverneki-v5a.de/glossar/${eintrag.slug}`,
+    inDefinedTermSet: {
+      "@type": "DefinedTermSet",
+      name: "Souveräne KI Glossar",
+      url: "https://xn--souverneki-v5a.de/glossar",
+    },
+  };
+
+  const faqPage = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: eintrag.faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.frage,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.antwort,
+      },
+    })),
+  };
+
+  return [definedTerm, faqPage];
+}
+
+export default async function GlossarSlugPage({ params }: PageProps) {
+  const { slug } = await params;
+  const eintrag = eintraege.find((e) => e.slug === slug);
+
+  if (!eintrag) {
+    notFound();
+  }
+
+  const relatedEintraege = eintrag.related_slugs
+    .map((rs) => eintraege.find((e) => e.slug === rs))
+    .filter((e): e is GlossarEintrag => e !== undefined);
+
+  const jsonLdSchemas = generateJsonLd(eintrag);
 
   return (
-    <section
-      className="min-h-screen flex items-center justify-center"
-      style={{ background: "var(--bg-primary)" }}
-    >
-      <div className="max-w-2xl mx-auto px-6 text-center">
-        <h1
-          className="text-[var(--text-primary)] font-bold leading-tight tracking-[-0.02em] mb-6"
-          style={{ fontSize: "var(--text-h1)" }}
-        >
-          {title}
-        </h1>
-        <p className="text-[var(--text-secondary)] text-lg mb-8">
-          Diese Glossar-Seite wird in Kürze mit Inhalten befüllt.
-        </p>
-        <Link href="/" className="btn-primary">
-          Zurück zur Startseite
-        </Link>
-      </div>
-    </section>
+    <>
+      {jsonLdSchemas.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
+      <GlossarPage eintrag={eintrag} relatedEintraege={relatedEintraege} />
+    </>
   );
 }
