@@ -1,79 +1,139 @@
 @import "tailwindcss";
 
 /* ============================================
-   Design System — Souveräne KI
-   Dark-theme only. "Quiet Authority" aesthetic.
+   Souveräne KI — Farbsystem
+   Eichensaal · Mondstein · Tinte · Petrol (primär)
+   Sekundär: Rost · Bernstein · Salbei
+   Full palette, dunkel, material-archivisch.
    ============================================ */
 
 :root {
-  /* Backgrounds */
-  --bg-primary: #0A0A0F;
-  --bg-secondary: #12101A;
-  --bg-elevated: #1A1625;
-  --bg-gradient: linear-gradient(180deg, #1A1028 0%, #0A0A0F 50%, #0A0A0F 100%);
+  /* === Eichensaal — warm-dunkles Holz, Lesesaal-Grund === */
+  --eichensaal-deep:     oklch(0.115 0.012 65);
+  --eichensaal:          oklch(0.155 0.014 65);
+  --eichensaal-light:    oklch(0.205 0.016 65);
 
-  /* Accent Colors — Blue to Violet */
-  --accent-primary: #0066FF;
-  --accent-secondary: #7B2FBE;
-  --accent-light: #3B82F6;
-  --accent-glow: rgba(0, 102, 255, 0.3);
-  --accent-gradient: linear-gradient(135deg, #0066FF, #7B2FBE);
+  /* === Tinte — kühler Schwarz-Blau, Tiefe und Alternierung === */
+  --tinte-deep:          oklch(0.085 0.022 260);
+  --tinte:               oklch(0.130 0.022 260);
 
-  /* Text */
-  --text-primary: #F0EBE3;
-  --text-secondary: #9B95A0;
-  --text-muted: #6B6570;
+  /* === Mondstein — kühler Pearl-Akzent, latent === */
+  --mondstein:           oklch(0.78 0.055 220);
+  --mondstein-bright:    oklch(0.86 0.060 220);
+  --mondstein-deep:      oklch(0.55 0.075 220);
 
-  /* Borders & Glass */
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-hover: rgba(255, 255, 255, 0.12);
-  --glass-bg: rgba(26, 22, 37, 0.7);
-  --glass-blur: 12px;
+  /* === Petrol — Archiv-Blaugrün, primary action === */
+  --petrol:              oklch(0.50 0.090 200);
+  --petrol-bright:       oklch(0.58 0.095 200);
+  --petrol-deep:         oklch(0.38 0.080 200);
 
-  /* Typography */
-  --font-heading: 'Inter', 'SF Pro Display', -apple-system, sans-serif;
-  --font-body: 'Inter', 'SF Pro Text', -apple-system, sans-serif;
-  --font-mono-stack: 'JetBrains Mono', 'Fira Code', monospace;
+  /* === Sekundärfarben — material, archivisch, seriös aber nicht steif === */
 
-  --text-hero: clamp(1.92rem, 3.84vw, 2.88rem);
-  --text-h1: clamp(2.25rem, 4vw, 3.5rem);
-  --text-h2: clamp(1.75rem, 3vw, 2.5rem);
-  --text-h3: clamp(1.25rem, 2vw, 1.75rem);
-  --text-body: 1rem;
+  /* Rost — Cor-Ten Stahl, Industrie-Patina, Anti-Marketing-Rot */
+  --rost:                oklch(0.48 0.115 35);
+  --rost-bright:         oklch(0.55 0.120 35);
+
+  /* Bernstein — Pergament-Siegel, vintage Paperback-Marke */
+  --bernstein:           oklch(0.65 0.095 75);
+  --bernstein-bright:    oklch(0.72 0.105 75);
+
+  /* Salbei — Patina auf Bronze, getrocknetes Salbei-Blatt */
+  --salbei:              oklch(0.62 0.055 145);
+  --salbei-bright:       oklch(0.70 0.060 145);
+
+  /* === Pergament — warm-cremige Schrift, nie #fff === */
+  --pergament:           oklch(0.96 0.010 80);
+  --pergament-muted:     oklch(0.74 0.014 80);
+  --pergament-ghost:     oklch(0.55 0.016 80);
+
+  /* === Token-Aliase (semantisch, vom Code referenziert) === */
+  /* Surface-Linie ist kühl-neutral (Hue 250 + sehr niedrige Chroma).
+     Eichensaal- und Tinte-Tokens bleiben verfügbar für Sections, die
+     explizit Holz-Wärme oder Indigo-Tiefe wollen, sind aber nicht mehr
+     der Page-Default. */
+  --bg-primary:          oklch(0.115 0.005 250);   /* Page-Background, dunkel-neutral */
+  --bg-secondary:        var(--tinte);             /* alternierende Section, kühles Indigo */
+  --bg-elevated:         oklch(0.18 0.006 250);    /* Cards / Nav / Form-Surfaces */
+  --bg-gradient:         linear-gradient(180deg,
+                           oklch(0.140 0.008 250) 0%,
+                           var(--bg-primary) 55%,
+                           var(--tinte-deep) 100%);
+
+  --accent-primary:        var(--petrol);
+  --accent-primary-bright: var(--petrol-bright);
+  --accent-secondary:      var(--mondstein);
+  --accent-light:          var(--mondstein-bright);
+  --accent-glow:           oklch(0.50 0.090 200 / 0.30);
+  --accent-glow-soft:      oklch(0.50 0.090 200 / 0.12);
+
+  --warning:               var(--rost);
+  --warning-bright:        var(--rost-bright);
+  --success:               var(--salbei);
+  --success-bright:        var(--salbei-bright);
+  --caution:               var(--bernstein);
+  --caution-bright:        var(--bernstein-bright);
+
+  --text-primary:        var(--pergament);
+  --text-secondary:      var(--pergament-muted);
+  --text-muted:          var(--pergament-ghost);
+
+  --border-subtle:       oklch(0.96 0.010 80 / 0.06);
+  --border-hover:        oklch(0.96 0.010 80 / 0.14);
+  --border-strong:       oklch(0.96 0.010 80 / 0.22);
+
+  /* === Spectrum-Reise: Rost → Bernstein → Petrol → Salbei
+        Materialien als semantische Stationen, kein Ampelschema === */
+  --spectrum-1:          var(--rost-bright);          /* Volle Abhängigkeit */
+  --spectrum-2:          var(--bernstein-bright);     /* Hybride Kontrolle */
+  --spectrum-3:          var(--petrol-bright);        /* Verwaltete Souveränität */
+  --spectrum-4:          var(--salbei-bright);        /* Vollständige Souveränität */
+  --spectrum-good:       var(--salbei-bright);
+  --spectrum-bad:        var(--rost-bright);
+
+  /* === Typography === */
+  --font-heading: var(--font-manrope), 'Helvetica Neue', system-ui, sans-serif;
+  --font-body:    var(--font-manrope), 'Helvetica Neue', system-ui, sans-serif;
+  --font-mono-stack: var(--font-cousine), ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --text-hero:    clamp(3rem, 6.5vw, 5rem);
+  --text-h1:      clamp(2.25rem, 4vw, 3.25rem);
+  --text-h2:      clamp(1.625rem, 2.75vw, 2.25rem);
+  --text-h3:      clamp(1.25rem, 1.75vw, 1.5rem);
   --text-body-lg: 1.125rem;
-  --text-small: 0.875rem;
+  --text-body:    1rem;
+  --text-small:   0.875rem;
   --text-caption: 0.75rem;
 
   /* Spacing */
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 1.5rem;
-  --space-lg: 2rem;
-  --space-xl: 3rem;
-  --space-2xl: 4rem;
-  --space-3xl: 6rem;
+  --space-xs:      0.5rem;
+  --space-sm:      1rem;
+  --space-md:      1.5rem;
+  --space-lg:      2rem;
+  --space-xl:      3rem;
+  --space-2xl:     4rem;
+  --space-3xl:     6rem;
   --space-section: clamp(4rem, 10vw, 8rem);
 
   /* Container */
-  --container-max: 1280px;
+  --container-max:     1280px;
   --container-padding: clamp(1rem, 4vw, 2rem);
 }
 
 /* Tailwind 4 theme integration */
 @theme inline {
-  --color-bg-primary: var(--bg-primary);
-  --color-bg-secondary: var(--bg-secondary);
-  --color-bg-elevated: var(--bg-elevated);
-  --color-accent-primary: var(--accent-primary);
-  --color-accent-secondary: var(--accent-secondary);
-  --color-accent-light: var(--accent-light);
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-text-muted: var(--text-muted);
-  --color-border-subtle: var(--border-subtle);
-  --color-border-hover: var(--border-hover);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-jetbrains);
+  --color-bg-primary:        var(--bg-primary);
+  --color-bg-secondary:      var(--bg-secondary);
+  --color-bg-elevated:       var(--bg-elevated);
+  --color-accent-primary:    var(--accent-primary);
+  --color-accent-secondary:  var(--accent-secondary);
+  --color-accent-light:      var(--accent-light);
+  --color-text-primary:      var(--text-primary);
+  --color-text-secondary:    var(--text-secondary);
+  --color-text-muted:        var(--text-muted);
+  --color-border-subtle:     var(--border-subtle);
+  --color-border-hover:      var(--border-hover);
+  --font-sans:               var(--font-manrope);
+  --font-mono:               var(--font-cousine);
 }
 
 /* ============================================
@@ -84,36 +144,45 @@ body {
   background: var(--bg-primary);
   color: var(--text-secondary);
   font-family: var(--font-body);
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+::selection {
+  background: var(--petrol);
+  color: var(--pergament);
+}
+
 /* ============================================
-   Button utilities
+   Button utilities — solide Farbe, kein Gradient
    ============================================ */
 
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--accent-gradient);
-  background-size: 150% 150%;
-  background-position: 0% 50%;
-  color: white;
-  border: none;
+  background: var(--accent-primary);
+  color: var(--pergament);
+  border: 1px solid var(--accent-primary-bright);
   border-radius: 9999px;
   padding: 12px 28px;
   font-weight: 500;
   font-size: var(--text-body);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   text-decoration: none;
 }
 
 .btn-primary:hover {
-  background-position: 100% 50%;
-  box-shadow: 0 0 28px var(--accent-glow);
+  background: var(--accent-primary-bright);
+  border-color: var(--accent-primary-bright);
+  box-shadow: 0 0 24px var(--accent-glow);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--mondstein-bright);
+  outline-offset: 2px;
 }
 
 .btn-secondary {
@@ -128,55 +197,18 @@ body {
   font-weight: 500;
   font-size: var(--text-body);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
   text-decoration: none;
 }
 
 .btn-secondary:hover {
-  border-color: rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border-strong);
+  background: oklch(0.96 0.010 80 / 0.04);
 }
 
-/* ============================================
-   Typewriter cursor blink
-   ============================================ */
-
-@keyframes cursor-blink {
-  0%, 100% { opacity: 1; }
-  50%      { opacity: 0; }
-}
-
-/* ============================================
-   SVG / Hero animation keyframes
-   ============================================ */
-
-@keyframes rotate-cw {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-@keyframes rotate-ccw {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(-360deg); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50%      { opacity: 1;   transform: scale(1.05); }
-}
-
-@keyframes float-particle {
-  0%   { opacity: 0; transform: translateY(0); }
-  10%  { opacity: 1; }
-  90%  { opacity: 1; }
-  100% { opacity: 0; transform: translateY(-80px); }
-}
-
-@keyframes data-rain {
-  0%   { opacity: 0; transform: translateY(-20px); }
-  10%  { opacity: 0.7; }
-  90%  { opacity: 0.7; }
-  100% { opacity: 0; transform: translateY(60px); }
+.btn-secondary:focus-visible {
+  outline: 2px solid var(--mondstein-bright);
+  outline-offset: 2px;
 }
 
 /* ============================================

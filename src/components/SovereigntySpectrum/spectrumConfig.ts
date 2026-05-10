@@ -27,8 +27,8 @@ export const LEVELS: LevelData[] = [
   {
     level: 1,
     title: "Volle Abhängigkeit",
-    color: "#EF4444",
-    glowColor: "rgba(239, 68, 68, 0.25)",
+    color: "var(--spectrum-1)",
+    glowColor: "oklch(0.60 0.155 25 / 0.28)",
     suitableFor: [
       "Proof of Concepts",
       "Nicht-kritische Apps",
@@ -50,8 +50,8 @@ export const LEVELS: LevelData[] = [
   {
     level: 2,
     title: "Hybride Kontrolle",
-    color: "#F59E0B",
-    glowColor: "rgba(245, 158, 11, 0.25)",
+    color: "var(--spectrum-2)",
+    glowColor: "oklch(0.60 0.090 50 / 0.25)",
     suitableFor: [
       "Regulierte Branchen",
       "Mittelständische Unternehmen",
@@ -73,8 +73,8 @@ export const LEVELS: LevelData[] = [
   {
     level: 3,
     title: "Verwaltete Souveränität",
-    color: "#3B82F6",
-    glowColor: "rgba(59, 130, 246, 0.25)",
+    color: "var(--spectrum-3)",
+    glowColor: "oklch(0.55 0.075 220 / 0.28)",
     suitableFor: [
       "Behörden",
       "Finanzdienstleistungen",
@@ -96,8 +96,8 @@ export const LEVELS: LevelData[] = [
   {
     level: 4,
     title: "Vollständige Souveränität",
-    color: "#22C55E",
-    glowColor: "rgba(34, 197, 94, 0.25)",
+    color: "var(--spectrum-4)",
+    glowColor: "oklch(0.86 0.060 220 / 0.30)",
     suitableFor: [
       "Verteidigung & Geheimdienste",
       "Großkonzerne",

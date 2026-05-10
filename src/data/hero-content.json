@@ -1,0 +1,138 @@
+{
+  "_meta": {
+    "description": "Hero-Inhalte für die Sovereign-AI-Website. Anzeigedauer pro Slide via durationSec.",
+    "tiers": {
+      "bright": "Hauptaussage. Volle Helligkeit (Pergament).",
+      "dim":    "Setup-Text. Reduzierte Helligkeit (Pergament-muted).",
+      "accent": "Pointierte Stelle. Akzentfarbe (Petrol-bright)."
+    },
+    "rules": {
+      "lines":       "Jede Zeile = ein Tier. Zeilenumbruch erfolgt automatisch zwischen Zeilen.",
+      "subline":     "Folgt nach Headline-Animation. Eine zusätzliche Erklärung in dezenter Typografie.",
+      "durationSec": "Anzeigedauer pro Slide in Sekunden. Skaliert mit Textlänge."
+    }
+  },
+  "heroes": [
+    {
+      "id": "ownership",
+      "topic": "Eigentumsfrage",
+      "durationSec": 6.5,
+      "lines": [
+        { "tier": "bright", "text": "Sie nutzen KI." },
+        { "tier": "bright", "text": "Aber besitzen Sie sie" },
+        { "tier": "accent", "text": "auch?" }
+      ],
+      "subline": "Wer kontrolliert die Intelligenz, mit der Sie Ihr Unternehmen führen — wirklich?"
+    },
+    {
+      "id": "geopolitics",
+      "topic": "Geopolitik",
+      "durationSec": 6,
+      "lines": [
+        { "tier": "bright", "text": "America First." },
+        { "tier": "accent", "text": "Auch für Ihre KI?" }
+      ],
+      "subline": "Wenn Washington morgen entscheidet, entscheidet Ihre KI mit. Ohne Sie zu fragen."
+    },
+    {
+      "id": "compliance",
+      "topic": "Erklärbarkeit",
+      "durationSec": 7,
+      "lines": [
+        { "tier": "bright", "text": "Ihre KI trifft" },
+        { "tier": "bright", "text": "Entscheidungen." },
+        { "tier": "accent", "text": "Können Sie sie erklären?" }
+      ],
+      "subline": "Wenn Ihr Modell eine Black Box ist — wer haftet dann für ihre Entscheidungen?"
+    },
+    {
+      "id": "future-split",
+      "topic": "Zwei Zukünfte",
+      "durationSec": 10,
+      "lines": [
+        { "tier": "dim",    "text": "In fünf Jahren gibt es" },
+        { "tier": "dim",    "text": "zwei Arten von Unternehmen:" },
+        { "tier": "bright", "text": "die, die KI besitzen." },
+        { "tier": "accent", "text": "Und die, die von ihr besessen werden." }
+      ],
+      "subline": "Welche Kategorie wählen Sie — heute?"
+    },
+    {
+      "id": "resilience",
+      "topic": "Resilienz",
+      "durationSec": 9,
+      "lines": [
+        { "tier": "dim",    "text": "Was passiert mit Ihrem Unternehmen," },
+        { "tier": "bright", "text": "wenn der nächste Tweet aus Washington" },
+        { "tier": "accent", "text": "Ihre KI abschaltet?" }
+      ],
+      "subline": "Resilienz beginnt da, wo Abhängigkeit aufhört."
+    },
+    {
+      "id": "cta",
+      "topic": "Entscheidung",
+      "durationSec": 6,
+      "lines": [
+        { "tier": "bright", "text": "Souveräne KI." },
+        { "tier": "accent", "text": "Besser heute als morgen." }
+      ],
+      "subline": "Die Entscheidung, die Sie nicht vertagen können."
+    },
+    {
+      "id": "keys",
+      "topic": "Kontrolle",
+      "durationSec": 8,
+      "lines": [
+        { "tier": "bright", "text": "Sie betreiben Ihr Unternehmen" },
+        { "tier": "bright", "text": "mit KI." },
+        { "tier": "accent", "text": "Jemand anderes hält die Schlüssel." }
+      ],
+      "subline": "Solange ein anderer die Schlüssel hat, gehört Ihnen nicht das Haus — nur die Miete."
+    },
+    {
+      "id": "dependency",
+      "topic": "Strategische Abhängigkeit",
+      "durationSec": 9.5,
+      "lines": [
+        { "tier": "dim",    "text": "Die größte" },
+        { "tier": "bright", "text": "strategische Abhängigkeit" },
+        { "tier": "bright", "text": "Ihrer Unternehmensgeschichte" },
+        { "tier": "accent", "text": "bauen Sie gerade selbst auf." }
+      ],
+      "subline": "Während Sie KI-Innovation feiern, entstehen Bindungen, die Sie nicht mehr lösen können."
+    },
+    {
+      "id": "lock-in",
+      "topic": "Vendor-Lock-in",
+      "durationSec": 8.5,
+      "lines": [
+        { "tier": "bright", "text": "Vendor-Lock-in ist die" },
+        { "tier": "bright", "text": "teuerste Entscheidung," },
+        { "tier": "accent", "text": "die Sie nie bewusst getroffen haben." }
+      ],
+      "subline": "Was heute Bequemlichkeit ist, kostet Sie morgen Ihre Verhandlungsmacht."
+    },
+    {
+      "id": "three-worlds",
+      "topic": "Drei Welten",
+      "durationSec": 8,
+      "lines": [
+        { "tier": "bright", "text": "EU AI Act. DSGVO. CLOUD Act." },
+        { "tier": "bright", "text": "Ihre KI muss drei Welten" },
+        { "tier": "accent", "text": "gleichzeitig genügen." }
+      ],
+      "subline": "30 Millionen Euro Bußgeld. Oder eine KI, die Sie wirklich verstehen."
+    },
+    {
+      "id": "competitors",
+      "topic": "Differenzierung",
+      "durationSec": 8.5,
+      "lines": [
+        { "tier": "bright", "text": "Ihre Wettbewerber nutzen" },
+        { "tier": "bright", "text": "dieselbe KI wie Sie." },
+        { "tier": "accent", "text": "Was unterscheidet Sie morgen noch?" }
+      ],
+      "subline": "Wenn alle aus dem gleichen Brunnen schöpfen, gewinnt nur, wer einen eigenen baut."
+    }
+  ]
+}

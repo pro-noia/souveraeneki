@@ -79,15 +79,23 @@ export default function WordCloud3D() {
     mouseOffset.current = { x: 0, y: 0 };
   }, []);
 
-  // Animation loop
+  // Animation loop — gestoppt unter prefers-reduced-motion (a11y).
   useEffect(() => {
     const { rx, ry } = dimensions;
     const rz = Math.min(rx, ry) * 0.85;
 
+    const reducedMotionQuery =
+      typeof window !== "undefined"
+        ? window.matchMedia("(prefers-reduced-motion: reduce)")
+        : null;
+    const reducedMotion = reducedMotionQuery?.matches ?? false;
+
     function animate() {
-      // Auto-rotation speed + mouse influence
-      angleRef.current.x += 0.002 + mouseOffset.current.x * 0.01;
-      angleRef.current.y += 0.004 + mouseOffset.current.y * 0.01;
+      // Auto-rotation speed + mouse influence (entfällt unter reduced-motion).
+      if (!reducedMotion) {
+        angleRef.current.x += 0.002 + mouseOffset.current.x * 0.01;
+        angleRef.current.y += 0.004 + mouseOffset.current.y * 0.01;
+      }
 
       const ax = angleRef.current.x;
       const ay = angleRef.current.y;
@@ -122,12 +130,13 @@ export default function WordCloud3D() {
         // Normalize to 0..1 where 1 = front
         const depthNorm = (z + rz) / (2 * rz);
         const scale = 0.5 + depthNorm * 0.5; // 0.5 to 1.0
-        const opacity = 0.2 + depthNorm * 0.8; // 0.2 to 1.0
+        // Opacity floor lifted to 0.5 so back-row words still meet contrast.
+        const opacity = 0.5 + depthNorm * 0.5;
 
-        // Color interpolation: back (#003366) → front (#88CCFF)
-        const r = Math.round(0 + depthNorm * 0x88);
-        const g = Math.round(0x33 + depthNorm * (0xcc - 0x33));
-        const b = Math.round(0x66 + depthNorm * (0xff - 0x66));
+        // Tinte (dunkel-kühl, hinten) → Mondstein-bright (hell, vorn)
+        const r = Math.round(95 + depthNorm * (210 - 95));
+        const g = Math.round(110 + depthNorm * (218 - 110));
+        const b = Math.round(130 + depthNorm * (230 - 130));
         const color = `rgb(${r}, ${g}, ${b})`;
 
         const fontSize = word.size * scale;
@@ -139,7 +148,10 @@ export default function WordCloud3D() {
       newPositions.sort((a, b) => a.z - b.z);
       setPositions(newPositions);
 
-      animationRef.current = requestAnimationFrame(animate);
+      // Unter reduced-motion: einmal positionieren, danach nicht mehr animieren.
+      if (!reducedMotion) {
+        animationRef.current = requestAnimationFrame(animate);
+      }
     }
 
     animationRef.current = requestAnimationFrame(animate);
@@ -148,12 +160,12 @@ export default function WordCloud3D() {
 
   return (
     <section className="relative pt-[calc(var(--space-section)/2)] pb-[var(--space-section)] overflow-hidden">
-      {/* Atmospheric background glow */}
+      {/* Atmospheric background glow — Mondstein, sehr leise */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0, 60, 180, 0.08) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 50% at 50% 50%, oklch(0.78 0.055 220 / 0.06) 0%, transparent 70%)",
         }}
       />
 
@@ -191,14 +203,14 @@ export default function WordCloud3D() {
                   left: "50%",
                   top: "50%",
                   transform: `translate(-50%, -50%) translate(${pos.x}px, ${pos.y}px) scale(${isHovered ? pos.scale * 1.18 : pos.scale})`,
-                  fontSize: `${pos.fontSize}pt`,
+                  fontSize: `${(pos.fontSize * 1.333) / 16}rem`,
                   fontWeight: pos.z > 0 ? 600 : 400,
-                  color: isHovered ? "#aaddff" : pos.color,
+                  color: isHovered ? "var(--mondstein-bright)" : pos.color,
                   opacity: isHovered ? 1 : pos.opacity,
                   textShadow: isHovered
-                    ? "0 0 20px rgba(100, 180, 255, 0.6), 0 0 40px rgba(80, 120, 255, 0.3)"
+                    ? "0 0 20px oklch(0.86 0.060 220 / 0.55), 0 0 40px oklch(0.78 0.055 220 / 0.30)"
                     : pos.z > 0
-                      ? "0 0 8px rgba(100, 180, 255, 0.15)"
+                      ? "0 0 8px oklch(0.78 0.055 220 / 0.18)"
                       : "none",
                   transition:
                     "color 0.2s ease, opacity 0.2s ease, text-shadow 0.2s ease, font-weight 0.2s ease",

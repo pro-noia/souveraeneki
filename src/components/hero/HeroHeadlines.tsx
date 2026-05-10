@@ -1,84 +1,189 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
+import heroContent from "@/data/hero-content.json";
+import styles from "./HeroHeadlines.module.css";
 
-// ---- Easy to edit: just change these strings ----
-const headlines = [
-  "Souveräne KI für Europa — sicher und selbstbestimmt",
-  "Volle Kontrolle über Ihre KI-Infrastruktur",
-  "Datensouveränität trifft modernste Technologie",
-];
+type Tier = "bright" | "dim" | "accent";
 
-const TYPING_SPEED = 54; // ms per character typing
-const DELETING_SPEED = 36; // ms per character deleting
-const PAUSE_DURATION = 2400; // ms to hold the finished headline
+interface Line {
+  tier: Tier;
+  text: string;
+}
 
-export default function HeroHeadlines() {
-  const [headlineIndex, setHeadlineIndex] = useState(0);
-  const [charCount, setCharCount] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
+interface Slide {
+  id: string;
+  topic: string;
+  durationSec: number;
+  lines: Line[];
+  subline: string;
+}
 
-  const currentHeadline = headlines[headlineIndex];
+const slides = heroContent.heroes as Slide[];
 
-  const tick = useCallback(() => {
-    if (isPaused) return;
+const STORAGE_KEY = "sovereign-hero-cursor";
+const CHAR_DELAY_MS = 18;
+const SUBLINE_DELAY_MS = 200;
 
-    if (!isDeleting) {
-      // Typing forward
-      if (charCount < currentHeadline.length) {
-        setCharCount((c) => c + 1);
-      } else {
-        // Finished typing — pause, then start deleting
-        setIsPaused(true);
-        setTimeout(() => {
-          setIsPaused(false);
-          setIsDeleting(true);
-        }, PAUSE_DURATION);
-      }
-    } else {
-      // Deleting backward
-      if (charCount > 0) {
-        setCharCount((c) => c - 1);
-      } else {
-        // Finished deleting — move to next headline
-        setIsDeleting(false);
-        setHeadlineIndex((idx) => (idx + 1) % headlines.length);
-      }
-    }
-  }, [charCount, currentHeadline.length, isDeleting, isPaused]);
+const TIER_CLASS: Record<Tier, string> = {
+  bright: styles.tierBright,
+  dim: styles.tierDim,
+  accent: styles.tierAccent,
+};
 
-  useEffect(() => {
-    if (isPaused) return;
+function getStartIndex(total: number): number {
+  if (typeof window === "undefined") return 0;
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    const parsed = raw === null ? 0 : parseInt(raw, 10);
+    const start = Number.isFinite(parsed)
+      ? ((parsed % total) + total) % total
+      : 0;
+    window.localStorage.setItem(STORAGE_KEY, String((start + 1) % total));
+    return start;
+  } catch {
+    return Math.floor(Math.random() * total);
+  }
+}
 
-    const speed = isDeleting ? DELETING_SPEED : TYPING_SPEED;
-    const timer = setTimeout(tick, speed);
-    return () => clearTimeout(timer);
-  }, [tick, isDeleting, isPaused]);
+function countAnimChars(text: string): number {
+  // Whitespace ist kein Animationsschritt — passt zur AnimatedLine-Logik unten.
+  let n = 0;
+  for (const ch of text) if (!/\s/.test(ch)) n++;
+  return n;
+}
 
-  const displayedText = currentHeadline.slice(0, charCount);
+function AnimatedLine({
+  line,
+  baseOffset,
+  reduced,
+}: {
+  line: Line;
+  baseOffset: number;
+  reduced: boolean;
+}) {
+  const tokens = line.text.split(/(\s+)/).filter((t) => t.length > 0);
+  let charIdx = 0;
 
   return (
-    <div
-      className="h-[calc(var(--text-hero)*3.3)]"
-      aria-live="polite"
-      aria-label={currentHeadline}
-    >
+    <span className={`${styles.line} ${TIER_CLASS[line.tier]}`}>
+      {tokens.map((token, tIdx) => {
+        if (/^\s+$/.test(token)) {
+          return <span key={`s-${tIdx}`}>{token}</span>;
+        }
+        return (
+          <span key={`w-${tIdx}`} className={styles.word}>
+            {Array.from(token).map((char) => {
+              const delay = reduced ? 0 : (baseOffset + charIdx) * CHAR_DELAY_MS;
+              const node = (
+                <span
+                  key={charIdx}
+                  className={styles.char}
+                  style={{ animationDelay: `${delay}ms` }}
+                >
+                  {char}
+                </span>
+              );
+              charIdx++;
+              return node;
+            })}
+          </span>
+        );
+      })}
+    </span>
+  );
+}
+
+interface RotationState {
+  current: number;
+  reduced: boolean;
+}
+
+export default function HeroHeadlines() {
+  // Server- und erstes Client-Render zeigen Slide 0 (keine Hydration-Mismatch).
+  // localStorage und matchMedia gibt es erst nach dem Mount → Update im Effect.
+  const [state, setState] = useState<RotationState>({
+    current: 0,
+    reduced: false,
+  });
+  const initialized = useRef(false);
+
+  useEffect(() => {
+    // StrictMode-Schutz: Cursor nur einmal beim Mount weiterdrehen.
+    if (initialized.current) return;
+    initialized.current = true;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- hydration-safe one-shot init
+    setState({
+      current: getStartIndex(slides.length),
+      reduced: window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    });
+  }, []);
+
+  const { current, reduced } = state;
+
+  useEffect(() => {
+    const slide = slides[current];
+    const timer = window.setTimeout(
+      () =>
+        setState((prev) => ({
+          ...prev,
+          current: (prev.current + 1) % slides.length,
+        })),
+      slide.durationSec * 1000,
+    );
+    return () => window.clearTimeout(timer);
+  }, [current]);
+
+  const slide = slides[current];
+
+  // Kumulativer Char-Offset pro Zeile, damit Stagger über alle Zeilen
+  // hinweg ohne Sprung weiterläuft.
+  const offsets: number[] = [];
+  let cumulative = 0;
+  for (const line of slide.lines) {
+    offsets.push(cumulative);
+    cumulative += countAnimChars(line.text);
+  }
+  const totalChars = cumulative;
+  const sublineDelayMs = reduced
+    ? 0
+    : totalChars * CHAR_DELAY_MS + SUBLINE_DELAY_MS;
+
+  return (
+    <div className={styles.hero}>
       <h1
-        className="text-[var(--text-primary)] font-bold leading-[1.1] tracking-[-0.02em]"
-        style={{ fontSize: "var(--text-hero)" }}
+        key={`h-${slide.id}`}
+        className={`${styles.headline} ${reduced ? styles.headlineFade : ""}`}
       >
-        {displayedText}
-        <span
-          className="inline-block w-[3px] ml-1 align-baseline"
-          style={{
-            height: "0.85em",
-            background: "var(--accent-light)",
-            animation: "cursor-blink 0.7s step-end infinite",
-          }}
-          aria-hidden="true"
-        />
+        {slide.lines.map((line, idx) => (
+          <AnimatedLine
+            key={idx}
+            line={line}
+            baseOffset={offsets[idx]}
+            reduced={reduced}
+          />
+        ))}
       </h1>
+
+      <p
+        key={`s-${slide.id}`}
+        className={styles.subline}
+        style={{ animationDelay: `${sublineDelayMs}ms` }}
+      >
+        {slide.subline}
+      </p>
+
+      <div
+        className={styles.progressTrack}
+        role="progressbar"
+        aria-label="Headline-Rotation"
+      >
+        <div
+          key={`p-${slide.id}`}
+          className={styles.progressBar}
+          style={{ animationDuration: `${slide.durationSec}s` }}
+        />
+      </div>
     </div>
   );
 }

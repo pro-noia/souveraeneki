@@ -1,25 +1,43 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Manrope, Cousine } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains",
+const cousine = Cousine({
+  variable: "--font-cousine",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Souveräne KI — Ihre souveräne KI-Plattform",
+  metadataBase: new URL("https://xn--souverneki-v5a.de"),
+  title: "Souveräne KI — Souveränität ist keine Region. Souveränität ist Recht.",
   description:
-    "Die souveräne KI-Plattform für Unternehmen und Institutionen in Europa. Datensouveränität, Sicherheit und volle Kontrolle über Ihre KI-Infrastruktur.",
+    "Eine 'EU-Cloud' bedeutet wenig, wenn das betreibende Unternehmen US-amerikanischem Recht unterliegt. Souveräne KI baut auf europäischem Recht — Open-Source-Modelle, EU-Rechenzentren, Verträge unter ausschließlich europäischer Jurisdiktion.",
+  openGraph: {
+    type: "website",
+    locale: "de_DE",
+    url: "https://xn--souverneki-v5a.de",
+    siteName: "Souveräne KI",
+    title: "Souveränität ist keine Region. Souveränität ist Recht.",
+    description:
+      "Souveräne KI baut auf europäischem Recht, nicht auf Geographie. Whitepaper für Entscheider — EU AI Act, CLOUD Act, Architektur-Optionen.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Souveränität ist keine Region. Souveränität ist Recht.",
+    description:
+      "Souveräne KI für Unternehmen und Institutionen in Europa — unter ausschließlich europäischer Jurisdiktion.",
+  },
 };
 
 export default function RootLayout({
@@ -29,7 +47,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de">
-      <body className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}>
+      <body className={`${manrope.variable} ${cousine.variable} antialiased`}>
         <Header />
         <main>{children}</main>
         <Footer />

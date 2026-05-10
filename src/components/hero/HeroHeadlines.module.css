@@ -1,0 +1,127 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+.headline {
+  font-size: calc(var(--text-hero) * 0.7);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 0;
+  text-align: center;
+  max-width: 22ch;
+}
+
+.line {
+  display: block;
+}
+
+.tierBright {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.tierDim {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.tierAccent {
+  color: var(--petrol-bright);
+  font-weight: 600;
+}
+
+.word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.char {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(8px);
+  animation: charReveal 500ms ease-out forwards;
+  will-change: opacity, filter, transform;
+}
+
+@keyframes charReveal {
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.subline {
+  max-width: 60ch;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: var(--text-body-lg);
+  line-height: 1.55;
+  margin: 0;
+  opacity: 0;
+  animation: sublineFade 600ms ease-out forwards;
+}
+
+@keyframes sublineFade {
+  to {
+    opacity: 1;
+  }
+}
+
+.progressTrack {
+  width: 100%;
+  max-width: 280px;
+  height: 2px;
+  background: var(--border-subtle);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: var(--space-xs);
+}
+
+.progressBar {
+  height: 100%;
+  width: 0%;
+  background: var(--petrol-bright);
+  animation: progressFill linear forwards;
+  will-change: width;
+}
+
+@keyframes progressFill {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.headlineFade {
+  animation: containerFade 500ms ease-out forwards;
+}
+
+@keyframes containerFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .char {
+    animation: none;
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+  .subline {
+    animation: sublineFade 400ms ease-out forwards;
+  }
+}

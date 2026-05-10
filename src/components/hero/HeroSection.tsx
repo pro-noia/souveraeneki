@@ -1,53 +1,35 @@
 import HeroHeadlines from "./HeroHeadlines";
+import HeroWave from "@/components/ui/dynamic-wave-canvas-background";
 import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <section
-      className="relative min-h-screen flex items-center overflow-hidden"
-      style={{
-        background:
-          "radial-gradient(ellipse 80% 60% at 30% 40%, rgba(0, 50, 160, 0.4) 0%, rgba(40, 20, 80, 0.25) 40%, var(--bg-primary) 80%)",
-      }}
-    >
-      <div className="mx-auto w-full max-w-[var(--container-max)] px-[var(--container-padding)] pt-32 pb-16 lg:pt-24 lg:pb-0">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
-          {/* Text side */}
-          <div className="flex-1 flex flex-col gap-8 text-center lg:text-left">
-            <HeroHeadlines />
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Animierter Wave-Background, brandadaptiert (Petrol + Mondstein) */}
+      <HeroWave />
 
-            <p
-              className="max-w-xl mx-auto lg:mx-0 leading-relaxed"
-              style={{
-                color: "var(--text-secondary)",
-                fontSize: "var(--text-body-lg)",
-              }}
-            >
-              Behalten Sie die volle Kontrolle über Ihre KI-Infrastruktur — mit
-              einer Plattform, die europäische Datensouveränität und modernste
-              Technologie vereint.
-            </p>
+      {/* Scrim für Textlesbarkeit. Zur Mitte hin transparent (Wave bleibt sichtbar),
+          oben/unten leicht abgedunkelt für Header- und Section-Übergang. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(180deg, oklch(0.115 0.005 250 / 0.55) 0%, oklch(0.115 0.005 250 / 0.20) 35%, oklch(0.115 0.005 250 / 0.20) 65%, oklch(0.115 0.005 250 / 0.70) 100%)",
+        }}
+      />
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Link href="/demo" className="btn-primary">
-                Kostenlos testen
-              </Link>
-              <Link href="/produkte" className="btn-secondary">
-                Mehr erfahren
-              </Link>
-            </div>
-          </div>
+      <div className="relative z-10 mx-auto w-full max-w-[var(--container-max)] px-[var(--container-padding)] pt-32 pb-16">
+        <div className="flex flex-col items-center gap-8 text-center max-w-3xl mx-auto">
+          <HeroHeadlines />
 
-          {/* Visual side */}
-          <div className="flex-1 w-full max-w-lg lg:max-w-none flex justify-center">
-            <video
-              src="/hero-vault.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-[70%] h-auto rounded-2xl"
-            />
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="#whitepaper" className="btn-primary">
+              Whitepaper laden
+            </Link>
+            <Link href="/produkte" className="btn-secondary">
+              Mehr erfahren
+            </Link>
           </div>
         </div>
       </div>

@@ -1,23 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
+import { Wrench, BarChart3, Check, X, AlertTriangle } from "lucide-react";
 import type { LevelData, MerkmalItem } from "./spectrumConfig";
 import styles from "./SovereigntySpectrum.module.css";
 
 function MerkmalIcon({ icon }: { icon: MerkmalItem["icon"] }) {
   if (icon === "check")
-    return <span className={`${styles.merkmalIcon} ${styles.iconCheck}`}>✓</span>;
+    return (
+      <span className={`${styles.merkmalIcon} ${styles.iconCheck}`} aria-hidden="true">
+        <Check size={14} strokeWidth={2.5} />
+      </span>
+    );
   if (icon === "cross")
-    return <span className={`${styles.merkmalIcon} ${styles.iconCross}`}>✗</span>;
-  return <span className={`${styles.merkmalIcon} ${styles.iconWarn}`}>⚠</span>;
+    return (
+      <span className={`${styles.merkmalIcon} ${styles.iconCross}`} aria-hidden="true">
+        <X size={14} strokeWidth={2.5} />
+      </span>
+    );
+  return (
+    <span className={`${styles.merkmalIcon} ${styles.iconWarn}`} aria-hidden="true">
+      <AlertTriangle size={14} strokeWidth={2.5} />
+    </span>
+  );
 }
 
 function Accordion({
   title,
   children,
 }: {
-  title: string;
-  children: React.ReactNode;
+  title: ReactNode;
+  children: ReactNode;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -114,7 +127,14 @@ export default function SpectrumCard({
       </div>
 
       {/* Accordion: Technologien */}
-      <Accordion title="🛠 Technologien">
+      <Accordion
+        title={
+          <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+            <Wrench size={14} strokeWidth={2} aria-hidden="true" />
+            Technologien
+          </span>
+        }
+      >
         <div className={styles.techList}>
           {data.technologies.map((tech) => (
             <div key={tech} className={styles.techItem}>
@@ -125,7 +145,14 @@ export default function SpectrumCard({
       </Accordion>
 
       {/* Accordion: Auswirkungen */}
-      <Accordion title="📊 Auswirkungen">
+      <Accordion
+        title={
+          <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+            <BarChart3 size={14} strokeWidth={2} aria-hidden="true" />
+            Auswirkungen
+          </span>
+        }
+      >
         <div className={styles.techList}>
           {data.merkmale.map((m) => (
             <div key={m.text} className={styles.merkmalItem}>

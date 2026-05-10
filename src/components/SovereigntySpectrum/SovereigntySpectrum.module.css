@@ -44,11 +44,11 @@
 }
 
 .axisLeft {
-  color: #EF4444;
+  color: var(--spectrum-bad);
 }
 
 .axisRight {
-  color: #22C55E;
+  color: var(--spectrum-good);
 }
 
 .sliderTrack {
@@ -58,6 +58,12 @@
   background: rgba(255, 255, 255, 0.08);
   border-radius: 3px;
   cursor: pointer;
+}
+
+.sliderTrack:focus-visible {
+  outline: 2px solid var(--mondstein-bright);
+  outline-offset: 6px;
+  border-radius: 4px;
 }
 
 .sliderFill {
@@ -180,6 +186,11 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--mondstein-bright);
+  outline-offset: 3px;
 }
 
 .card[data-active="true"] {
@@ -329,15 +340,15 @@
 }
 
 .iconCheck {
-  color: #22C55E;
+  color: var(--spectrum-good);
 }
 
 .iconCross {
-  color: #EF4444;
+  color: var(--spectrum-bad);
 }
 
 .iconWarn {
-  color: #F59E0B;
+  color: var(--spectrum-2);
 }
 
 /* ============================================
@@ -347,8 +358,8 @@
 .infoBlock {
   margin-top: var(--space-xl);
   padding: var(--space-md) var(--space-lg);
-  background: rgba(59, 130, 246, 0.06);
-  border: 1px solid rgba(59, 130, 246, 0.15);
+  background: oklch(0.78 0.055 220 / 0.06);
+  border: 1px solid oklch(0.78 0.055 220 / 0.18);
   border-radius: 12px;
   color: var(--text-secondary);
   font-size: var(--text-small);

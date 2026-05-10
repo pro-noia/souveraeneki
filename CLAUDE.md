@@ -17,11 +17,20 @@ No test framework is currently configured.
 
 ## Architecture
 
-- **App Router**: All routes live in `app/` — pages are `page.tsx`, layouts are `layout.tsx`
-- **Styling**: Tailwind CSS 4 with PostCSS; global CSS variables in `app/globals.css` handle dark/light theming via `prefers-color-scheme`
-- **Path alias**: `@/*` maps to the project root
+- **App Router**: All routes live in `src/app/` — pages are `page.tsx`, layouts are `layout.tsx`
+- **Styling**: Tailwind CSS 4 with PostCSS; global CSS variables in `src/app/globals.css` handle dark/light theming via `prefers-color-scheme`
+- **Path alias**: `@/*` maps to `./src/*` (per `tsconfig.json`)
 - **TypeScript**: Strict mode enabled, bundler module resolution
-- **Fonts**: 'Inter', 'SF Pro Display', -apple-system, sans-serif
+- **Fonts**: `Inter` and `JetBrains_Mono` are loaded via `next/font/google` in `src/app/layout.tsx` and exposed as CSS variables `--font-inter` and `--font-jetbrains` (latin subset, `display: swap`)
+
+### Page composition
+
+- **Root layout** (`src/app/layout.tsx`) mounts global `<Header>` and `<Footer>` from `src/components/layout/` around `{children}`. All routes inherit this chrome.
+- **Home page** (`src/app/page.tsx`) composes five self-contained section modules in order: `HeroSection` → `SovereignWizard` → `WordCloud3D` → `SovereigntySpectrum` → `WhitepaperSection`. Each lives under its own folder in `src/components/{Name}/`.
+- **API**: `src/app/api/whitepaper/route.ts` ist der Lead-Magnet-Submit-Stub (logging-only, später an Mail-Provider verkabeln).
+- **Persona landing pages**: 15 routes follow the pattern `/souveraene-ki-fuer-{audience}-{level}` where audience ∈ {`forschung`, `politik`, `technik`, `unternehmen`} and level ∈ {`einsteiger`, `kenner`, `experten`}, plus three meta routes: `/souveraene-ki-einstieg`, `/souveraene-ki-ueberblick`, `/souveraene-ki-vertiefung`. They currently render via the shared `src/components/PlaceholderLanding.tsx` until each gets bespoke content.
+- **Glossar**: dynamic route `src/app/glossar/[slug]/page.tsx` reads from `src/data/glossar.json` and renders through `src/components/glossar/GlossarPage.tsx` (see "Glossar Landingpages" below).
+- **Helpers**: `src/lib/` for shared utilities (e.g. `analytics.ts`).
 
 ## ESLint
 
@@ -43,72 +52,117 @@ Uses ESLint 9 flat config (`eslint.config.mjs`) with `next/core-web-vitals` and 
 ## Design System 
 
 ### Overview
-Dark-theme, premium, tech-forward website for a Sovereign AI platform.
-Core principle: "Quiet Authority" — institutional strength, not startup energy.
+Dark-theme, editorial Brand-Site für eine europäische souveräne KI-Plattform.
+Strategie und Anti-References: siehe [PRODUCT.md](PRODUCT.md).
+Voice-Triade: **Eichensaal · Mondstein · Tinte** — Lesesaal mit Buchrücken-Stempel,
+nicht Tech-Demo. Primärakzent: **Petrol** (Archiv-Blaugrün). Sekundär: **Rost ·
+Bernstein · Salbei** (material-archivische R-Y-G-Stationen).
+Position: "leise rebellisch", Aleph-Alpha-/Raycast-/Arc-Lane.
 
 ---
 
-### Color Palette
+### Color Palette (OKLCH, Full palette)
+
+Source of truth: [src/app/globals.css](src/app/globals.css).
+Live-Vergleich + Sekundärfarben in Aktion: [src/app/vergleich/page.tsx](src/app/vergleich/page.tsx).
 
 ```css
-/* Backgrounds */
---bg-primary:        #0A0A0F;       /* Near-black with slight violet tint */
---bg-secondary:      #12101A;       /* Dark violet-black for alternating sections */
---bg-elevated:       #1A1625;       /* Elevated surfaces: cards, nav */
---bg-gradient:       linear-gradient(180deg, #1A1028 0%, #0A0A0F 50%, #0A0A0F 100%);
+/* Eichensaal — warm-dunkles Holz, Lesesaal-Grund */
+--eichensaal-deep:   oklch(0.115 0.012 65);   /* page bg */
+--eichensaal:        oklch(0.155 0.014 65);   /* alternating sections */
+--eichensaal-light:  oklch(0.205 0.016 65);   /* elevated cards, nav */
 
-/* Accent Colors */
---accent-primary:    #E8564A;       /* Warm coral-red — primary CTA */
---accent-secondary:  #F4845F;       /* Warm orange — highlights, hover states */
---accent-glow:       rgba(232, 86, 74, 0.3);
---accent-gradient:   linear-gradient(135deg, #E8564A, #F4845F);
+/* Tinte — kühler Schwarz-Blau, Tiefe */
+--tinte-deep:        oklch(0.085 0.022 260);  /* footer, deep wells */
+--tinte:             oklch(0.130 0.022 260);  /* alternating section */
 
-/* Text */
---text-primary:      #F0EBE3;       /* Warm off-white — headlines */
---text-secondary:    #9B95A0;       /* Muted gray-violet — body text */
---text-muted:        #6B6570;       /* Labels, footnotes, captions */
+/* Mondstein — kühler Pearl-Akzent (Links, Hover, leise Highlights) */
+--mondstein:         oklch(0.78 0.055 220);
+--mondstein-bright:  oklch(0.86 0.060 220);
+--mondstein-deep:    oklch(0.55 0.075 220);
 
-/* Borders & Glass */
---border-subtle:     rgba(255, 255, 255, 0.06);
---border-hover:      rgba(255, 255, 255, 0.12);
---glass-bg:          rgba(26, 22, 37, 0.7);
---glass-blur:        12px;
+/* Petrol — Archiv-Blaugrün, primary action / Fokus / "Recht"-Highlight */
+--petrol:            oklch(0.50 0.090 200);
+--petrol-bright:     oklch(0.58 0.095 200);
+--petrol-deep:       oklch(0.38 0.080 200);
+
+/* Sekundärfarben — material, archivisch, seriös aber nicht steif */
+--rost:              oklch(0.48 0.115 35);    /* Cor-Ten Stahl, warning */
+--rost-bright:       oklch(0.55 0.120 35);
+--bernstein:         oklch(0.65 0.095 75);    /* Pergament-Siegel, caution */
+--bernstein-bright:  oklch(0.72 0.105 75);
+--salbei:            oklch(0.62 0.055 145);   /* Bronze-Patina, success */
+--salbei-bright:     oklch(0.70 0.060 145);
+
+/* Pergament — warm-cremige Schrift (NIE #fff) */
+--pergament:         oklch(0.96 0.010 80);    /* primary text */
+--pergament-muted:   oklch(0.74 0.014 80);    /* body */
+--pergament-ghost:   oklch(0.55 0.016 80);    /* labels, captions */
 ```
 
-### Background Treatment
-- Top area (hero) has a **subtle violet/magenta atmospheric glow** that fades into pure dark below.
-- Optional radial gradient behind hero visual using #2D1B3D / #1A1028.
-- Never use hard or saturated background colors — keep everything muted and atmospheric.
+#### Semantische Aliase
+- `--accent-primary` → Petrol (CTA, Form-Submit, Fokusring)
+- `--accent-secondary` → Mondstein (Hover, Links, leise Highlights)
+- `--warning` → Rost (Form-Errors, Spectrum Lvl 1 "Volle Abhängigkeit")
+- `--caution` → Bernstein (Spectrum Lvl 2 "Hybride Kontrolle")
+- `--success` → Salbei (Spectrum Lvl 4 "Vollständige Souveränität")
+
+#### Spectrum-Reise
+Section nutzt die Sekundärpalette als semantische Stationen, kein RYAG-Ampelschema:
+**Rost → Bernstein → Petrol → Salbei** entspricht
+*Volle Abhängigkeit → Hybride Kontrolle → Verwaltete Souveränität → Vollständige Souveränität*.
+
+Aliases wie `--bg-primary`, `--text-primary` bleiben aus historischen Gründen
+erhalten. Neue Komponenten sollten direkt die benannten Rollen ziehen.
+
+### Anti-References (verbindlich)
+
+- **Keine** AI-Cosmic-Violet-Gradients (#0066FF → #7B2FBE und Verwandte)
+- **Kein** Korall / Vermillion (#E8564A — historisch, verworfen)
+- **Kein** Lederrot — als Primärakzent versuchsweise eingeführt, durch Petrol ersetzt
+- **Kein** Glassmorphism als Default (Header und Modals laufen solid)
+- **Kein** Gradient-Slide auf Buttons — Buttons sind Petrol solid
+- **Kein** RYAG-Ampelschema im Spectrum — Stationen sind material-archivisch
+  (Rost · Bernstein · Petrol · Salbei)
+- Detailliertere Anti-Reference-Liste in [PRODUCT.md](PRODUCT.md)
 
 ---
 
-### Typography
+### Typography — Manrope + Cousine
 
-#### Font Stack
 ```css
---font-heading:  'Inter', 'SF Pro Display', -apple-system, sans-serif;
---font-body:     'Inter', 'SF Pro Text', -apple-system, sans-serif;
---font-mono:     'JetBrains Mono', 'Fira Code', monospace;
+--font-heading:    var(--font-manrope), 'Helvetica Neue', system-ui, sans-serif;
+--font-body:       var(--font-manrope), 'Helvetica Neue', system-ui, sans-serif;
+--font-mono-stack: var(--font-cousine), ui-monospace, 'SF Mono', Menlo, monospace;
 ```
-Alternative for headlines: 'Space Grotesk' or 'Satoshi' for a more geometric feel.
 
-#### Type Scale
+Geladen via `next/font/google` in [src/app/layout.tsx](src/app/layout.tsx).
+Inter und JetBrains Mono sind verboten (Reflex-Reject-Liste in
+`.agents/skills/impeccable/reference/brand.md`). Albert Sans wurde
+vorübergehend genutzt und durch Manrope ersetzt — geometrische Präzision,
+dezenter Charakter, ruhiger als humanistische Alternativen.
+
+#### Type Scale (Modular, ≥1.25 Ratio)
+
 ```css
---text-hero:     clamp(3rem, 6vw, 4.5rem);     /* 48–72px */
---text-h1:       clamp(2.25rem, 4vw, 3.5rem);  /* 36–56px */
---text-h2:       clamp(1.75rem, 3vw, 2.5rem);  /* 28–40px */
---text-h3:       clamp(1.25rem, 2vw, 1.75rem); /* 20–28px */
---text-body:     1rem;                           /* 16px */
---text-body-lg:  1.125rem;                       /* 18px */
---text-small:    0.875rem;                       /* 14px */
---text-caption:  0.75rem;                        /* 12px */
+--text-hero:    clamp(3rem, 6.5vw, 5rem);       /* 48–80px */
+--text-h1:      clamp(2.25rem, 4vw, 3.25rem);   /* 36–52px */
+--text-h2:      clamp(1.625rem, 2.75vw, 2.25rem); /* 26–36px */
+--text-h3:      clamp(1.25rem, 1.75vw, 1.5rem); /* 20–24px */
+--text-body-lg: 1.125rem;                       /* 18px */
+--text-body:    1rem;                           /* 16px */
+--text-small:   0.875rem;                       /* 14px */
+--text-caption: 0.75rem;                        /* 12px */
 ```
 
 #### Typography Rules
-- Headlines: font-weight 600–700, letter-spacing: -0.02em
-- **Colored keyword highlighting in headlines:** Emphasize 1–2 key words per headline using `--accent-secondary` (#F4845F)
-- Body text: font-weight 400, line-height 1.6–1.7, color: `--text-secondary`
-- No uppercase except for small labels/badges
+- Headlines: font-weight 500–600, letter-spacing: -0.02em
+- **Colored keyword highlighting:** EIN Wort pro Hero-Headline darf in
+  `var(--petrol-bright)` gesetzt werden (z. B. „Recht" in der Hero-Headline).
+  Mehr als ein Wort kippt in Marketing-Energie.
+- Body: font-weight 400, line-height 1.65, color: `var(--text-secondary)`
+- Mono nur für Eyebrows / Caption / Beleg-Labels — nie für Body Copy
+- Kein Uppercase außer auf kurzen Labels/Badges
 
 ---
 
@@ -171,32 +225,26 @@ Alternative for headlines: 'Space Grotesk' or 'Satoshi' for a more geometric fee
 
 ### Hero Section
 
-## Hero Section
-
 #### Layout
-- Split layout: text left (~50%), visual right (~50%)
-- Text vertically centered, starting at ~20% from left
-- Hero visual bleeds slightly past the right edge (overflow: hidden on container)
-- Auf Mobilgeräten: Stacking – Text oben, Visual darunter
+- Split: Text links (~50%), atmosphärisches Video rechts (~50%)
+- Mobil: Stacking – Text oben, Video darunter
+- Hintergrund: warmer Eichensaal-Radial-Glow (kein Violett, kein Blau)
 
 #### Hero Text (linke Hälfte)
-- 3 rotierende Headlines im Ticker-Stil (smooth slide-up Animation)
-- Jede Headline 2-3 Zeilen, Wechsel alle 3-4 Sekunden, Endlosschleife
-- Darunter: kurzer statischer Subtext + CTA-Button
+- **Statische, committed Headline** (kein Typewriter, keine Rotation):
+  „Souveränität ist keine Region.<br>Souveränität ist **Recht**."
+  Erste Zeile in `--text-secondary`, zweite Zeile in `--text-primary` mit
+  „Recht" in `--lederrot-bright`.
+- Subhead nennt den Antagonisten (CLOUD Act / EU-Cloud-Marketing-Versprechen)
+  ohne Marketing-Floskeln.
+- Zwei CTAs: Primary `[Whitepaper laden]` (Anchor `#whitepaper`),
+  Secondary `[Mehr erfahren]`.
 
 #### Hero Visual (rechte Hälfte)
-- Large, colorful 3D visual (cloud, network, sphere, or abstract data form)
-- Color spectrum: blue → violet → magenta → orange → red (top-left to bottom-right)
-- Glowing particles / data-rain effect below the visual (vertical luminous lines + dots)
-- Visual casts a soft glow into the surrounding background
-- Rein CSS/SVG-basiert, performant animiert
-
-#### Hero Content Structure
-```
-[Large multi-line headline with colored keyword]
-[Subheadline — 2–3 lines, --text-secondary]
-[Two buttons side by side: Primary CTA + Secondary CTA]
-```
+- `/public/hero-vault.mp4` (autoPlay, muted, loop, playsInline) mit
+  beschreibendem `aria-label`. Keine Partikel, keine konzentrischen Ringe,
+  kein cosmic-violet Hintergrund (alle gehörten zur AI-Cosmic-Violet-Lane,
+  die [PRODUCT.md](PRODUCT.md) verbietet).
 
 ---
 
@@ -264,11 +312,11 @@ Alternative for headlines: 'Space Grotesk' or 'Satoshi' for a more geometric fee
 
 ### Tech Stack
 
-- **Framework:** Next.js 14+ (App Router) or Astro
+- **Framework:** Next.js 16 (App Router) with React 19
 - **Styling:** Tailwind CSS 4 with custom theme config
-- **Animations:** Framer Motion for scroll animations, CSS for hover/transitions
-- **Hero Visual:** High-quality static image (WebP/AVIF) or Three.js for 3D
-- **Icons:** Lucide Icons or Phosphor Icons
+- **Animations:** CSS keyframes + transitions for hover/scroll (no animation library currently installed; if motion needs grow, evaluate Framer Motion before adding)
+- **Hero Visual:** Currently CSS/SVG-based; reserve Three.js/WebGL only if a 2D approach proves insufficient
+- **Icons:** `lucide-react` (installed). Phosphor is *not* installed — don't import from it without adding the dep first.
 
 ### Performance Rules
 - Hero image: `loading="eager"`, `fetchpriority="high"`, optimized formats
@@ -307,3 +355,104 @@ Alternative for headlines: 'Space Grotesk' or 'Satoshi' for a more geometric fee
 - No sharp corners (min border-radius: 8px, buttons always pill-shaped)
 - No flags or nationalistic symbols
 - No garish rainbow gradients
+
+
+## Glossar Landingpages
+
+Dieser Abschnitt beschreibt programmatische SEO-optimierte Glossar-Landingpages für Next.js.
+Jeder Glossar-Begriff bekommt eine eigene Landingpage unter `/glossar/[slug]`.
+
+### Tech Stack
+- Framework: Next.js (App Router)
+- Sprache: Deutsch
+- Styling: Tailwind CSS
+- Bilder: `/public/images/glossar/[slug].jpg` (16:9 Querformat)
+
+### Datenstruktur
+Alle Glossar-Begriffe liegen in: `src/data/glossar.json`
+Schema: siehe `src/data/glossar-schema.md`
+
+### Seitenstruktur jeder Glossar-Landingpage
+
+```
+URL:           /glossar/[slug]
+Hero-Bild:     /public/images/glossar/[slug].jpg  (16:9, min. 1200x675px)
+H1:            Haupt-Keyword (z.B. "Was ist [Begriff]?")
+H2:            Subheadline mit sekundärem Keyword
+H3-Abschnitte: 4–6 thematische Unterabschnitte
+Fliesstext:    SEO-optimiert, Keyword-Dichte 1–2%, natürliche Sprache
+Internal Links: "In diesem Kontext auch interessant:" → 3 verwandte Glossar-Artikel
+Meta Title:    [Begriff] – Definition & Erklärung | [Sitename]  (max. 60 Zeichen)
+Meta Desc:     Kompakte Antwort auf "Was ist [Begriff]?" mit CTA  (max. 160 Zeichen)
+Schema:        JSON-LD DefinedTerm + FAQPage
+```
+
+### SEO-Regeln (WICHTIG)
+
+#### Keyword-Strategie
+- Primäres Keyword: im Slug, H1, ersten 100 Wörtern, Meta Title
+- Sekundäre Keywords: in H2, H3-Überschriften, natürlich im Text verteilt
+- LSI-Keywords: semantisch verwandte Begriffe einbauen
+- Keyword-Dichte: 1–2% — KEIN Keyword-Stuffing
+- Antwort-zuerst-Format: Direkte Definition in den ersten 2 Sätzen
+
+#### Content-Qualität (EEAT)
+- Jede Seite muss echten Mehrwert bieten — keine dünn befüllten Templates
+- Statistiken und konkrete Zahlen einbauen wo möglich
+- Autoritative Sprache verwenden
+- Mindestlänge: 800 Wörter pro Seite
+
+#### GEO (AI-Suchmaschinen-Optimierung)
+- FAQPage Schema auf jeder Seite (erhöht AI-Sichtbarkeit um ~40%)
+- Klare H1 > H2 > H3 Hierarchie
+- Kurze Absätze (2–3 Sätze)
+- Statistiken einbauen (+37% AI-Sichtbarkeit)
+- Quellenangaben wo sinnvoll (+40% AI-Sichtbarkeit)
+
+#### Interne Verlinkung
+- Jede Seite verlinkt auf 3 verwandte Glossar-Artikel
+- Verwandte Artikel kommen aus dem Feld `related_slugs` in glossar.json
+- Ankertext = natürlicher Begriff, nicht "hier klicken"
+- Hub-Seite: `/glossar` verlinkt auf alle Einträge (Hub & Spoke Modell)
+
+### Datei-Konventionen
+- Slug: lowercase, nur Bindestriche, keine Umlaute (ä→ae, ö→oe, ü→ue, ß→ss)
+  Beispiel: "Suchmaschinenoptimierung" → `suchmaschinenoptimierung`
+- Hero-Bild: `/public/images/glossar/[slug].jpg`
+- Komponente: `src/components/glossar/GlossarPage.tsx`
+- Daten: `src/data/glossar.json`
+- Route: `src/app/glossar/[slug]/page.tsx`
+
+### Workflow für neue Glossar-Einträge
+
+#### Schritt 1: Eintrag in glossar.json hinzufügen
+Felder ausfüllen gemäss Schema (siehe glossar-schema.md)
+
+#### Schritt 2: Content generieren
+Sage Claude Code: "Generiere den Content für den Glossar-Begriff '[Begriff]' gemäss CLAUDE.md"
+Claude liest die Skills und erstellt SEO-optimierten Content.
+
+#### Schritt 3: Hero-Bild
+Bild als `[slug].jpg` in `/public/images/glossar/` ablegen (16:9, min. 1200x675px)
+
+#### Schritt 4: Qualitätsprüfung
+- Meta Title ≤ 60 Zeichen?
+- Meta Description ≤ 160 Zeichen?
+- Keyword in H1, ersten 100 Wörtern, Meta Title?
+- 3 interne Links vorhanden?
+- FAQPage Schema korrekt?
+
+### Installierte Skills
+Die folgenden Skills sind in `.claude/skills/` installiert und sollen bei
+der Content-Erstellung automatisch berücksichtigt werden:
+- `programmatic-seo` → Seitenstruktur, URL-Strategie, interne Verlinkung
+- `seo-aeo-best-practices` → EEAT, Structured Data, Meta Tags
+
+### Qualitätsprüfung vor jedem Commit
+- [ ] Unique Content (nicht nur Variablen ausgetauscht)
+- [ ] Keyword natürlich im Fliesstext vorhanden
+- [ ] JSON-LD Schema valide
+- [ ] Meta Title und Description vorhanden und korrekte Länge
+- [ ] 3 interne Links zu verwandten Begriffen
+- [ ] Hero-Bild vorhanden unter `/public/images/glossar/[slug].jpg`
+
