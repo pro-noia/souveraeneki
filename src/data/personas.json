@@ -1,0 +1,960 @@
+{
+  "_meta": {
+    "description": "Datenmodell für Persona-Landingpages. Audiences = Branchen-Story (hero, einordnung, painpoints, use_cases, glossar). Levels = Tiefe der 4 Säulen + Tonalität. Combos = unique pro (audience, level): Meta, H1/H2, FAQs, Stats. LevelHubs = die drei Meta-Pages (einstieg, ueberblick, vertiefung).",
+    "scope": "Phase A: Audience 'unternehmen' vollständig befüllt. Andere Audiences und Level-Hubs als null markiert — Resolver fällt auf PlaceholderLanding-Hinweis zurück."
+  },
+
+  "audiences": {
+    "unternehmen": {
+      "slug": "unternehmen",
+      "label": "Unternehmen",
+      "langform": "Unternehmensführung",
+      "primary_keyword": "souveräne KI für Unternehmen",
+      "secondary_keywords": [
+        "EU-Cloud Unternehmen",
+        "CLOUD Act Risiko",
+        "Vendor-Lock-in KI",
+        "Open-Source-LLM Unternehmen",
+        "EU AI Act Compliance",
+        "Datensouveränität"
+      ],
+      "hero_lead": "Souveräne KI bedeutet für Unternehmen: Sie kontrollieren nicht nur die Daten, die ein Modell sieht, sondern auch das Modell selbst, den Betreiber und die Rechtsgrundlage. Wer das delegiert, gibt mehr ab als Effizienz — er gibt Entscheidungsspielraum für die nächsten zehn Jahre ab.",
+      "einordnung_headline": "Warum Unternehmen sich jetzt mit Souveränität befassen müssen",
+      "einordnung": [
+        "Drei Entwicklungen treffen Unternehmen gleichzeitig. Der EU AI Act regelt seit 2024 Hochrisiko-KI europaweit — Verstöße sind mit bis zu 35 Millionen Euro oder 7 % des globalen Jahresumsatzes belegt. Der US CLOUD Act erlaubt US-Strafverfolgern weiterhin Zugriff auf Daten, die in europäischen Tochtergesellschaften US-amerikanischer Anbieter liegen, unabhängig vom physischen Speicherort. Und während die Regulierungsdichte wächst, verlagert sich die KI-Wertschöpfung in die Hand weniger Hyperscaler.",
+        "Wer KI heute strategisch einsetzt, baut auf einem Fundament, das andere kontrollieren — die Modellgewichte, die Infrastruktur, die Vertragslage. Vendor-Lock-in entsteht in dieser Konstellation nicht über Nacht, sondern über tausend kleine Integrationen, die einzeln rational waren. Zum Zeitpunkt einer politischen oder kommerziellen Eskalation lässt sich eine solche Bindung nicht in Quartalen lösen, sondern nur in Jahren.",
+        "Souveräne KI ist keine Verzichtserklärung gegenüber moderner Technologie. Es ist die Architektur-Entscheidung, dass die Schlüssel zur eigenen Wertschöpfung in der eigenen Jurisdiktion bleiben — vom Modellgewicht über die Daten-Pipeline bis zum Service-Vertrag."
+      ],
+      "painpoints": [
+        {
+          "icon": "Lock",
+          "headline": "Vendor-Lock-in als unsichtbare Schuld",
+          "body": "Drei Jahre Token-Verbrauch in einem Cloud-Stack erzeugen Datenformate, Prompt-Bibliotheken und Workflow-Integrationen, die sich technisch nicht in zwei Quartalen migrieren lassen. Ändert der Anbieter Preis, Modell-Politik oder Verfügbarkeit, fehlt die Ausweich-Option. Souveräne Architekturen halten zumindest die kritischen Komponenten austauschbar."
+        },
+        {
+          "icon": "Scale",
+          "headline": "Doppelte Compliance: EU AI Act und CLOUD Act",
+          "body": "Der EU AI Act verlangt für Hochrisiko-KI Risikomanagement, Datenqualitäts-Nachweis, technische Dokumentation und menschliche Aufsicht. Bei US-Hosting kommt der CLOUD Act dazu: ein US-Strafverfolger kann Datenherausgabe verlangen, ohne dass DSGVO-Grundsätze des Verantwortlichen das verhindern. Diese Kollision ist heute nicht mehr abstrakt, sondern aufsichtsrechtlich relevant."
+        },
+        {
+          "icon": "TrendingDown",
+          "headline": "Verhandlungsmacht erodiert pro Quartal",
+          "body": "Sobald geschäftskritische Prozesse von einem einzigen Anbieter abhängen, sinkt Ihre Verhandlungsmacht — bei Preiserhöhungen, Service-Level-Verschlechterungen oder politischen Vorgaben des Anbieterstaats. Die Antwort ist nicht, KI zu vermeiden, sondern Modelle und Betreiber so zu wählen, dass ein Wechsel realistisch bleibt."
+        }
+      ],
+      "use_cases": [
+        {
+          "titel": "Internes Wissen erschließen",
+          "kontext": "Ein Industrieunternehmen erschließt sein internes Dokumenten-Archiv (Verträge, Spezifikationen, Audit-Berichte) für Suche und Frage-Antwort durch Mitarbeitende.",
+          "was_souveraen": "Modell, Vektor-Store und Retrieval laufen in einem EU-Rechenzentrum unter EU-Vertrag. Modellgewichte sind quelloffen oder mit Audit-Recht lizenziert.",
+          "beispiel": "Ein Open-Source-LLM (Mistral, Teuken, Llama-3-Derivat) kombiniert mit Weaviate oder pgvector auf Hetzner oder IONOS — vollständig portierbar, vollständig unter eigener Kontrolle."
+        },
+        {
+          "titel": "Kundenservice und Vertrieb",
+          "kontext": "Vertrieb und Service nutzen KI zur Antwort-Vorbereitung in Tickets, Mails und Chat. Die Konversationen enthalten personenbezogene Kundendaten.",
+          "was_souveraen": "Daten verlassen die EU-Jurisdiktion nicht, Modelle werden nicht zum Trainingsmaterial Dritter. Inferenz unter ausschließlich europäischem Vertragsrecht.",
+          "beispiel": "Inferenz auf einer souveränen GPU-Plattform (ScaleUp, Stackit, OVHcloud) mit expliziter No-Training-Klausel und EU-Auftragsverarbeitungsvertrag — keine subprocessor-Kette außerhalb der EU."
+        },
+        {
+          "titel": "Risiko- und Compliance-Analyse",
+          "kontext": "Innenrevision oder Risikomanagement analysiert große Mengen von Verträgen, internen Mitteilungen oder Marktdaten und braucht nachvollziehbare Resultate.",
+          "was_souveraen": "Versionierte Modellstände, vollständige Inferenz-Logs auf eigener Infrastruktur, Audit-fähige Pipeline ohne Black-Box-Schritte.",
+          "beispiel": "Ein quelloffenes Embedding-Modell plus selbst gehostete Vektor-Datenbank, kombiniert mit lokalem LLM für Re-Ranking — alle Schritte versioniert und auditierbar, Modellwechsel ohne Datenmigration möglich."
+        }
+      ],
+      "glossar_terms": [
+        "us-cloud-act",
+        "eu-ai-act",
+        "vendor-lock-in",
+        "open-source-llm",
+        "dsgvo",
+        "datenresidenz"
+      ]
+    },
+    "politik": {
+      "slug": "politik",
+      "label": "Politik",
+      "langform": "Politik & Verwaltung",
+      "primary_keyword": "souveräne KI für Politik und Verwaltung",
+      "secondary_keywords": [
+        "KI in Behörden",
+        "öffentliche Verwaltung KI",
+        "EU AI Act Verwaltung",
+        "Sovereign Cloud Behörden",
+        "Algorithmic Accountability",
+        "Verwaltungsdigitalisierung souverän"
+      ],
+      "hero_lead": "Souveräne KI ist für Politik und Verwaltung mehr als ein Beschaffungs-Thema: Sie ist die Voraussetzung für Vertrauen in algorithmische Verwaltungsentscheidungen. Wer Bürgerdaten in fremder Jurisdiktion verarbeitet oder Modelle einsetzt, deren Trainings-Provenienz unklar ist, gibt einen Teil staatlicher Souveränität ab — sichtbar im Streitfall, unsichtbar im Alltag.",
+      "einordnung_headline": "Warum Souveränität jetzt auf der Verwaltungs-Agenda steht",
+      "einordnung": [
+        "Öffentliche Verwaltung steht KI-rechtlich am vordersten Punkt: Der EU AI Act stuft fast jede Verwendung in Behörden als Hochrisiko ein — Migration und Asyl, Strafverfolgung, Bildungszugang, kritische Infrastruktur, demokratische Prozesse. Parallel verlangt die DSGVO ihre Anwendbarkeit ohne Hintertüren, und das Bundesdatenschutzgesetz schließt unbeschränkten US-Zugriff auf Bürgerdaten aus. Wer KI in solchen Verfahren einsetzt, betreibt sie unter den schärfsten Anforderungen, die das deutsche und europäische Recht heute kennen.",
+        "Anders als in der Privatwirtschaft fehlt Verwaltungen die Möglichkeit, Akzeptanz durch Marktwahl herzustellen. Wer mit dem Finanzamt, dem Sozialamt oder dem Gericht zu tun hat, kann den Anbieter nicht wechseln. Algorithmische Verwaltungsentscheidungen brauchen daher eine Transparenz und Nachvollziehbarkeit, die Closed-API-Modelle aus Drittländern strukturell nicht liefern können — Modell-Versionen, Trainings-Daten und Update-Politik gehören zum demokratischen Rechenschafts-Pflichtenkatalog.",
+        "Die deutsche und europäische Politik hat technologische Souveränität in den letzten Jahren von einem Industriepolitik-Begriff zu einem strategischen Eigeninteresse aufgewertet. Beschaffungsentscheidungen für KI-Systeme sind heute auch außenpolitische Entscheidungen — über die Reichweite extraterritorialer Gesetze fremder Staaten in deutschen Verwaltungsabläufen, über Resilienz im Konfliktfall, über die Verhandlungsmacht Europas im globalen KI-Markt."
+      ],
+      "painpoints": [
+        {
+          "icon": "Scale",
+          "headline": "Hochrisiko per Definition",
+          "body": "Annex III des EU AI Act listet öffentliche Verwaltung in mehreren Punkten — Bildungszugang, Asyl, Migration, Strafverfolgung, kritische Infrastruktur, demokratische Prozesse. Praktisch bedeutet das: Konformitätsbewertung, technische Dokumentation, Logging-Pflicht und menschliche Aufsicht für nahezu jedes KI-System mit Bürgerschnittstelle."
+        },
+        {
+          "icon": "Gavel",
+          "headline": "Vergaberecht versus Hyperscaler-Realität",
+          "body": "Vergaberecht zwingt zu objektiven Kriterien, IT-Sicherheitsrecht schließt extraterritoriale Zugriffe aus, das BSI-Grundschutzkompendium verlangt nachvollziehbare Lieferketten. Closed-API-Angebote ohne Audit-Recht und mit US-Subprocessor-Klauseln passen technisch und rechtlich nicht in dieses Schema — auch wenn sie funktional verlockend wirken."
+        },
+        {
+          "icon": "Users",
+          "headline": "Vertrauen ist nicht delegierbar",
+          "body": "Wenn algorithmische Entscheidungen Bürgerinnen und Bürger betreffen, kann Verantwortung nicht ausgelagert werden. Eine Behörde, die ihren KI-Stack nicht selbst auditieren oder im Streitfall offenlegen kann, verliert die Grundlage demokratischer Rechenschaft. Souveräne Architektur ist hier kein technisches Nice-to-have, sondern Bedingung für Legitimität."
+        }
+      ],
+      "use_cases": [
+        {
+          "titel": "Antrags-Vorprüfung im Bürgeramt",
+          "kontext": "Eine kommunale Verwaltung erschließt eingehende Anträge (Wohngeld, BAföG, Sozialleistungen) für eine Vorprüfung — Vollständigkeit, formale Eignung, Plausibilität.",
+          "was_souveraen": "Modell und Daten verlassen die Behörden-Infrastruktur nicht, Entscheidungen sind erklärbar, eine zuständige Person bleibt vollständig verantwortlich.",
+          "beispiel": "Ein selbst gehostetes Open-Weight-LLM (Teuken-7B, Llama-3-Derivat) auf der Souveränen Cloud des Landes-Rechenzentrums, gekoppelt an die Fachverfahrens-Schnittstelle — keine externe API, keine US-Subprocessor."
+        },
+        {
+          "titel": "Recherche und Wissensbasis in Ministerien",
+          "kontext": "Ministerial-Referenten brauchen schnellen Zugriff auf Gesetzestexte, Drucksachen, eigene Stellungnahmen und ressortinterne Auswertungen.",
+          "was_souveraen": "Vertrauliche Verwaltungsvorgänge fließen nicht in Drittstaats-Modelle, Recherche-Logs bleiben in der Behörde, Modell-Versionen sind audit-fähig.",
+          "beispiel": "RAG-Architektur mit Open-Source-Embedding auf einem geschlossenen Vektorspeicher der eigenen IT, LLM-Inferenz auf souveräner GPU-Infrastruktur, kein Trainings-Beitrag an externe Anbieter."
+        },
+        {
+          "titel": "Compliance und Aufsicht in Aufsichtsbehörden",
+          "kontext": "Eine Aufsichtsbehörde analysiert große Mengen von Marktbeobachtungen, Beschwerden und Prüfberichten und muss Entscheidungen aufsichtsrechtlich begründbar treffen.",
+          "was_souveraen": "Modell-Wechsel jederzeit möglich, Inferenz-Logs vollständig auditierbar, Quellen für jede algorithmisch unterstützte Aussage rückverfolgbar.",
+          "beispiel": "Modulare Pipeline mit dokumentiertem Open-Weight-Modell, lokalem Re-Ranker und versionierter Daten-Lineage von Eingang bis Ausgabe."
+        }
+      ],
+      "glossar_terms": [
+        "eu-ai-act",
+        "us-cloud-act",
+        "dsgvo",
+        "datenresidenz",
+        "explainable-ai",
+        "sovereign-cloud"
+      ]
+    },
+
+    "technik": {
+      "slug": "technik",
+      "label": "Tech",
+      "langform": "Tech & Engineering",
+      "primary_keyword": "souveräne KI für Tech-Teams",
+      "secondary_keywords": [
+        "Open Source LLM Self-Hosting",
+        "vLLM",
+        "Mistral Llama Teuken",
+        "EU GPU Inferenz",
+        "Sovereign Stack Architektur",
+        "RAG Pipeline souverän"
+      ],
+      "hero_lead": "Souveräne KI ist für Tech-Teams keine Compliance-Übung, sondern eine Architektur-Disziplin. Open Weights, EU-Inferenz und auditierbare Pipelines lassen sich produktiv betreiben — in Latenz, Kosten und Performance vergleichbar mit kommerziellen APIs. Diese Seite zeigt, wo die technischen Trennlinien zwischen marketing-souverän und juristisch souverän liegen, und welche Stack-Entscheidungen den Unterschied tragen.",
+      "einordnung_headline": "Was sich für Engineering-Teams gerade verschiebt",
+      "einordnung": [
+        "Die letzten 18 Monate haben die Praxis verändert. Open-Weight-Modelle wie Llama 3.x, Mistral Large, Qwen 2.5, Teuken-7B und EuroLLM erreichen für nicht-Frontier-Aufgaben — Zusammenfassen, Klassifikation, Code-Assistenz, Frage-Antwort über interne Daten — Qualität, die noch 2023 nur kommerzielle Spitzenmodelle lieferten. Quantisierung auf INT8 oder FP8 senkt die Hardware-Schwelle weiter; ein 70B-Modell läuft auf einer einzelnen H100, ein 30B-Modell auf einer A100. Die Frage ist nicht mehr, ob Open-Weight produktiv tragfähig ist, sondern unter welchen Constraints sich was lohnt.",
+        "Parallel hat der Inferenz-Stack einen Reifesprung gemacht. vLLM, SGLang und TensorRT-LLM bieten OpenAI-kompatible APIs mit Continuous Batching und Speculative Decoding; durchgehende Tokens-pro-Sekunde-Werte erreichen kommerzielle Größenordnungen. Auf Infrastruktur-Seite stehen europäische Anbieter — Stackit, OVHcloud, IONOS, Scaleway, AI-Factories nach EuroHPC-Initiative — mit GPU-Kapazität bereit. Co-Location für eigene H100/H200-Cluster ist bei mittlerer Auslastung über drei Jahre häufig günstiger als Pay-per-Token.",
+        "Was Engineering hier zu liefern hat, ist nicht 'mehr Souveränität', sondern eine Architektur-Disziplin, die Modell-, Daten- und Vertrags-Schichten austauschbar hält. OpenAI-kompatible Inferenz-API als Lingua franca, offene Vektor-Formate (pgvector, Qdrant), versionierte Modell-Pipelines mit deterministischem Replay — das ist nicht teurer als ein Hyperscaler-Lock-in, sondern die Vorbedingung dafür, dass ein Wechsel im Stresstest tatsächlich funktioniert. Souveränität wird damit zu einem messbaren Engineering-Outcome, nicht zu einem Compliance-Etikett."
+      ],
+      "painpoints": [
+        {
+          "icon": "Cpu",
+          "headline": "Inferenz-Ökonomie und GPU-Verfügbarkeit",
+          "body": "Eigene GPU-Inferenz lohnt sich erst ab kontinuierlicher Auslastung. Spot-Verfügbarkeit für H100 und H200 in Europa ist 2025 limitiert; Reservierungs-Verträge mit Stackit, OVHcloud oder Co-Location-Anbietern brauchen Vorlauf. Ohne realistische Volumen-Schätzung fährt das Projekt entweder zu teuer (überdimensioniert) oder zu langsam (Kapazitäts-Bottleneck unter Peak-Last)."
+        },
+        {
+          "icon": "Network",
+          "headline": "Stack-Komplexität versus Plug-and-Play-API",
+          "body": "Frontier-APIs liefern fertiges Routing, Filtering, Rate-Limiting und Logging — alles in einer Zeile. Souveräner Self-Host bedeutet, diese Schichten selbst zu bauen oder zu integrieren: vLLM-Cluster, OpenAI-kompatible Fassade, Observability-Stack, Modell-Versionierung. Underestimated wird typischerweise der operative Footprint, nicht die Modell-Performance."
+        },
+        {
+          "icon": "GitBranch",
+          "headline": "Modell-Wechselbarkeit als Code-Disziplin",
+          "body": "Migrationskosten zwischen Modellen sind selten linear. Prompt-Templates, Tool-Calling-Schemata und Inferenz-Parameter sind oft modell-spezifisch optimiert. Ohne Abstraktion über die OpenAI-API hinaus — Prompt-Versionierung, Eval-Suiten, Output-Schemata — wird ein 'einfacher Modell-Tausch' zum Quartalsprojekt."
+        }
+      ],
+      "use_cases": [
+        {
+          "titel": "RAG-Pipeline auf souveränem Stack",
+          "kontext": "Engineering-Team baut eine Retrieval-Augmented-Generation-Pipeline für interne Dokumentation und Frage-Antwort über Confluence, Wikis und Code-Bases.",
+          "was_souveraen": "Embeddings, Vektorspeicher und LLM-Inferenz vollständig in EU-Kontrolle. OpenAI-kompatible Schnittstelle nach außen, damit Anwendungs-Code stabil bleibt.",
+          "beispiel": "Open-Source-Embedding (BGE-M3, multilingual-e5-large), Qdrant oder pgvector als Speicher, Llama-3.3-70B oder Mistral Large quantisiert auf vLLM-Cluster — alles auf europäischer GPU-Infrastruktur, deterministische Reproduzierbarkeit über Modell-Versions-Pinning."
+        },
+        {
+          "titel": "Code-Assistenz für interne Code-Bases",
+          "kontext": "Entwicklungs-Team will KI-Assistenz im IDE, ohne proprietären Code an externe APIs zu schicken.",
+          "was_souveraen": "Code verlässt die eigene Infrastruktur nicht, Modell-Vorhersagen werden lokal oder im eigenen Cluster generiert, IP-Risiko bleibt kontrolliert.",
+          "beispiel": "DeepSeek-Coder, Qwen 2.5-Coder oder StarCoder-Derivat als Backend, OpenAI-kompatible API für IDE-Plug-ins (Continue, Cursor self-hosted), Inference-Server auf eigener GPU-Hardware oder souveräner Cloud."
+        },
+        {
+          "titel": "Klassifikation und Annotation in großem Volumen",
+          "kontext": "Datenpipelines brauchen automatische Klassifikation, Annotation oder Extraktion von strukturierten Feldern aus Texten — Tausende Dokumente pro Stunde.",
+          "was_souveraen": "Daten verlassen die Kontrolle nicht, Modell-Wechsel ist möglich ohne Daten-Migration, Inferenz-Kosten skalieren mit eigenem Hardware-Budget.",
+          "beispiel": "Kleine, spezialisierte Open-Weight-Modelle (Phi-3.5, Llama-3.2-3B) als Batch-Inferenz auf eigener GPU, Embeddings für semantische Suche, Versionierung von Klassifikations-Schemata in Git."
+        }
+      ],
+      "glossar_terms": [
+        "open-source-llm",
+        "model-weights",
+        "modelops",
+        "foundation-models",
+        "vendor-lock-in",
+        "edge-ai"
+      ]
+    },
+
+    "forschung": {
+      "slug": "forschung",
+      "label": "Forschung",
+      "langform": "Forschung & Akademie",
+      "primary_keyword": "souveräne KI für Forschung und Wissenschaft",
+      "secondary_keywords": [
+        "KI Reproduzierbarkeit",
+        "Open Weights Forschung",
+        "vertrauliche Forschungsdaten",
+        "akademische Souveränität",
+        "GAIA-X Forschung",
+        "Hochschul-KI EU"
+      ],
+      "hero_lead": "Souveräne KI in der Forschung berührt drei Themen gleichzeitig: Reproduzierbarkeit (kann eine Studie nachgebaut werden), Vertraulichkeit (welche Daten dürfen ein Modell sehen) und akademische Freiheit (welche Werkzeuge stehen unabhängig von Drittstaats-Politik zur Verfügung). Wer auf geschlossene API-Frontier-Modelle setzt, gibt alle drei Achsen aus der Hand.",
+      "einordnung_headline": "Warum souveräne KI für die Forschung mehr ist als ein Werkzeug",
+      "einordnung": [
+        "Reproduzierbarkeit ist die Grundwährung der Wissenschaft. Studien, die auf Closed-API-Modellen aufbauen, lassen sich nach einem Modell-Update nicht mehr exakt nachvollziehen — der Anbieter kann das Modell wechseln, finetunen oder zurückziehen. Bereits 2024 hat Nature mehrere KI-gestützte Studien diskutiert, deren Ergebnisse sich nicht reproduzieren ließen, weil das verwendete Modell nicht mehr verfügbar war. Open-Weight-Modelle mit Versions-Pinning sind in diesem Punkt unverzichtbar.",
+        "Forschung arbeitet routinemäßig mit Daten, die nicht durch Drittstaats-Inferenz gehen dürfen: Gesundheitsdaten unter Patientengeheimnis, qualitative Interviews unter Vertraulichkeitszusagen, vertrauliche Archivquellen, kritische Infrastrukturdaten. Sobald solche Daten an eine externe API gesendet werden, ist die Vertraulichkeitszusage faktisch gebrochen — auch wenn der Anbieter ein No-Training-Versprechen gibt. Selbst gehostete Open-Weight-Modelle sind hier die einzige saubere Lösung.",
+        "Akademische Freiheit umfasst auch die Werkzeug-Wahl. Wenn der Zugang zu KI-Werkzeugen von der Außenpolitik eines Drittstaats abhängt, kann Forschung politisch eingeschränkt werden — durch Sanktionen, Export-Kontrollen oder anbieter-seitige Nutzungs-Regeln. Europäische Forschungseinrichtungen brauchen daher eine KI-Basis, die unter europäischer Jurisdiktion steht und in Konfliktszenarien verfügbar bleibt. Open Source plus europäische Infrastruktur ist dafür der robusteste Weg."
+      ],
+      "painpoints": [
+        {
+          "icon": "BookOpen",
+          "headline": "Reproduzierbarkeit erodiert",
+          "body": "Modelle, die hinter Closed-API-Endpunkten stehen, ändern sich ohne Vorwarnung. Was im Mai funktioniert hat, liefert im November andere Resultate — und der ursprüngliche Modell-Stand ist nicht wieder herstellbar. Für Studien mit KI-Komponente bedeutet das ein methodisches Risiko, das in Peer-Review zunehmend abgefragt wird."
+        },
+        {
+          "icon": "Lock",
+          "headline": "Vertrauliche Daten und Drittstaats-Inferenz",
+          "body": "Forschungs-Ethikkommissionen verlangen nachvollziehbare Datenflüsse. Eine API-Anbindung an ein US-Modell bedeutet potenzielle CLOUD-Act-Reichweite — was Vertraulichkeitszusagen aus Probandeneinverständnissen unterläuft. Selbst wenn der Anbieter Datenschutz-Klauseln zusichert, bleibt das extraterritoriale Zugriffs-Risiko bestehen."
+        },
+        {
+          "icon": "Globe",
+          "headline": "Werkzeug-Verfügbarkeit unter politischem Druck",
+          "body": "Sanktionen, Export-Kontrollen oder anbieter-seitige Sperren können den Zugang zu Frontier-Modellen jederzeit einschränken. Forschungs-Projekte, die methodisch auf einem einzigen Closed-Modell aufbauen, sind in solchen Szenarien nicht weiterführbar — selbst dann, wenn keine sanktionsrelevanten Inhalte verarbeitet werden."
+        }
+      ],
+      "use_cases": [
+        {
+          "titel": "NLP-Studie auf vertraulichem Korpus",
+          "kontext": "Linguistik- oder sozialwissenschaftliches Projekt arbeitet mit einem vertraulichen Text-Korpus — Patientendokumentation, Interview-Transkripte, vertrauliche Archive.",
+          "was_souveraen": "Korpus verlässt die Forschungs-Infrastruktur nicht, Modell ist versioniert und reproduzierbar, Ethik-Vereinbarungen bleiben technisch tragend.",
+          "beispiel": "Llama-3.x oder Teuken-7B selbst gehostet auf Universitäts-GPU-Cluster, Embeddings via BGE-M3, Auswertungs-Pipeline in Jupyter mit Modell-Versions-Pinning."
+        },
+        {
+          "titel": "Reproduzierbare Inferenz für Peer-Review",
+          "kontext": "Eine Studie nutzt LLM-Inferenz als methodischen Baustein und muss diesen Baustein in einer Publikation reproduzierbar dokumentieren.",
+          "was_souveraen": "Modell-Stand archiviert, Inferenz-Parameter offengelegt, Replay durch andere Forschende auch nach Jahren möglich.",
+          "beispiel": "Open-Weight-Modell mit Hash-fixiertem Snapshot, deterministische Sampling-Parameter (Temperature 0, fixed seed), Container-Image als Code-Artifact zur Studie."
+        },
+        {
+          "titel": "Föderierte Auswertung in Verbundprojekten",
+          "kontext": "Ein Forschungs-Verbund mit mehreren Institutionen analysiert gemeinsam einen sensiblen Datensatz, ohne dass die Daten zentralisiert werden dürfen.",
+          "was_souveraen": "Daten verlassen die jeweilige Institutionsgrenze nicht, gemeinsame Modell-Inferenz läuft auf einer geteilten souveränen Infrastruktur.",
+          "beispiel": "GAIA-X-konforme Föderations-Architektur mit lokal gehosteten Open-Weight-Modellen, Cross-Institutionen-Inferenz nur auf vereinbarten Aggregaten, vollständige Daten-Lineage."
+        }
+      ],
+      "glossar_terms": [
+        "open-source-llm",
+        "explainable-ai",
+        "datenresidenz",
+        "foundation-models",
+        "model-weights",
+        "gaia-x"
+      ]
+    }
+  },
+
+  "levels": {
+    "einsteiger": {
+      "slug": "einsteiger",
+      "label": "Einstieg",
+      "badge": "Erste Berührung",
+      "knowledge_assumption": "Sie haben den Begriff 'KI' im Geschäftskontext gehört, aber Souveränität als technisches Konzept ist neu.",
+      "tone": "erklärend",
+      "pillars_intro": "Souveräne KI lässt sich an vier Säulen festmachen. Jede beantwortet eine eigene Frage — wer trainiert das Modell, wo liegen die Daten, wer betreibt den Service, und wer hat das Sagen darüber.",
+      "pillars": [
+        {
+          "name": "Modell",
+          "frage": "Wer hat das Modell trainiert, und können Sie die Gewichte prüfen?",
+          "body": "Closed-Source-Modelle wie GPT-4, Claude oder Gemini sind Black Boxes — Sie können sie nutzen, aber nicht aufmachen. Open-Source-Modelle wie Llama, Mistral oder Teuken liegen offen: Trainings-Daten sind dokumentiert, Gewichte sind herunterladbar, und Sie können sie auf eigener Infrastruktur betreiben. Für Souveränität ist Open Source nicht zwingend, aber es ist die Variante, die Ihnen am meisten Kontrolle über das Modell selbst zurückgibt. Die Leitfrage ist nicht 'Welches Modell ist das beste?', sondern: 'Was passiert mit unserem Setup, wenn der Modellanbieter morgen Preis, Verfügbarkeit oder Politik ändert?'"
+        },
+        {
+          "name": "Daten",
+          "frage": "Wo liegen die Daten, und wer hat technisch und rechtlich Zugriff?",
+          "body": "Daten-Souveränität meint nicht nur 'Server in Deutschland'. Wenn ein US-Anbieter eine deutsche Tochter betreibt, gilt für die Mutter weiterhin der CLOUD Act — US-Strafverfolger können Datenherausgabe verlangen, auch wenn die Hardware in Frankfurt steht. Souveräne Daten-Architekturen brauchen drei Schichten: physische Speicherung in der EU, Betreiber unter ausschließlich europäischer Jurisdiktion, und Verschlüsselung mit Schlüsseln, die nur Sie kontrollieren. Ohne diese Trias ist 'Datenresidenz' ein Marketing-Versprechen, kein juristischer Schutz."
+        },
+        {
+          "name": "Betrieb",
+          "frage": "Wer betreibt die GPUs, das Netzwerk, die Logs?",
+          "body": "Selbst wenn Modell und Daten souverän sind, kann der Betrieb auf einer Plattform laufen, deren Betreiber unter US-Recht steht. Souveräne Betriebs-Architekturen nutzen entweder eigene Infrastruktur (On-Premise oder Co-Location) oder europäische Anbieter wie OVHcloud, Hetzner, IONOS, Stackit oder Scaleway. Wichtig: 'europäisch' ist nicht gleich 'souverän'. Vertrag, Jurisdiktion und Eigentümer-Struktur entscheiden — auch ein deutsches Rechenzentrum, das einer US-Holding gehört, fällt potenziell unter die Reichweite des CLOUD Acts."
+        },
+        {
+          "name": "Governance",
+          "frage": "Wer trifft die Entscheidungen über Updates, Wechsel, Compliance?",
+          "body": "Governance ist die unsichtbare vierte Säule — und oft die wichtigste. Sie umfasst Vertragsgestaltung (welche Jurisdiktion gilt im Streitfall), Audit-Rechte (dürfen Sie das Modell prüfen lassen), Exit-Strategie (wie schwer ist ein Anbieterwechsel), und interne Verantwortlichkeiten. Der EU AI Act verpflichtet Sie, für Hochrisiko-KI eine verantwortliche Person zu benennen. Diese Person braucht Werkzeuge: Modell-Dokumentation, Logs, klare Eskalations-Wege. Ohne Governance bleibt souveräne Architektur eine Folie."
+        }
+      ]
+    },
+
+    "kenner": {
+      "slug": "kenner",
+      "label": "Vertiefung",
+      "badge": "Grundlagen bekannt",
+      "knowledge_assumption": "Sie kennen LLMs, Cloud-Anbieter und DSGVO-Grundzüge. Souveräne Architekturen haben Sie evaluiert, aber noch nicht durchgehend implementiert.",
+      "tone": "vertiefend",
+      "pillars_intro": "Auf dieser Ebene sind die vier Säulen vertraut. Interessant wird die Trennlinie zwischen marketing-souverän und juristisch souverän — und welche Architektur-Muster den Unterschied tragen.",
+      "pillars": [
+        {
+          "name": "Modell",
+          "frage": "Lizenz, Trainings-Provenienz, Migrationspfad — was hält im Audit?",
+          "body": "Die Modell-Auswahl entscheidet, ob Sie zwischen Anbietern wechseln können oder nicht. Closed-Source-APIs wie GPT-4o oder Claude bieten exzellente Performance, aber keinen Audit-Pfad zu Trainings-Daten und keine Migrations-Garantie für Ihre Prompts und Fine-Tunes. Open-Weight-Modelle (Mistral Large, Llama 3.x, Teuken-7B, Qwen) lassen sich quantisiert auch auf moderaten GPUs betreiben — ein H100 reicht für 70B-Modelle in INT8. Praxis: Die meisten Souveränitäts-Strategien fahren zwei Geschwindigkeiten. Frontier-API für unkritische Aufgaben (Code-Assist, Marketing-Drafting), Open-Weight selbst gehostet für regulierte und vertrauliche Workloads. Die Gretchen-Frage im Audit ist nie 'welches Modell', sondern 'wie schnell können Sie wechseln'."
+        },
+        {
+          "name": "Daten",
+          "frage": "Auftragsverarbeitung, Subprocessor-Kette, technische und vertragliche Schutzschichten",
+          "body": "Daten-Souveränität wird im Auftragsverarbeitungs-Vertrag entschieden, nicht im Marketing. Achten Sie auf drei Punkte: erstens die vollständige Subprocessor-Kette — listet der Anbieter US-Subprocessoren oder verbleibt die Verarbeitung in der EU? Zweitens das Trainingsverbot — wird ihre Eingabe zur Modell-Verbesserung verwendet, ja oder nein, vertraglich? Drittens die Verschlüsselung — wer hält die Schlüssel? 'Customer-managed encryption' bei US-Anbietern hilft gegen Mit-Mandanten, nicht gegen den CLOUD Act. Hardware-gestützte Schlüsselverwahrung (HSM) in EU-eigener Hand ist die einzige technische Schutzschicht, die unabhängig vom Vertragspartner trägt."
+        },
+        {
+          "name": "Betrieb",
+          "frage": "Auswahlkriterien für souveräne Inferenz-Plattformen",
+          "body": "'Europäischer Anbieter' ist Stufe eins, 'unter ausschließlich europäischer Jurisdiktion' ist Stufe zwei. Letzteres bedeutet: keine US-Muttergesellschaft, kein US-Cloud im Backend, keine Service-Level-Vereinbarung, die im Konfliktfall nach US-Recht ausgelegt wird. Realistische Stack-Optionen für GPU-Inferenz: Stackit (Schwarz-Gruppe), OVHcloud, IONOS, Scaleway, deutsche AI-Factories nach EuroHPC-Initiative. Für hochvertrauliche Workloads ist Co-Location die robusteste Variante — eigene Hardware in einem zertifizierten Rechenzentrum, eigener Hypervisor, eigenes Netzwerk-Segment. Klingt teuer, ist bei mittlerer GPU-Auslastung über drei Jahre oft günstiger als Pay-per-Token."
+        },
+        {
+          "name": "Governance",
+          "frage": "EU AI Act, Risikoklassifizierung, interne Verantwortlichkeiten",
+          "body": "Der EU AI Act gilt seit 2024 und wird bis Mitte 2026 vollständig wirksam. Für Hochrisiko-KI (Personalentscheidungen, Kreditwürdigkeit, kritische Infrastruktur) verlangt er ein dokumentiertes Risikomanagement nach Artikel 9, Datenqualitäts-Maßstäbe nach Artikel 10, technische Dokumentation nach Artikel 11 und menschliche Aufsicht nach Artikel 14. Praktisch heißt das: Sie brauchen eine KI-Inventur, eine Risikoklassifizierung pro Anwendung, ein Verfahren für Betroffenenrechte und eine benannte verantwortliche Person mit Eingriffsbefugnis. Verträge mit Modell-Anbietern müssen die nötigen Audit-Rechte gewähren — sonst können Sie die Compliance-Pflicht nicht erfüllen, selbst wenn Sie wollten."
+        }
+      ]
+    },
+
+    "experten": {
+      "slug": "experten",
+      "label": "Expertenblick",
+      "badge": "Tief im Thema",
+      "knowledge_assumption": "Sie verantworten KI-Architektur, Compliance oder Plattform-Strategie. Souveräne Stacks evaluieren Sie nach konkreten Auswahl-Kriterien, nicht nach Begriffen.",
+      "tone": "fachlich",
+      "pillars_intro": "Auf Experten-Ebene sind die vier Säulen Bewertungsdimensionen, nicht Erklärungs-Hilfen. Die Frage ist, wie sich der Stack unter Last, Audit und Eskalation verhält.",
+      "pillars": [
+        {
+          "name": "Modell",
+          "frage": "Provenienz, Lizenz-Bedingungen, Inferenz-Ökonomie unter Souveränitäts-Constraint",
+          "body": "Kritische Bewertungsachsen: Trainings-Datensatz-Dokumentation (für EU-AI-Act-Artikel-10-Konformität), Lizenz-Klauseln zu Re-Distribution und Fine-Tuning (Llama-Custom-Use-Klausel vs. Apache-2.0 / MIT), Hardware-Footprint im Inferenz-Mode (ein 70B-Modell quantisiert auf INT4 läuft auf 1×A100 80GB; FP8 auf einer H100 erreicht TPS-Werte vergleichbar zu Closed-API für Batch-Workloads). Für regulierte Branchen ist Open-Weight + selbst-gehostet die einzige Konfiguration, die Audit-Resistenz und Vertrags-Souveränität gleichzeitig erfüllt. Mixed-Strategy mit API-Frontier-Modellen für nicht-vertrauliche Aufgaben bleibt zulässig — solange der Routing-Layer pro Workload-Klasse trennscharf entscheidet und Logs nicht ungewollt in Closed-API-Kontexte fließen."
+        },
+        {
+          "name": "Daten",
+          "frage": "DSGVO-EU-AI-Act-CLOUD-Act-Trilemma, technische Mitigationen, Audit-Trail-Design",
+          "body": "Drei Rechtsrahmen kollidieren in produktiven Architekturen: DSGVO-Artikel-28-Auftragsverarbeitung mit EU-only-Subprocessor-Klausel; EU-AI-Act-Artikel-10-Datenqualitäts-Nachweis; CLOUD Act und FISA 702 als extraterritoriale US-Zugriffsregime. Schrems II hat klargestellt, dass Standardvertragsklauseln allein nicht reichen — supplementary measures sind Pflicht. Praktische Mitigationen: Confidential Computing (Intel TDX, AMD SEV-SNP) für Inferenz-Isolation; HSM-gestützte Bring-Your-Own-Key-Verfahren mit EU-Hardware-Anker; deterministisches Logging in EU-only Sinks; Pseudonymisierung mit revertierbarem Mapping unter EU-Schlüsselhoheit. Für höchste Schutzstufen: Air-gapped Inferenz-Cluster mit definierter Daten-Diode."
+        },
+        {
+          "name": "Betrieb",
+          "frage": "Stack-Architektur, Vertrags-Topologie, Resilienz unter politischer Eskalation",
+          "body": "Souveräne Inferenz-Stacks lassen sich nach Schutzbedarf staffeln. Stufe 1 — vertraglich souverän: EU-Anbieter mit EU-Tochter und US-Hyperscaler-Backend (z. B. T-Systems Open Telekom Cloud auf VMware/Azure). Akzeptabel für unkritische Workloads, fällt unter CLOUD-Act-Risiko. Stufe 2 — operativ souverän: vollständig EU-eigene Infrastruktur (OVHcloud, Hetzner, Scaleway, Stackit, IONOS) ohne US-Subprocessoren. Stufe 3 — physisch souverän: eigene Co-Location oder On-Premise mit eigenem Netzwerk-Edge. Bewertungs-Vektor: Recovery-Time bei Anbieter-Ausfall, Migrations-Aufwand zwischen den Stufen, Audit-Kosten pro Stufe. Realistisches Zielbild ist Stufe 2 für Produktion plus Stufe 3 für Kronjuwelen — Stufe 1 nur für isolierbare Workloads mit dokumentiertem Schutzbedarf."
+        },
+        {
+          "name": "Governance",
+          "frage": "Audit-Architektur, Exit-Strategie, AI-Act-Hochrisiko-Pflichten in der Praxis",
+          "body": "Audit-Architektur ist die Disziplin, die den Stack vor Ort prüfbar macht: vollständige Inferenz-Logs mit Modell-Versions-ID, deterministische Replay-Fähigkeit, Daten-Lineage von Quelle bis Inferenz, Modell-Karten nach Vorgabe von Annex IV des EU AI Act. Exit-Strategie ist die Disziplin, die den Wechsel kalkulierbar hält: standardisierte Prompt- und Fine-Tune-Formate, portable Vektor-Daten (pgvector, Qdrant), abstrahierte Inferenz-API (OpenAI-kompatibel als Lingua franca). Für Hochrisiko-Anwendungen (Annex III) ist die Konformitätsbewertung nach Artikel 43 verpflichtend, inklusive Konformitäts-Erklärung und CE-Kennzeichnung. Realistisch erreichbar ist das nur, wenn Audit-Rechte gegen Modell-Anbieter vertraglich verankert sind — was Closed-Source-API-Anbieter nicht standardmäßig gewähren."
+        }
+      ]
+    }
+  },
+
+  "combos": {
+    "unternehmen-einsteiger": {
+      "meta_title": "Souveräne KI für Unternehmen — Einstieg | Souveräne KI",
+      "meta_description": "Was bedeutet souveräne KI für Unternehmen? Einstieg in CLOUD Act, EU AI Act und die vier Säulen souveräner KI-Architektur. Kompakt erklärt für Entscheider.",
+      "h1": "Souveräne KI für Unternehmen — der Einstieg",
+      "h2": "Was Souveränität bei KI wirklich bedeutet, und warum 'EU-Cloud' allein nicht reicht.",
+      "faqs": [
+        {
+          "frage": "Reicht es nicht, einen europäischen Cloud-Anbieter zu wählen?",
+          "antwort": "Nein. 'Europäisch' und 'souverän' sind nicht dasselbe. Wenn der Anbieter eine US-Muttergesellschaft hat oder US-Hyperscaler-Backends nutzt, gilt der CLOUD Act für die gesamte Vertragskette — unabhängig davon, wo die Server stehen. Souverän ist ein Stack erst, wenn keine US-Jurisdiktion durchgreifen kann. Das verlangt einen genauen Blick auf Eigentümer, Subprocessor-Kette und Vertragsklauseln, nicht nur auf das Rechenzentrums-Etikett."
+        },
+        {
+          "frage": "Ist Open-Source-KI nicht weniger leistungsfähig als kommerzielle Modelle?",
+          "antwort": "Der Abstand wird kleiner. Open-Weight-Modelle wie Llama 3.x, Mistral Large oder Teuken-7B erreichen für viele Geschäftsaufgaben — Zusammenfassen, Klassifikation, Frage-Antwort über interne Daten — Qualität, die 2023 noch der Spitze vorbehalten war. Frontier-API-Modelle bleiben in Reasoning und Code-Generierung vorn. Eine pragmatische Strategie kombiniert beides: Frontier für unkritische Aufgaben, Open-Weight selbst gehostet für vertrauliche und regulierte Workloads."
+        },
+        {
+          "frage": "Was kostet souveräne KI im Vergleich zu Hyperscaler-Lösungen?",
+          "antwort": "Die Antwort hängt am Volumen. Bei sporadischer Nutzung sind Pay-per-Token-API-Angebote günstiger als eigene Hardware. Sobald Inferenz-Volumen mehrere Dutzend Millionen Tokens pro Monat überschreitet, wird selbst gehostete Open-Weight-Inferenz typischerweise günstiger — eine moderne H100-GPU im europäischen Co-Location-Vertrag amortisiert sich bei kontinuierlicher Auslastung in 12 bis 24 Monaten. Die zweite Kosten-Achse ist Compliance: ein CLOUD-Act-Vorfall kostet weit mehr als die Differenz zwischen Stacks."
+        },
+        {
+          "frage": "Müssen wir alle KI-Anwendungen souverän bauen?",
+          "antwort": "Nein. Souveränität ist ein Schutzbedarfs-Konzept, kein Dogma. Marketing-Drafting auf öffentlichen Daten kann ohne Bedenken auf einer US-API laufen. Personalentscheidungen, Vertragsanalysen und alles, was unter den EU AI Act als Hochrisiko fällt, gehört in souveräne Stacks. Eine Schutzbedarfs-Klassifizierung pro Anwendungsfall ist der erste praktische Schritt — sie legt fest, welche Stack-Stufe für welche Workload-Klasse zulässig ist."
+        },
+        {
+          "frage": "Wo fängt ein Unternehmen praktisch an?",
+          "antwort": "Mit drei Schritten. Erstens: KI-Inventur — welche Anwendungen laufen schon, welche sind geplant. Zweitens: Schutzbedarf pro Anwendung — Daten-Sensibilität, Regulierungs-Kategorie nach EU AI Act, geschäftliche Kritikalität. Drittens: Architektur-Entscheidung pro Klasse — souveräner Stack für Hochrisiko und Vertrauliches, hybride oder offene Stacks für den Rest. Das Whitepaper am Ende dieser Seite liefert die Vorlagen dazu."
+        }
+      ],
+      "stats": [
+        {
+          "claim": "Bußgelder bei EU-AI-Act-Verstößen für Hochrisiko-Systeme: bis zu 35 Millionen Euro oder 7 % des globalen Jahresumsatzes.",
+          "quelle": "EU AI Act, Artikel 99",
+          "link": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+        },
+        {
+          "claim": "Der US CLOUD Act erlaubt US-Behörden den Zugriff auf Daten US-amerikanischer Anbieter weltweit, unabhängig vom Speicherort.",
+          "quelle": "BfDI, Positionspapier zum CLOUD Act"
+        }
+      ]
+    },
+
+    "unternehmen-kenner": {
+      "meta_title": "Souveräne KI für Unternehmen — Vertiefung | Souveräne KI",
+      "meta_description": "Souveräne KI praxistauglich umgesetzt: Architektur-Muster, Vertragsbausteine, EU AI Act in der Implementierung. Vertiefung für Entscheider mit Vorwissen.",
+      "h1": "Souveräne KI für Unternehmen — Vertiefung",
+      "h2": "Vom Konzept zur Architektur: was souveräne KI in der Praxis vom Marketing-Versprechen unterscheidet.",
+      "faqs": [
+        {
+          "frage": "Was unterscheidet 'EU-Cloud' marketing-rechtlich von juristisch souveräner Architektur?",
+          "antwort": "Der Marketing-Begriff verlangt nur EU-Speicherort. Juristische Souveränität verlangt drei Schichten: physische Speicherung in der EU, Betreiber unter ausschließlich europäischer Jurisdiktion ohne US-Mutter, und Verschlüsselung mit Schlüsseln in der eigenen Hand. Schrems II hat klargestellt, dass Standardvertragsklauseln allein nicht reichen — supplementary measures sind Pflicht. Wer ohne diese Trias 'souverän' verkauft, verkauft Datenresidenz, nicht Souveränität."
+        },
+        {
+          "frage": "Wann lohnt eigene GPU-Infrastruktur gegenüber Pay-per-Token?",
+          "antwort": "Die Bruchstelle liegt bei kontinuierlicher Auslastung. Eine H100 in europäischem Co-Location kostet 2025 grob 30.000 bis 40.000 Euro pro Jahr inklusive Strom und Wartung. Bei einer Auslastung von ~50 % liefert sie etwa 30 bis 80 Milliarden Tokens jährlich, je nach Modellgröße. Das entspricht bei API-Preisen einem Volumen von mittlerem sechsstelligen Bereich. Faustregel: Ab konstantem zweistelligem Millionen-Token-Volumen pro Monat wird die eigene Infrastruktur ökonomisch — und Sie gewinnen zusätzlich Kontroll- und Audit-Rechte, die per API nicht verkauft werden."
+        },
+        {
+          "frage": "Welche Vertragsklauseln sind beim Anbieterwechsel kritisch?",
+          "antwort": "Vier Klauseln machen den Unterschied zwischen Wechselbarkeit und Lock-in: erstens die Daten-Portabilität — exportierbare Modell-Konfigurationen, Fine-Tunes und Vektor-Daten in offenen Formaten. Zweitens das No-Training — Ihre Eingaben dürfen nicht ins Modell zurückfließen. Drittens die Subprocessor-Transparenz — vollständige Liste mit Änderungs-Vorlauf von mindestens 30 Tagen. Viertens die Audit-Rechte — Sie oder ein beauftragter Dritter dürfen Sicherheits- und Compliance-Prüfungen durchführen. Ohne diese vier ist jeder Anbieterwechsel ein Migrations-Großprojekt."
+        },
+        {
+          "frage": "Wie passt der EU AI Act in eine bestehende KI-Roadmap?",
+          "antwort": "Praktischer Zugang in drei Schritten. Erstens: Klassifizierung jeder Anwendung — verboten (Artikel 5), Hochrisiko (Annex III), begrenzte Risiken (Artikel 50), minimal. Zweitens: für jede Hochrisiko-Anwendung die Pflichten nach Artikel 9 bis 17 abbilden — Risikomanagement, Datenqualität, Dokumentation, Aufzeichnung, Transparenz, menschliche Aufsicht, Robustheit. Drittens: Konformitätsbewertung nach Artikel 43, intern oder durch benannte Stelle. Wichtig: Die Pflicht trifft den Betreiber. Ein API-Anbieter, der Audit-Rechte nicht gewährt, wird zum Compliance-Risiko."
+        },
+        {
+          "frage": "Was tun, wenn ein bestehender Stack bereits stark US-Anbieter-abhängig ist?",
+          "antwort": "Migration in Etappen, nicht als Big Bang. Strategie: zuerst Schutzbedarf je Workload festlegen, dann die Hochrisiko- und Vertrauens-kritischen Workloads als Erste auf souveräne Inferenz umziehen. Eine OpenAI-kompatible API-Fassade vor verschiedenen Backends (vLLM, TGI, Ollama) erlaubt graduelle Verlagerung ohne Umbau der Anwendungs-Logik. Vektor-Datenbanken in offene Formate (pgvector, Qdrant) überführen, bevor der Volumen-Lock-in zu groß wird. Realistisches Zeitfenster für eine vollständige Migration: 12 bis 24 Monate, nicht 3."
+        }
+      ],
+      "stats": [
+        {
+          "claim": "Schrems II (C-311/18) verlangt zusätzliche Schutzmaßnahmen über Standardvertragsklauseln hinaus für Datenexporte in Drittländer ohne Angemessenheitsbeschluss.",
+          "quelle": "EuGH, Urteil vom 16. Juli 2020"
+        },
+        {
+          "claim": "EU AI Act: Hochrisiko-Pflichten gelten ab 2. August 2026, Pflichten zu General-Purpose-AI-Modellen bereits seit 2. August 2025.",
+          "quelle": "EU AI Act, Artikel 113",
+          "link": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+        }
+      ]
+    },
+
+    "unternehmen-experten": {
+      "meta_title": "Souveräne KI für Unternehmen — Expertenblick | Souveräne KI",
+      "meta_description": "Souveräne KI-Architektur: Stufenmodelle, AI-Act-Konformitätsbewertung, Confidential Computing, Audit-Trail-Design. Tiefe Auseinandersetzung für KI-Verantwortliche.",
+      "h1": "Souveräne KI für Unternehmen — Expertenblick",
+      "h2": "Architektur-Muster, Konformitätsbewertung und die operative Realität souveräner KI-Stacks.",
+      "faqs": [
+        {
+          "frage": "Wie wird ein Hochrisiko-KI-System EU-AI-Act-konform produktiv?",
+          "antwort": "Pflichtenkatalog aus Artikel 9 bis 17 produktiv: Risikomanagement-System (Artikel 9) als kontinuierlicher Prozess, nicht als Einmal-Dokument; Daten-Governance (Artikel 10) inklusive Repräsentativitäts-Nachweis und Bias-Tests; technische Dokumentation nach Annex IV; Logging mit Replay-Fähigkeit (Artikel 12); Transparenz für Anwender (Artikel 13); menschliche Aufsicht mit Eingriffsbefugnis (Artikel 14); Robustheit und Cybersecurity (Artikel 15). Konformitätsbewertung nach Artikel 43 — intern für die meisten Annex-III-Systeme, durch benannte Stelle für biometrische Identifikation. CE-Kennzeichnung nach Artikel 48, Konformitäts-Erklärung nach Artikel 47. Praxis: ein eigener AI-Risk-Officer oder externer benannter Verantwortlicher ist faktisch unverzichtbar."
+        },
+        {
+          "frage": "Welche Rolle spielt Confidential Computing in einem souveränen Stack?",
+          "antwort": "Confidential Computing schließt die Lücke, die rein vertragliche Maßnahmen offen lassen. Intel TDX und AMD SEV-SNP isolieren VMs hardwareseitig vor dem Hypervisor und damit vor dem Cloud-Betreiber selbst — auch ein potenzieller US-Subprocessor sieht den Inferenz-Memory nicht. Für Modell-Inferenz bedeutet das: Sie können einen Open-Weight-LLM in einer enclave ausführen, mit Bring-Your-Own-Key-Verschlüsselung der Daten und Remote Attestation gegen den Stack. Das verschiebt die Vertrauens-Wurzel von der Vertragskette in die Hardware. Limit: GPU-Confidential-Computing (NVIDIA H100 mit CC-On) ist verfügbar, aber Tooling-seitig noch nicht ausgereift; CPU-Inferenz für kleinere Modelle ist heute schon produktionsreif."
+        },
+        {
+          "frage": "Wie gestaltet man Audit-Trails so, dass sie unter aufsichtsrechtlicher Prüfung tragen?",
+          "antwort": "Drei Anforderungen: Vollständigkeit (jeder Inferenz-Aufruf wird mit Eingabe-Hash, Modell-Versions-ID, Parameter-Fingerprint und Ausgabe-Hash protokolliert), Replay-Fähigkeit (deterministische Reproduktion der Ausgabe aus Input und Modell-State; bei stochastischen Modellen mindestens Seed-Logging), und Manipulations-Sicherheit (append-only Log-Sinks, idealerweise mit kryptografischem Anchoring). EU-AI-Act-Artikel 12 verlangt diese Logs für die gesamte Lebensdauer des Hochrisiko-Systems. Praktische Umsetzung: strukturiertes Logging mit OpenTelemetry, Sink in einem EU-only Storage-System (S3-kompatibel mit Object-Lock), Verifikation durch periodische Hash-Vergleiche. Daten-Lineage von Source bis Inferenz parallel pflegen — andernfalls scheitert Artikel-10-Konformität bei Re-Trainings."
+        },
+        {
+          "frage": "Welche Architektur-Entscheidungen halten politische und kommerzielle Eskalationen aus?",
+          "antwort": "Drei Resilienz-Achsen: Modell-Portabilität (offene Gewichte, OpenAI-kompatible Inferenz-API als Schnittstellen-Standard, austauschbare Backends — vLLM, TGI, Ollama, llama.cpp je nach Workload); Daten-Portabilität (offene Vektor-Formate, standardisierte Embeddings-Modelle, dokumentierte Schema-Migration); Vertrags-Portabilität (Multi-Provider-Setup, gestaffelt nach Schutzbedarf — Stufe 1 bis 3, mit dokumentierter Migrations-Reihenfolge bei Stack-Wechsel). Im Eskalations-Fall — etwa Sanktions-bedingter API-Ausfall oder politisch erzwungener Anbieterwechsel — sind das die Achsen, die den Unterschied zwischen 'innerhalb von Tagen umgezogen' und 'Quartalsprojekt' machen. Tabletop-Übungen für solche Fälle gehören zur Vorbereitung, nicht erst zur Reaktion."
+        },
+        {
+          "frage": "Wie wird eine Konformitätsbewertung nach Artikel 43 dokumentiert?",
+          "antwort": "Annex VI (interne Kontrolle) reicht für die meisten Annex-III-Systeme. Erforderliche Dokumente: technische Dokumentation nach Annex IV (Modell-Architektur, Trainings-Daten, Test-Methodologie, Risikomanagement-Maßnahmen, Bewertung der menschlichen Aufsicht); Qualitätsmanagement-System nach Artikel 17 (schriftliche Strategien, Verfahren, Verantwortlichkeiten); Konformitäts-Erklärung nach Artikel 47 mit Verweis auf einschlägige harmonisierte Normen (ISO/IEC 42001 für AI Management Systems, ISO/IEC 23053 für AI System Lifecycle, einschlägige Cybersecurity-Standards). CE-Kennzeichnung nach Artikel 48. Anlassbezogen: Aktualisierung bei wesentlichen Änderungen — neues Modell, neue Trainings-Daten, neue Anwendungs-Domäne. Realistischer Aufwand für Erstellung: 3 bis 6 Monate für ein produktives System, abhängig von Reife des bestehenden QMS."
+        }
+      ],
+      "stats": [
+        {
+          "claim": "Annex III des EU AI Act listet acht Bereiche von Hochrisiko-KI: Biometrie, kritische Infrastruktur, Bildung, Beschäftigung, wesentliche Dienstleistungen, Strafverfolgung, Migration, Justiz und demokratische Prozesse.",
+          "quelle": "EU AI Act, Annex III",
+          "link": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+        },
+        {
+          "claim": "Schrems II verlangt Einzelfall-Bewertung der Drittlands-Rechtslage und ergänzende Maßnahmen über Standardvertragsklauseln hinaus für jeden Datenexport.",
+          "quelle": "EuGH, C-311/18, Rn. 134 ff."
+        }
+      ]
+    },
+
+    "politik-einsteiger": {
+      "meta_title": "Souveräne KI für Politik & Verwaltung — Einstieg | Souveräne KI",
+      "meta_description": "Souveräne KI in Behörden: was der EU AI Act verlangt, was 'EU-Cloud' wirklich heißt und welche Architekturen demokratische Rechenschaft tragen.",
+      "h1": "Souveräne KI für Politik und Verwaltung — der Einstieg",
+      "h2": "Was Souveränität bei KI in Behörden konkret bedeutet, und warum die Auswahl mehr ist als ein Beschaffungs-Detail.",
+      "faqs": [
+        {
+          "frage": "Reicht ein deutsches Rechenzentrum für DSGVO-Konformität?",
+          "antwort": "Nicht zwingend. Wenn der Betreiber eine US-Muttergesellschaft hat, kann der CLOUD Act greifen — auch bei Servern in Deutschland. Schrems II hat klargestellt, dass Standardvertragsklauseln allein nicht reichen. Souveräne Architektur verlangt drei Schichten: physische Speicherung in der EU, Betreiber unter ausschließlich europäischer Jurisdiktion und Verschlüsselung mit Schlüsseln in eigener Hand. Erst diese Trias schließt extraterritoriale Zugriffe rechtlich und technisch aus."
+        },
+        {
+          "frage": "Welche KI-Anwendungen in der Verwaltung sind Hochrisiko nach EU AI Act?",
+          "antwort": "Annex III listet die für Verwaltungen relevanten Bereiche: Bildungszugang, Personalverfahren, kritische Infrastruktur, Strafverfolgung, Migration und Asyl, Justiz und demokratische Prozesse, Vergabe wesentlicher öffentlicher Dienste. Sobald eine KI-Anwendung in einem dieser Felder Entscheidungen vorbereitet oder trifft, gelten die Pflichten aus Artikel 9 bis 17 — Risikomanagement, Datenqualität, Dokumentation, menschliche Aufsicht."
+        },
+        {
+          "frage": "Was unterscheidet 'sovereign cloud' vom Marketing-Begriff 'EU-Cloud'?",
+          "antwort": "EU-Cloud meint typischerweise nur EU-Speicherort. Sovereign Cloud bedeutet — wenn der Begriff seriös benutzt wird — vollständige Loslösung von extraterritorialen Rechtsregimen: kein US-Owner, kein US-Subprocessor, kein Vertrag, der im Konflikt nach US-Recht ausgelegt wird. Praktische Beispiele aus Deutschland: Stackit, IONOS Cloud, Open Telekom Cloud in der souveränen Variante, Landes-Rechenzentren mit GPU-Erweiterung."
+        },
+        {
+          "frage": "Was kostet souveräne KI gegenüber kommerzieller API-Nutzung?",
+          "antwort": "Bei sporadischer Nutzung sind API-Angebote günstiger. Sobald Inferenz-Volumen Stetig-Nutzung erreicht, wird selbst gehostete Open-Weight-Inferenz typisch wirtschaftlich — moderne H100-GPUs amortisieren sich bei kontinuierlicher Auslastung in 12 bis 24 Monaten. Die zweite Kosten-Achse: Compliance-Risiko bei Hochrisiko-KI ist mit US-Anbietern oft nur durch zusätzliche Schutzmaßnahmen tragbar. Souveräne Stacks senken diese Schutzkosten dauerhaft."
+        },
+        {
+          "frage": "Wo fängt eine Behörde praktisch an?",
+          "antwort": "Drei Schritte: Erstens KI-Inventur — welche Anwendungen laufen, welche sind geplant. Zweitens Risikoklassifizierung nach EU AI Act und Schutzbedarf nach BSI-Grundschutz. Drittens Architektur-Entscheidung pro Klasse. Für Hochrisiko-KI mit Bürgerschnittstelle: souveräner Stack zwingend. Für Verwaltungsoptimierung ohne personenbezogene Daten: hybride Stacks akzeptabel. Das Whitepaper am Ende dieser Seite liefert die Bewertungsraster."
+        }
+      ],
+      "stats": [
+        {
+          "claim": "Bundesdatenschutzgesetz und DSGVO verbieten unbeschränkten Zugriff von Drittstaaten auf personenbezogene Verwaltungsdaten — der CLOUD Act steht in direktem Konflikt zu diesen Schutzregeln.",
+          "quelle": "BfDI, Positionspapier zum CLOUD Act"
+        },
+        {
+          "claim": "Annex III des EU AI Act stuft öffentliche Verwaltung in mehreren Bereichen als Hochrisiko ein — Migration, Justiz, Bildung, kritische Infrastruktur.",
+          "quelle": "EU AI Act, Annex III",
+          "link": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+        }
+      ]
+    },
+
+    "politik-kenner": {
+      "meta_title": "Souveräne KI für Politik & Verwaltung — Vertiefung | Souveräne KI",
+      "meta_description": "Praktische Umsetzung souveräner KI in Behörden: Beschaffung, AI-Act-Konformität, Sovereign-Cloud-Anbieter, organisatorische Aufsicht.",
+      "h1": "Souveräne KI für Politik und Verwaltung — Vertiefung",
+      "h2": "Vom Pflichtenkatalog zur Architektur: was eine Behörde konkret prüfen, beschaffen und betreiben muss.",
+      "faqs": [
+        {
+          "frage": "Wie verhalten sich EU AI Act und DSGVO konkret in einer Verwaltungs-Pipeline?",
+          "antwort": "Beide gelten kumulativ. DSGVO-Artikel 22 verlangt menschliche Letztentscheidung bei automatisierten Verfahren mit erheblichen Auswirkungen. EU-AI-Act-Artikel 14 verlangt menschliche Aufsicht für Hochrisiko-Systeme — mit Eingriffsbefugnis und Schulung. In der Praxis bedeutet das: nicht nur eine Person, die formal zustimmt, sondern eine Person mit echter Eingriffsmöglichkeit, inklusive Aussetzung des Systems im Verdachtsfall. Inferenz-Logs und Begründungs-Pfade müssen das belegen können."
+        },
+        {
+          "frage": "Welche Lieferanten kommen für souveräne Verwaltungs-KI in Deutschland in Frage?",
+          "antwort": "Stack-Optionen mit produktiver Reife: Open Telekom Cloud Sovereign, Stackit, IONOS Cloud, Landes-Rechenzentren mit GPU-Erweiterung. Für Modell-Inferenz zusätzlich AI-Factories nach EuroHPC-Initiative. Wichtig: Eigentümer-Struktur prüfen — eine deutsche GmbH als US-Subsidiary erfüllt die Souveränitäts-Schwelle nicht. Bewertungsraster orientieren sich an BSI-C5-Kriterien plus zusätzlichen Souveränitäts-Klauseln zu Subprocessor-Kette und Vertragsgerichtsstand."
+        },
+        {
+          "frage": "Was bedeutet die Konformitätsbewertung nach Artikel 43 für eine Behörde?",
+          "antwort": "Behörden sind 'Anbieter' im Sinne des AI Act, sobald sie ein Hochrisiko-System selbst entwickeln oder unter eigenem Namen einsetzen. Damit gilt der Pflichtenkatalog aus Artikel 9 bis 17 vollständig — und die Konformitätsbewertung nach Annex VI (interne Kontrolle) ist verpflichtend. Erforderlich: technische Dokumentation, Qualitätsmanagement-System, Logging mit Replay-Fähigkeit, Konformitäts-Erklärung. Marktüberwachungsbehörden — in Deutschland Bundesnetzagentur und benannte Stellen — können auch direkt prüfend tätig werden."
+        },
+        {
+          "frage": "Was passiert mit bestehenden Verwaltungs-KI-Systemen auf Hyperscaler-Infrastruktur?",
+          "antwort": "Übergangsfristen aus Artikel 113: General-Purpose-AI-Pflichten ab August 2025, Hochrisiko-Pflichten ab August 2026. Behörden müssen bis dahin konformitätsfähig sein — entweder durch Migration auf souveräne Architektur oder durch belastbare Schutzmaßnahmen, die im Einzelfall die Anforderungen erfüllen. Letzteres ist bei US-Hosting durch Schrems-II-Logik faktisch nur bei nicht-personenbezogenen Daten möglich. Für Verwaltungsdaten bleibt damit Migration der realistische Weg."
+        },
+        {
+          "frage": "Wie wird interne Aufsicht aufgesetzt, wenn ein KI-System im Echtbetrieb läuft?",
+          "antwort": "Drei Bausteine: erstens organisatorisch — eine benannte verantwortliche Person mit Eingriffsbefugnis, klare Eskalations-Wege, regelmäßige Schulung. Zweitens technisch — vollständige Inferenz-Logs mit Modell-Version und Eingabe-Hash, Replay-Fähigkeit für Beschwerde-Fälle, Dashboard für Drift-Erkennung. Drittens prozessual — periodische Audit-Reports, Beschwerdebearbeitung mit Frist, dokumentierte Modell-Updates. Diese Bausteine sind keine Compliance-Last, sondern die Rechtsgrundlage, auf der das System überhaupt eingesetzt werden darf."
+        }
+      ],
+      "stats": [
+        {
+          "claim": "EU-AI-Act-Pflichten für Hochrisiko-KI gelten ab 2. August 2026; General-Purpose-AI bereits seit 2. August 2025.",
+          "quelle": "EU AI Act, Artikel 113",
+          "link": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+        },
+        {
+          "claim": "Schrems II (C-311/18) verlangt Einzelfall-Bewertung der Drittlands-Rechtslage und supplementary measures über Standardvertragsklauseln hinaus für jeden Datenexport.",
+          "quelle": "EuGH, Urteil vom 16. Juli 2020"
+        }
+      ]
+    },
+
+    "politik-experten": {
+      "meta_title": "Souveräne KI für Politik & Verwaltung — Expertenblick | Souveräne KI",
+      "meta_description": "Behörden-KI-Stack im Detail: AI-Act-Konformität, BSI-Grundschutz, Vergaberecht, Audit-Architektur, Föderation zwischen Bund, Land und Kommune.",
+      "h1": "Souveräne KI für Politik und Verwaltung — Expertenblick",
+      "h2": "Architektur, Aufsicht und Vergabe in einem konsistenten Bild — was im Echtbetrieb tragen muss.",
+      "faqs": [
+        {
+          "frage": "Wie wird ein Hochrisiko-KI-System im Behörden-Einsatz konform produktiv?",
+          "antwort": "Pflichtenkatalog aus Artikel 9 bis 17 produktiv: Risikomanagement-System (Art. 9) als kontinuierlicher Prozess; Datenqualitäts-Nachweis nach Art. 10 inklusive Repräsentativität und Bias-Tests; technische Dokumentation nach Annex IV; Logging mit Replay-Fähigkeit (Art. 12); Transparenz für Betroffene (Art. 13); menschliche Aufsicht mit echter Eingriffsbefugnis (Art. 14); Robustheit und Cybersecurity (Art. 15). Konformitätsbewertung nach Annex VI, Konformitäts-Erklärung nach Art. 47, CE-Kennzeichnung nach Art. 48. Ein KI-Risk-Officer mit klarer Berichtslinie ist faktisch unverzichtbar."
+        },
+        {
+          "frage": "Welche Schutzmaßnahmen rechtfertigen Drittstaats-Inferenz im Einzelfall (post-Schrems-II)?",
+          "antwort": "Standardvertragsklauseln allein reichen nicht. Erforderlich sind Einzelfall-Bewertungen mit ergänzenden Maßnahmen: Pseudonymisierung mit revertierbarem Mapping unter EU-Schlüsselhoheit, Confidential Computing für Inferenz-Isolation, deterministisches Logging in EU-only Sinks, dokumentierte Datenfluss-Karten für die Aufsicht. Für personenbezogene Verwaltungsdaten ist diese Konstruktion in der Praxis kaum tragfähig — die Aufsichtsbehörde wird das Risiko regelmäßig als nicht ausreichend reduziert bewerten. Reine Verwaltungsoptimierungs-Workloads ohne Personenbezug sind der realistische Anwendungsbereich."
+        },
+        {
+          "frage": "Wie integriert sich AI-Act-Konformität ins BSI-Grundschutz-Kompendium?",
+          "antwort": "Beide Rahmen ergänzen sich. BSI-Grundschutz liefert Bausteine zu Cloud-Nutzung (CON.8), Webanwendungen (APP.3.1), und allgemeiner IT-Sicherheit. AI-Act-Pflichten zu Logging, Robustheit und Datenqualität lassen sich in das Sicherheitskonzept integrieren, gehen aber inhaltlich darüber hinaus. Der BSI-Baustein 'Künstliche Intelligenz' (CON.10, in Abstimmung) wird die Brücke schlagen. Praxis: Schutzbedarfs-Feststellung um eine AI-Risiko-Achse erweitern, dokumentieren als Annex zur Schutzbedarfsanalyse, Maßnahmen aus AI-Act-Anforderungen als zusätzliche Bausteine aufnehmen."
+        },
+        {
+          "frage": "Welche Audit-Anforderungen kommen aus dem Vergaberecht zusätzlich zum AI Act?",
+          "antwort": "Vergaberecht verlangt nachvollziehbare, objektive Eignungs- und Zuschlagskriterien sowie Wirtschaftlichkeit. Bei IT-Beschaffung greifen zusätzlich EVB-IT-Verträge mit Standardklauseln zu Datenschutz, Audit-Rechten und Subunternehmer-Transparenz. Souveränität als Beschaffungskriterium ist zulässig, wenn sie objektiv begründet ist — etwa über DSGVO-Anforderungen, Schrems II oder konkreten Schutzbedarf. Praxis: Souveränitäts-Klauseln explizit in Leistungsbeschreibung aufnehmen, Bewertungsmatrix mit Audit-Recht, Datenresidenz, Subprocessor-Transparenz und Vertragsgerichtsstand."
+        },
+        {
+          "frage": "Wie föderiert ein Behörden-KI-Stack zwischen Bund, Land und Kommune?",
+          "antwort": "Föderationsachse 1 — Daten: Daten verlassen die jeweilige Verwaltungsebene nicht, gemeinsame Inferenz nur auf vereinbarten Aggregaten oder über DEÜV-Strukturen. Achse 2 — Modelle: gemeinsame Modell-Registry mit signierten, versionierten Open-Weight-Modellen, lokal ausführbar in jeder Ebene. Achse 3 — Infrastruktur: föderale Cloud-Strategie (Souveräne Cloud Bund, Landes-Clouds, Kommunal-Rechenzentren) mit standardisierten Schnittstellen. Bedingung: gemeinsame Souveränitäts-Anforderungen, dokumentierte Schnittstellen, kein einheitlicher Single-Point-of-Failure."
+        }
+      ],
+      "stats": [
+        {
+          "claim": "Annex III des EU AI Act listet acht Bereiche von Hochrisiko-KI: Biometrie, kritische Infrastruktur, Bildung, Beschäftigung, wesentliche Dienstleistungen, Strafverfolgung, Migration und Justiz, demokratische Prozesse.",
+          "quelle": "EU AI Act, Annex III",
+          "link": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+        },
+        {
+          "claim": "BSI-C5 (Cloud Computing Compliance Criteria Catalogue) liefert ein zertifiziertes Prüfraster für Cloud-Sicherheit; produktiv mit zusätzlichen Souveränitäts-Klauseln zu kombinieren.",
+          "quelle": "BSI, C5-Kriterienkatalog 2025"
+        }
+      ]
+    },
+
+    "technik-einsteiger": {
+      "meta_title": "Souveräne KI für Tech & Engineering — Einstieg | Souveräne KI",
+      "meta_description": "Souveräne KI für Tech-Teams: Open-Weight-Modelle, EU-Inferenz, Stack-Optionen — was 2025 produktiv tragfähig ist.",
+      "h1": "Souveräne KI für Tech-Teams — der Einstieg",
+      "h2": "Was Open-Weight-Modelle heute leisten, welche EU-Anbieter zur Wahl stehen, und wo die Trennlinie zwischen Marketing und Architektur liegt.",
+      "faqs": [
+        {
+          "frage": "Sind Open-Weight-Modelle leistungsfähig genug für Produktiv-Use-Cases?",
+          "antwort": "Für die Mehrzahl produktiver Aufgaben: ja. Llama 3.3 70B, Mistral Large 2, Qwen 2.5 72B und DeepSeek-V3 erreichen in MMLU, HumanEval und vergleichbaren Benchmarks Werte, die 2023 noch GPT-4 vorbehalten waren. Frontier-API-Modelle bleiben in tiefem Reasoning, Tool-Calling-Reliability und Multimodalität in Spitzendisziplinen vorn. Für Zusammenfassen, Klassifikation, Code-Assistenz und RAG sind Open Weights heute klar produktiv-tauglich."
+        },
+        {
+          "frage": "Was kostet Self-Hosting im Vergleich zu OpenAI- oder Anthropic-API?",
+          "antwort": "Eine H100-GPU im europäischen Co-Location kostet 2025 grob 30.000 bis 40.000 Euro pro Jahr inklusive Strom, Kühlung und Wartung. Bei mittlerer Auslastung liefert sie 30 bis 80 Milliarden Tokens jährlich, je nach Modellgröße und Quantisierung. Faustregel: Ab konstantem zweistelligem Millionen-Token-Volumen pro Monat wird die eigene Infrastruktur ökonomisch — und Sie gewinnen zusätzlich Audit- und Kontrollrechte, die per API nicht verkauft werden."
+        },
+        {
+          "frage": "Welche EU-GPU-Anbieter sind 2025 produktiv nutzbar?",
+          "antwort": "Stackit (Schwarz-Gruppe), OVHcloud, IONOS Cloud, Scaleway, Hetzner sowie deutsche AI-Factories (Forschungs-Initiative im Rahmen der EuroHPC-AI-Factory-Förderung). Verfügbarkeitsspitzen für H100/H200 sind limitiert — Reservierung mit Vorlauf ist üblich. Für Co-Location bietet Equinix, Interxion und mehrere mittelständische deutsche Anbieter GPU-fähige Racks. Wichtig: Eigentümer-Struktur prüfen, US-Subprocessor-Kette ausschließen."
+        },
+        {
+          "frage": "Wie aufwendig ist eine OpenAI-kompatible Self-Hosted-Inferenz?",
+          "antwort": "vLLM und SGLang bieten OpenAI-kompatible HTTP-APIs out-of-the-box — Modell laden, Endpoint starten, fertig. Production-Setup verlangt zusätzlich: Continuous Batching tunen, Prometheus-Metrics einbinden, OpenAI-API-Key-Layer für Multi-Tenant, Modell-Lifecycle-Management. Aufwand für ein Team mit Cloud-Native-Erfahrung: 2 bis 4 Wochen für ein produktives MVP, weitere 4 bis 8 Wochen für Observability und Eval-Suite."
+        },
+        {
+          "frage": "Wo fängt ein Tech-Team praktisch an?",
+          "antwort": "Drei Schritte: Erstens Workload-Klassifizierung — welche Anwendung braucht welche Modell-Klasse, welche Latenz, welches Schutzniveau. Zweitens Stack-Auswahl pro Klasse: hybride APIs für unkritisches, Self-Host für vertrauliches und volumenstarkes. Drittens Architektur-Disziplin von Anfang an: OpenAI-kompatible Fassade, abstrahiertes Routing, versionierte Prompts und Eval-Suite. Lieber klein und sauber starten als groß und gekoppelt."
+        }
+      ],
+      "stats": [
+        {
+          "claim": "Llama 3.3 70B erreicht in MMLU, GSM8K und HumanEval Werte oberhalb von GPT-4 (Stand 2024) — bei vollständig offenen Gewichten.",
+          "quelle": "Meta, Llama 3.3 Model Card"
+        },
+        {
+          "claim": "EU-AI-Act-Pflichten zu General-Purpose-AI-Modellen gelten seit 2. August 2025; Hochrisiko-Pflichten ab 2. August 2026.",
+          "quelle": "EU AI Act, Artikel 113",
+          "link": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+        }
+      ]
+    },
+
+    "technik-kenner": {
+      "meta_title": "Souveräne KI für Tech & Engineering — Vertiefung | Souveräne KI",
+      "meta_description": "Souveräner Inferenz-Stack: vLLM, OpenAI-Kompatibilität, Vektorspeicher, Modell-Versionierung. Vertiefung für Engineering-Verantwortliche.",
+      "h1": "Souveräne KI für Tech-Teams — Vertiefung",
+      "h2": "Stack-Architektur konkret: was austauschbar bleibt, wo die operative Komplexität liegt, welche Bibliotheken das Tooling tragen.",
+      "faqs": [
+        {
+          "frage": "Welche Inferenz-Engine passt zu welchem Workload?",
+          "antwort": "vLLM ist der breite Standard für Produktion mit Continuous Batching und PagedAttention — Latenz und Throughput in derselben Pipeline. SGLang punktet bei strukturierten Prompts und Constraint-Decoding (JSON-Schema, RegEx-Matching). TensorRT-LLM liefert die schnellsten TPS-Werte auf NVIDIA-Hardware, ist aber engineering-aufwendiger. llama.cpp und Ollama sind richtig für Edge oder Single-Node-Workloads. Faustregel: vLLM als Default, SGLang für strukturiertes Output, llama.cpp für CPU-Edge."
+        },
+        {
+          "frage": "Wie wird ein Modell-Wechsel ohne Quartalsprojekt möglich?",
+          "antwort": "Vier Disziplinen: Erstens OpenAI-kompatible Fassade über alle Backends — Anwendungs-Code muss nicht wissen, ob das Backend GPT-4o, Llama 3.3 oder Mistral Large ist. Zweitens versionierte Prompts mit Eval-Suite, sodass Regression beim Wechsel sofort sichtbar wird. Drittens abstrahiertes Tool-Calling-Schema (z. B. via JSON-Schema-Validation) statt modell-spezifischer Funktion-Definitionen. Viertens dokumentierte Sampling-Parameter pro Workload. So wird ein Wechsel zu einer Konfigurations-Änderung statt zu einem Refactor."
+        },
+        {
+          "frage": "Welche Beobachtungs- und Eval-Praktiken sind realistisch?",
+          "antwort": "Observability: Prometheus-Metriken auf Token-Throughput, Tail-Latency, GPU-Utilization, Queue-Length pro vLLM-Worker. Logs mit Eingabe-Hash, Modell-Version, Sampling-Seeds. Eval: regelmäßige Smoke-Tests gegen einen kuratierten Goldstandard (200 bis 500 Beispiele pro Workload), automatisiertes A/B-Vergleichen vor jedem Modell-Update. Tools: Langfuse, Phoenix oder Eigenbau auf OpenTelemetry. Wichtig: Eval ist Engineering-Code, nicht Data-Science-Notebook."
+        },
+        {
+          "frage": "Wann lohnt Co-Location gegenüber souveräner Cloud?",
+          "antwort": "Bei kontinuierlicher GPU-Auslastung über 60 Prozent und Drei-Jahres-Horizont ist Co-Location oft 30 bis 50 Prozent günstiger als gleichwertige Cloud-Reservierung. Voraussetzung: vorhandene Server-Operations-Reife, Vertrauensnetzwerk für Hardware-Beschaffung (NVIDIA-Lead-Times), redundantes Networking. Souveräne Cloud bleibt richtig für Burst-Workloads, frühe Phasen und Teams ohne Ops-Team. Mischmodell: Baseline auf Co-Location, Burst-Kapazität auf souveräner Cloud."
+        },
+        {
+          "frage": "Wie integriert sich AI-Act-Logging in einen modernen Inferenz-Stack?",
+          "antwort": "Logging-Pflichten aus Artikel 12 verlangen Lebensdauer-Protokolle. Praktisch: strukturiertes Logging via OpenTelemetry mit Eingabe-Hash, Modell-Versions-ID, Sampling-Parametern und Ausgabe-Hash; Sink in EU-only Object-Storage mit Object-Lock; Rotation und Aufbewahrung dokumentiert. Replay-Fähigkeit: Modell-Snapshot in einer Registry (z. B. lokale OCI-Images), Sampling-Determinismus durch fixed seed bei Audit-relevanten Inferenzen. Für Hochrisiko-Workloads: zusätzliche Daten-Lineage von Source bis Output."
+        }
+      ],
+      "stats": [
+        {
+          "claim": "vLLM erreicht mit Continuous Batching und PagedAttention bei einer H100 für Llama-70B-Quantization Throughput-Werte von 1.500 bis 3.000 Tokens/s je nach Workload.",
+          "quelle": "vLLM Project Benchmarks 2024"
+        },
+        {
+          "claim": "EU-AI-Act-Artikel 12 verlangt automatisches Logging über die gesamte Lebensdauer eines Hochrisiko-Systems mit Replay-Fähigkeit.",
+          "quelle": "EU AI Act, Artikel 12"
+        }
+      ]
+    },
+
+    "technik-experten": {
+      "meta_title": "Souveräne KI für Tech & Engineering — Expertenblick | Souveräne KI",
+      "meta_description": "Tiefe Auseinandersetzung: Confidential Computing, Hardware-Auswahl, Audit-Architektur, mehrstufiger Stack, AI-Act-Annex-IV-Konformität.",
+      "h1": "Souveräne KI für Tech-Teams — Expertenblick",
+      "h2": "Wo Architektur unter Last, Audit und Eskalation steht — und welche Bewertungs-Achsen entscheiden.",
+      "faqs": [
+        {
+          "frage": "Welche Hardware-Architektur trägt Confidential Inference produktiv?",
+          "antwort": "Stand 2025: CPU-Confidential-Computing (Intel TDX, AMD SEV-SNP) ist produktionsreif für Inferenz kleinerer Modelle (bis ~13B parameter) — Memory-Encryption auf Hypervisor-Ebene, Remote Attestation gegen den Stack. GPU-Confidential-Computing (NVIDIA H100 mit CC-On) ist verfügbar, Tooling-seitig aber noch unreif (eingeschränkte Treiber, Performance-Einbußen 10–20 Prozent). Praxis: Workload-Klassifizierung — Hochsensitive Workloads in CPU-Enclaves auf kleineren Modellen, weniger sensible auf konventionellen GPU-Clustern unter EU-Vertrag."
+        },
+        {
+          "frage": "Wie wird ein Annex-IV-tauglicher Inferenz-Pfad implementiert?",
+          "antwort": "Annex IV verlangt unter anderem: Modellbeschreibung mit Trainings-Methodik, Datenqualitäts-Belege, Performance-Metriken nach Aufgabenklasse, Risiko-Mitigationen, menschliche-Aufsicht-Mechanismen, Cybersecurity-Maßnahmen. Implementierungs-Bausteine: Model Cards nach Mitchell et al. (2019), Datasheets nach Gebru et al. für Trainings-Daten, kontinuierliche Eval-Reports mit Goldstandard-Coverage, Threat-Modeling pro Anwendungs-Kontext. Tooling: Hugging Face Model Cards Toolkit, Eigenentwicklung oder kommerzielle MLOps-Plattformen mit AI-Act-Modul (Mlflow, Aimstack mit Erweiterung)."
+        },
+        {
+          "frage": "Welche Eval-Suite trägt einen reproduzierbaren Modell-Wechsel?",
+          "antwort": "Drei Layer: Layer 1 — generische Benchmarks (MMLU, GSM8K, HumanEval) als Sanity-Check. Layer 2 — domänenspezifische Goldstandards mit 200 bis 1.000 Beispielen pro Aufgabenklasse, manuell kuratiert, regelmäßig aktualisiert. Layer 3 — Online-Eval auf Produktiv-Sampling mit menschlichem Feedback. A/B-Vergleich vor jedem Modell-Update; Rollback-Trigger bei Regressions-Schwelle. Wichtig: Eval-Code in Versionierung, nicht in Notebooks; Eval-Daten in einer separaten, schreibgeschützten Sammlung."
+        },
+        {
+          "frage": "Wie verhalten sich Speculative Decoding und INT4-Quantisierung in souveränen Stacks?",
+          "antwort": "Speculative Decoding (Draft-Model + Target-Model) liefert 1,5- bis 3-fache Latenz-Verbesserung bei akzeptierter Output-Equivalenz — für interaktive Workloads relevant. Limit: Memory-Footprint steigt durch das Draft-Model. INT4-Quantisierung (AWQ, GPTQ) reduziert GPU-Memory-Bedarf um Faktor 4 zu FP16, mit Genauigkeits-Einbußen unter 1 Prozent in MMLU für 70B-Modelle. Empfohlen für Cost-Optimierung. Beide Techniken sind reproduzierbarkeits-kritisch — Snapshot der quantisierten Modell-Datei plus Inferenz-Engine-Version archivieren."
+        },
+        {
+          "frage": "Wie wird ein Multi-Tier-Inferenz-Routing AI-Act-konform aufgesetzt?",
+          "antwort": "Kern-Disziplin: pro Workload-Klasse ist die zulässige Stack-Stufe vertraglich und technisch fixiert. Routing-Layer (z. B. LiteLLM oder Eigenbau) prüft Workload-Klassifizierung und routet zu zugelassenem Backend. Sicherheits-Constraint: keine Cross-Klassen-Leaks (vertrauliche Inputs landen niemals in unzulässigen Backends). Logging: jeder Routing-Entscheid wird protokolliert mit Klasse, gewähltem Backend, Begründung. Audit: Routing-Konfiguration als versionierter Code, Aufsichtsbehörde kann nachvollziehen, welche Daten in welchem Stack lagen."
+        }
+      ],
+      "stats": [
+        {
+          "claim": "Confidential Computing mit AMD SEV-SNP und Intel TDX schützt Memory vor Zugriffen aus dem Hypervisor — die Vertrauenswurzel verschiebt sich von Vertragskette in Hardware-Attestation.",
+          "quelle": "Confidential Computing Consortium, Technical Reports 2024"
+        },
+        {
+          "claim": "Annex IV des EU AI Act listet die Pflichtbestandteile der technischen Dokumentation für Hochrisiko-KI in detaillierter Form.",
+          "quelle": "EU AI Act, Annex IV",
+          "link": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+        }
+      ]
+    },
+
+    "forschung-einsteiger": {
+      "meta_title": "Souveräne KI für Forschung — Einstieg | Souveräne KI",
+      "meta_description": "Souveräne KI in der Wissenschaft: Reproduzierbarkeit, Vertraulichkeit, akademische Freiheit. Einstieg für Forschende und Lehrende.",
+      "h1": "Souveräne KI für Forschung und Akademie — der Einstieg",
+      "h2": "Drei Gründe, warum Reproduzierbarkeit und Vertraulichkeit ohne Open Weights heute schwer zu garantieren sind.",
+      "faqs": [
+        {
+          "frage": "Warum ist Reproduzierbarkeit mit Closed-API-Modellen problematisch?",
+          "antwort": "Closed-API-Anbieter wechseln, finetunen oder ziehen Modelle zurück, ohne dass Nutzer den ursprünglichen Stand erhalten. Eine Studie, die im März auf GPT-4 publiziert wurde, lässt sich im Dezember nicht mehr exakt reproduzieren — derselbe API-Endpunkt bedient inzwischen ein anderes Modell. Open-Weight-Modelle mit Hash-fixiertem Snapshot lösen das: Forschende können das exakte Modell-File archivieren und in einer Container-Konfiguration mitliefern."
+        },
+        {
+          "frage": "Welche Open-Weight-Modelle sind für Forschung 2025 produktiv?",
+          "antwort": "Für Deutsch und mehrsprachig: Teuken-7B (OpenGPT-X), EuroLLM, Mistral Large 2, Llama 3.3. Für Code-bezogene Forschung: Qwen 2.5-Coder, DeepSeek-Coder. Für Embeddings: BGE-M3, multilingual-e5-large. Für medizinische und biologische Anwendungen: spezialisierte Derivate (BioMistral, MedLlama). Auswahl-Kriterien: Lizenz erlaubt akademische Nutzung uneingeschränkt, Hardware-Footprint passt zum Hochschul-Cluster, Sprach-Coverage deckt Forschungs-Korpus."
+        },
+        {
+          "frage": "Was bedeutet 'vertrauliche Daten' im Kontext von KI-Inferenz?",
+          "antwort": "Daten, die unter rechtlicher oder ethischer Vertraulichkeitspflicht stehen — Patientendaten unter Patientengeheimnis, Interview-Transkripte unter Probandeneinverständnis, vertrauliche Archivquellen, Geschäftsgeheimnisse von Forschungspartnern. Sobald solche Daten an eine externe API gesendet werden, ist die Vertraulichkeit faktisch gebrochen — das No-Training-Versprechen des Anbieters ändert nichts an der Übertragung selbst und an extraterritorialen Zugriffsrisiken (CLOUD Act). Selbst gehostete Modelle sind hier die einzige saubere Lösung."
+        },
+        {
+          "frage": "Wo bekommen Hochschulen souveräne GPU-Kapazität her?",
+          "antwort": "Drei Wege. Erstens: Hochschul-eigene Cluster (HPC-Center, Lehrstuhl-GPUs) — vorhanden, häufig unter-ausgelastet für KI-Workloads. Zweitens: nationale HPC-Initiativen — EuroHPC AI Factories, Gauss Centre for Supercomputing. Drittens: kommerzielle souveräne Cloud-Anbieter (Stackit, OVHcloud, IONOS) für Workloads mit höherem Bedarf oder weniger Wartezeiten. Für viele Forschungs-Setups reicht ein gut konfigurierter Lehrstuhl-Server mit zwei bis vier H100 oder gleichwertig."
+        },
+        {
+          "frage": "Wo fängt ein Forschungs-Projekt mit Souveränitäts-Anforderung an?",
+          "antwort": "Drei Schritte. Erstens: Daten- und Methoden-Audit — welche Daten verwende ich, welche Modell-Anrufe macht meine Methode, welche Vertraulichkeitspflichten gelten. Zweitens: Open-Weight-Modell auswählen, das Aufgabe und Sprache abdeckt, lokal hosten oder im Hochschul-Cluster laufen lassen. Drittens: Reproduzierbarkeit von Anfang an dokumentieren — Modell-Snapshot, Sampling-Parameter, Code in Versionierung, Container-Image als Studien-Artefakt. So bleibt die Methode auch in zwei Jahren reproduzierbar."
+        }
+      ],
+      "stats": [
+        {
+          "claim": "Eine Studie in Nature (2024) hat dokumentiert, dass GPT-4-Modelle innerhalb weniger Monate signifikant unterschiedliche Outputs auf identische Prompts liefern — was Reproduzierbarkeit von KI-gestützten Studien gefährdet.",
+          "quelle": "Chen et al., Nature Machine Intelligence (2024)"
+        },
+        {
+          "claim": "EuroHPC AI Factories sollen bis 2026 europaweit produktive GPU-Kapazität für Forschung und Industrie bereitstellen — auf Open-Weight-orientierter Basis.",
+          "quelle": "EuroHPC Joint Undertaking, AI Factories Initiative"
+        }
+      ]
+    },
+
+    "forschung-kenner": {
+      "meta_title": "Souveräne KI für Forschung — Vertiefung | Souveräne KI",
+      "meta_description": "Reproduzierbare KI-Pipelines, GAIA-X-Föderation, Ethik-konforme Datenflüsse. Vertiefung für KI-Verantwortliche in Forschung und Lehre.",
+      "h1": "Souveräne KI für Forschung und Akademie — Vertiefung",
+      "h2": "Methodische und infrastrukturelle Bausteine für reproduzierbare, vertrauliche und auditierbare KI-Forschung.",
+      "faqs": [
+        {
+          "frage": "Wie wird ein KI-Modell in einer Studie peer-review-tauglich dokumentiert?",
+          "antwort": "Vier Bestandteile: Erstens Modell-Identifikation — Modell-Name, Version, Hash der Gewichte-Datei, Quelle (Hugging Face Repo + Commit-ID, Zenodo-DOI). Zweitens Inferenz-Konfiguration — Sampling-Parameter (Temperature, Top-p, Seed), Prompt-Template, Tool-Bindings. Drittens Hardware/Software-Stack — GPU-Modell, Treiber-Version, Inferenz-Engine, Container-Image-Hash. Viertens Daten — Eingabe-Datensatz mit DOI oder Zugriffs-Beschreibung, Vorverarbeitung als Code. Best Practice: Container-Image als Studien-Artefakt veröffentlichen, ideal mit reproduzierbarem Build via Nix oder rekursive Hash-Validierung."
+        },
+        {
+          "frage": "Welche Strukturen gibt es für föderierte Forschung mit sensiblen Daten?",
+          "antwort": "Drei produktiv genutzte Architektur-Muster: Erstens GAIA-X-konforme Föderation — Daten bleiben am Standort, Self-Sovereign Identity koordiniert Zugriffsrechte. Zweitens Federated Learning (z. B. mit Flower oder PySyft) — Modelle werden lokal trainiert, nur Gradient-Updates ausgetauscht. Drittens Confidential Computing für gemeinsame Inferenz — Modell und Daten in einer Enklave, Ergebnis nach außen, ohne dass Beteiligte gegenseitig sehen. Wahl hängt am Forschungs-Setup: Verbund mit ungleichen Daten-Mengen, gemeinsamer Methoden-Standard, oder zentralisierte Inferenz auf föderierten Quellen."
+        },
+        {
+          "frage": "Welche Open-Weight-Modelle eignen sich für deutsche und mehrsprachige Forschungs-Korpora?",
+          "antwort": "Mit Fokus auf Deutsch: Teuken-7B aus OpenGPT-X (vom BMBF gefördert, deutsch-zentriert), EuroLLM (mehrsprachig EU-Sprachen), Llama 3.3 mit deutschem Fine-Tune. Für mehrsprachige Forschung: Qwen 2.5 (gut in CJK-Sprachen plus Englisch), Mistral Large 2 (Vielsprachen-Training). Für domänen-spezifische Anwendung: Fine-Tuning mit LoRA auf einem Open-Weight-Basis-Modell ist ressourcen-arm und reproduzierbar. Hardware-Schwelle: ein 70B-Modell in INT4 läuft auf 1×A100 80GB; ein 7B-Modell auf einer einzelnen RTX 4090."
+        },
+        {
+          "frage": "Wie verhält sich Forschung zur DSGVO bei der Verarbeitung qualitativer Daten mit LLMs?",
+          "antwort": "DSGVO-Artikel 89 enthält ein Forschungsprivileg, das einige Pflichten lockert (z. B. Speicherbegrenzung, Auskunftsrechte) — nicht jedoch die Grundsätze der Rechtmäßigkeit, Zweckbindung und Datenminimierung. Bei LLM-Inferenz auf personenbezogenen Daten gilt: Rechtsgrundlage muss klar sein (Einwilligung oder berechtigtes Interesse plus Pseudonymisierung), Datenfluss in Drittstaaten ist nur unter Schrems-II-konformen Bedingungen zulässig, Inferenz-Logs zählen ebenfalls als Verarbeitung. Empfohlen: lokale Inferenz auf Open-Weight, Pseudonymisierung vor Inferenz, dokumentiertes Datenfluss-Diagramm in der Ethik-Vorlage."
+        },
+        {
+          "frage": "Welche Förderlogik begünstigt souveräne KI-Forschung?",
+          "antwort": "Auf EU-Ebene: Horizon Europe Cluster 4 (Digital, Industry, Space) mit expliziten AI-Calls; AI-Factories über EuroHPC; das CSD (Common Sovereign Data) Framework als Begleit-Initiative. National in Deutschland: BMBF-Förderlinien zu KI-Servicezentren und vertrauenswürdiger KI; Helmholtz AI Cooperation Unit. Förderbedingungen verlangen zunehmend Open-Weight-Verwendung, Datenflüsse innerhalb EU und Veröffentlichung von Modell- und Daten-Artefakten unter offenen Lizenzen — was sich mit Souveränitäts-Architektur natürlich deckt."
+        }
+      ],
+      "stats": [
+        {
+          "claim": "Das EU-Projekt 'OpenGPT-X' hat mit Teuken-7B ein offen gewichtetes mehrsprachiges Modell für die EU-Sprachen veröffentlicht — Lizenz Apache 2.0, vom BMBF gefördert.",
+          "quelle": "OpenGPT-X Konsortium, Teuken-7B Release 2024"
+        },
+        {
+          "claim": "DSGVO-Artikel 89 enthält ein eingeschränktes Forschungsprivileg, das aber Schrems-II-Anforderungen für Drittlandsübermittlungen nicht aushebelt.",
+          "quelle": "DSGVO, Artikel 89"
+        }
+      ]
+    },
+
+    "forschung-experten": {
+      "meta_title": "Souveräne KI für Forschung — Expertenblick | Souveräne KI",
+      "meta_description": "Methodisch-infrastrukturelle Tiefe: deterministische Inferenz, föderiertes Lernen, GAIA-X-Compliance, Annex-IV-Adaption für Forschung.",
+      "h1": "Souveräne KI für Forschung und Akademie — Expertenblick",
+      "h2": "Wo Methode und Infrastruktur zusammenfallen — Reproduzierbarkeit, Föderation, Daten-Lineage als Forschungs-Standard.",
+      "faqs": [
+        {
+          "frage": "Wie wird LLM-Inferenz vollständig deterministisch (Bit-für-Bit reproduzierbar)?",
+          "antwort": "Stochastische Inferenz lässt sich in der Praxis nicht trivial deterministisch machen. Voraussetzungen: identische Hardware (GPU-Modell und Treiber-Version), identische Inferenz-Engine-Version, fixed Random Seeds (sowohl PyTorch als auch CUDA), Greedy Decoding (Temperature 0) oder Sampling mit fixed seed, deaktivierte cudnn benchmark-Modi. Selbst dann können Floating-Point-Ungenauigkeiten zwischen GPU-Architekturen abweichen. Realistisch: Bit-Identität auf identischer Hardware, semantische Reproduzierbarkeit cross-platform via dokumentierter Goldstandard-Eval-Suite mit Toleranz-Schranken."
+        },
+        {
+          "frage": "Welche föderierten Lern-Architekturen tragen sensible Verbund-Daten?",
+          "antwort": "Praktisch erprobt: Flower für allgemein verteiltes Federated Learning, NVIDIA FLARE für medizinische Verbund-Studien, FedML für mehrere Frameworks. Architektur-Bausteine: Secure Aggregation (Gradient-Updates verschlüsselt vor Aggregation), Differential Privacy in der Aggregation, Homomorphe Verschlüsselung für sensible Aggregate, Trusted Execution Environment für die Aggregator-Rolle. Trade-offs: Privacy-Garantien kosten Konvergenz-Geschwindigkeit; pragmatischer Mittelweg ist Secure Aggregation plus Pseudonymisierung der Eingaben, Differential Privacy nur bei besonders sensiblen Aggregaten."
+        },
+        {
+          "frage": "Wie wird Daten-Lineage in einer Forschungs-Pipeline lückenlos dokumentiert?",
+          "antwort": "Drei Layer: Datensatz-Lineage mit DOI oder Zenodo-Snapshot plus dokumentierter Vorverarbeitung als Code (z. B. dvc, Snakemake, Nextflow). Inferenz-Lineage mit Modell-Hash, Inferenz-Engine-Version und Sampling-Parametern pro Inferenz-Aufruf. Output-Lineage mit Hash der Outputs und Verweis auf Inferenz-Aufruf. Tools: Open Lineage Standard, MLflow Tracking, Eigenbau auf Object-Storage mit JSON-Manifesten. Audit-Anforderung erfüllt, wenn jedes Output-Artefakt zurück bis zum Eingabe-Datensatz und zum exakten Modell-Stand verfolgt werden kann."
+        },
+        {
+          "frage": "Welche Open-Weight-Foundation-Modelle erlauben sauberes Fine-Tuning für Forschung?",
+          "antwort": "Lizenz-saubere Optionen: Mistral-Modelle (Apache 2.0), Llama 3.x (Custom Llama Community License — akademische Nutzung uneingeschränkt, kommerzielle ab gewissen Schwellen reglementiert), Qwen (Apache 2.0 für Qwen 2.5 in den meisten Größen), Phi-3 (MIT). Fine-Tuning-Methoden: LoRA und QLoRA für Parameter-Effizienz, vollständiges Fine-Tuning nur bei großem Datenbestand. Reproduzierbarkeit: Trainings-Seeds dokumentieren, Datenversion fixieren, Training-Hyperparameter in Konfiguration mit Hash. Veröffentlichung: Adapter-Gewichte plus Trainings-Code unter offener Lizenz."
+        },
+        {
+          "frage": "Welche Anforderungen an EU-AI-Act-Annex-IV-Dokumentation greifen für akademische Anwendungen?",
+          "antwort": "Reine Forschungsanwendungen ohne Marktbereitstellung sind vom AI Act explizit ausgenommen (Artikel 2 Absatz 6) — solange keine kommerziellen oder regulatorischen Konsequenzen daran hängen. Sobald Forschungsergebnisse in Produkte überführt oder als Service angeboten werden, greift der volle Pflichtenkatalog. Vorausschauend für Forschungs-Praxis: Annex-IV-konforme Dokumentation auch in Forschung anlegen — Model Cards, Dataset Datasheets, Evaluations-Protokolle, Bias-Tests. Das senkt den Aufwand bei späterer Industrie-Verwertung erheblich und ist ohnehin gute Wissenschaftspraxis."
+        }
+      ],
+      "stats": [
+        {
+          "claim": "Artikel 2 Absatz 6 des EU AI Act schließt KI-Systeme aus, die ausschließlich für wissenschaftliche Forschung und Entwicklung entwickelt und in Betrieb genommen werden — Forschungsprivileg.",
+          "quelle": "EU AI Act, Artikel 2 (6)",
+          "link": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+        },
+        {
+          "claim": "GAIA-X Trust Framework definiert Self-Descriptions, Compliance-Validierung und Föderations-Knoten als Bausteine für souveräne Daten-Föderation in Forschung und Industrie.",
+          "quelle": "GAIA-X European Association, Architecture Document"
+        }
+      ]
+    }
+  },
+
+  "level_hubs": {
+    "einsteiger": {
+      "meta_title": "Souveräne KI — Einstieg | Souveräne KI",
+      "meta_description": "Was souveräne KI bedeutet, warum sie jetzt zählt, und welcher Branchen-Pfad zu Ihrem Profil passt. Einstieg mit kuratierten Vertiefungen.",
+      "h1": "Souveräne KI — der Einstieg",
+      "h2": "Drei Begriffe, vier Branchen-Sichten — hier finden Sie Ihren Pfad in das Thema.",
+      "lead": "Wenn Sie zum ersten Mal über souveräne KI nachdenken, brauchen Sie weniger eine Definition als eine Orientierung. Diese Seite ordnet die drei Begriffe ein, die ständig fallen — Souveränität, EU-Cloud, CLOUD Act —, und führt Sie weiter zu der Vertiefung, die zu Ihrem Profil passt.",
+      "intro_headline": "Was Sie auf der Einstiegs-Ebene finden",
+      "intro_paragraphs": [
+        "Souveräne KI bedeutet in einem Satz: Sie kontrollieren Modell, Daten, Betreiber und Rechtsgrundlage. Wer das delegiert, gibt nicht nur Effizienz aus der Hand, sondern auch Entscheidungsspielraum für die nächsten Jahre. Drei aktuelle Entwicklungen machen das Thema dringlich — der EU AI Act, der seit 2024 europaweit gilt, der US CLOUD Act, der extraterritorialen Datenzugriff erlaubt, und die zunehmende Konzentration von KI-Modellen bei wenigen Anbietern.",
+        "Die schwierigste Beobachtung beim Einstieg: 'EU-Cloud' und 'souveräne KI' sind nicht dasselbe. Eine deutsche Niederlassung eines US-Anbieters fällt weiterhin unter US-Recht — der CLOUD Act greift unabhängig vom physischen Speicherort, wenn die Muttergesellschaft US-amerikanischer Jurisdiktion unterliegt. Schrems II hat 2020 klargestellt, dass Standardvertragsklauseln allein nicht genügen, sondern supplementary measures Pflicht sind. Wer souverän bauen will, braucht drei Schichten: physische EU-Speicherung, Betreiber unter ausschließlich europäischer Jurisdiktion ohne US-Subprocessor, und Verschlüsselung mit Schlüsseln in eigener Hand. Erst diese Trias schließt extraterritoriale Zugriffe sowohl rechtlich als auch technisch aus. Anbieter, die diese drei Schichten heute liefern, sind in Deutschland an einer Hand abzuzählen — Stackit, IONOS, Open Telekom Cloud Sovereign, einige Landes-Rechenzentren. Die Auswahl ist überschaubar, aber sie ist realistisch.",
+        "Auf dieser Seite finden Sie vier Vertiefungen — eine pro Branche. Die Architektur-Bausteine sind weitgehend dieselben, die Schwerpunkte unterscheiden sich. Eine Behörde fragt anders nach Souveränität als ein Industrieunternehmen, ein Tech-Team anders als ein Forschungsverbund. Wählen Sie unten den Pfad, der Ihrem Profil am nächsten kommt."
+      ],
+      "faqs": [
+        {
+          "frage": "Was ist 'souveräne KI' in einem Satz?",
+          "antwort": "Souveräne KI ist KI, deren vier Schichten — Modell, Daten, Betrieb und Governance — unter europäischer Jurisdiktion stehen, sodass weder fremdes Recht noch fremde Anbieter-Politik in der Verarbeitung durchgreifen. Damit unterscheidet sie sich strukturell von 'KI in einem EU-Rechenzentrum', wo der Anbieter weiterhin US-Recht unterworfen sein kann."
+        },
+        {
+          "frage": "Warum reicht eine 'EU-Cloud' nicht aus?",
+          "antwort": "Der CLOUD Act erlaubt US-Behörden den Zugriff auf Daten US-amerikanischer Anbieter weltweit, unabhängig vom Speicherort. Eine deutsche Niederlassung von Amazon, Microsoft oder Google erfüllt dieses Kriterium. Souveränität verlangt zusätzlich, dass der Betreiber unter ausschließlich europäischer Jurisdiktion steht — ohne US-Mutter, ohne US-Subprocessor, ohne Vertragsgerichtsstand außerhalb der EU."
+        },
+        {
+          "frage": "Welcher Branchen-Pfad passt zu mir?",
+          "antwort": "Die vier Pfade — Unternehmen, Politik & Verwaltung, Tech & Engineering, Forschung & Akademie — unterscheiden sich nicht in der Technologie, sondern in den treibenden Fragen. Wirtschaftliche Verhandlungsmacht und Vendor-Lock-in stehen im Unternehmens-Pfad vorn; algorithmische Rechenschaft und Beschaffungsrecht in der Verwaltung; Stack-Architektur und Operations bei Tech; Reproduzierbarkeit und Vertraulichkeit in der Forschung. Wählen Sie nach Ihrer Tagesarbeit, nicht nach Branche im engeren Sinn."
+        },
+        {
+          "frage": "Ist souveräne KI teurer als kommerzielle KI?",
+          "antwort": "Es kommt auf das Volumen an. Bei seltener Nutzung sind kommerzielle APIs günstiger. Sobald Inferenz-Volumen kontinuierlich wird, kippt die Rechnung — eine moderne H100-GPU im europäischen Co-Location-Vertrag amortisiert sich bei mittlerer Auslastung in 12 bis 24 Monaten. Die zweite Kosten-Achse ist Compliance: ein einziger CLOUD-Act- oder Schrems-II-bezogener Vorfall kostet typischerweise mehr als die Differenz zwischen den Stack-Optionen über mehrere Jahre."
+        },
+        {
+          "frage": "Wo fängt man am besten an?",
+          "antwort": "Drei Schritte. Erstens: KI-Inventur — welche Anwendungen laufen schon, welche sind geplant. Zweitens: Schutzbedarf je Anwendung klassifizieren — DSGVO-Relevanz, EU-AI-Act-Risikoklasse, Geschäfts-Kritikalität. Drittens: pro Klasse die passende Stack-Stufe wählen — souverän zwingend für Hochrisiko und Vertrauliches, hybride oder offene Stacks für isolierbare Workloads. Das Whitepaper am Ende dieser Seite liefert die Bewertungsraster."
+        }
+      ]
+    },
+
+    "kenner": {
+      "meta_title": "Souveräne KI — der Überblick | Souveräne KI",
+      "meta_description": "Souveräne KI für Anwender mit Vorwissen: vier Säulen, vier Branchen-Profile, ein klarer Entscheidungsrahmen. Vertiefungen pro Bereich.",
+      "h1": "Souveräne KI — der Überblick",
+      "h2": "Sie kennen die Begriffe. Jetzt geht es um Architektur, Verträge und konkrete Auswahl.",
+      "lead": "Auf dieser Stufe sind Begriffe wie CLOUD Act, EU AI Act und Open-Weight-Modelle vertraut. Die Frage ist nicht mehr was — sondern wo die Trennlinie zwischen Marketing und Substanz liegt, welche Stack-Optionen heute produktiv sind, und welche Vertragsklauseln den Unterschied machen.",
+      "intro_headline": "Worum es auf dieser Ebene wirklich geht",
+      "intro_paragraphs": [
+        "Drei Themen kehren in jeder Konstellation wieder. Erstens die Modell-Wahl: Closed-Source-Frontier-Modelle bieten exzellente Performance, aber keinen Audit-Pfad zu Trainings-Daten. Open-Weight-Modelle wie Llama 3.x, Mistral Large oder Teuken-7B erreichen für die meisten produktiven Aufgaben ähnliche Qualität, lassen sich selbst hosten und versionieren. Zweitens die Daten-Architektur: Schrems II hat klargestellt, dass Standardvertragsklauseln allein nicht reichen — Verschlüsselung mit eigener Schlüsselhoheit, Confidential Computing und EU-only-Subprocessor-Ketten sind nicht optional, sondern aufsichtsrechtlich verlangt. Drittens die Vertragslage: Audit-Recht, No-Training-Klausel, vollständige Subprocessor-Transparenz und ein Vertragsgerichtsstand in der EU sind die vier Klauseln, die einen Stack-Wechsel überhaupt erst ermöglichen.",
+        "Was sich seit 2024 verändert hat: Open-Weight-Inferenz ist produktiv tragfähig. vLLM, SGLang und TensorRT-LLM liefern OpenAI-kompatible APIs mit Continuous Batching und Speculative Decoding; europäische GPU-Anbieter — Stackit, OVHcloud, IONOS, Scaleway — haben Kapazität aufgebaut; Co-Location lohnt sich bei mittlerer Auslastung über drei Jahre. Die Frage ist nicht mehr 'kann man souverän bauen', sondern 'unter welchen Constraints lohnt sich was'.",
+        "Die vier Branchen-Vertiefungen unterscheiden sich auf dieser Stufe vor allem in den Compliance-Schichten und der Beschaffungslogik. Wirtschaftliche Lock-in-Mechaniken stehen im Unternehmen-Pfad vorn; Vergaberecht und BSI-Grundschutz im Verwaltungs-Pfad; Stack-Bibliotheken und Eval-Disziplin bei Tech; Reproduzierbarkeit und Föderation in der Forschung. Wählen Sie unten den Pfad, der die Sprache spricht, in der Sie operativ entscheiden."
+      ],
+      "faqs": [
+        {
+          "frage": "Was unterscheidet 'sovereign cloud' substantiell vom Marketing-Begriff 'EU-Cloud'?",
+          "antwort": "EU-Cloud bezeichnet typischerweise nur EU-Speicherort. Sovereign Cloud — wenn der Begriff seriös benutzt wird — bedeutet vollständige Loslösung von extraterritorialen Rechtsregimen: keine US-Muttergesellschaft, keine US-Subprocessoren, kein Vertragsgerichtsstand außerhalb der EU, Verschlüsselung mit Schlüsseln in eigener Hand. Praktische Beispiele: Stackit (Schwarz-Gruppe), IONOS Cloud, Open Telekom Cloud Sovereign, Landes-Rechenzentren mit GPU-Erweiterung. Eigentümer-Struktur, Subprocessor-Liste und Vertragsklauseln sind die drei Prüfsteine."
+        },
+        {
+          "frage": "Welche Open-Weight-Modelle sind 2025 produktiv tragfähig?",
+          "antwort": "Für allgemeine Aufgaben: Llama 3.3 70B, Mistral Large 2, Qwen 2.5 72B, DeepSeek-V3. Für deutsche und mehrsprachige Workloads: Teuken-7B, EuroLLM. Für Code: Qwen 2.5-Coder, DeepSeek-Coder. Frontier-API-Modelle bleiben in tiefem Reasoning und Multimodalität in Spitzendisziplinen vorn. Pragmatische Strategie: Frontier-API für unkritische Aufgaben, Open-Weight selbst gehostet für vertrauliche und regulierte Workloads. Quantisierung auf INT4 oder FP8 senkt die Hardware-Schwelle erheblich."
+        },
+        {
+          "frage": "Wann lohnt eigene Infrastruktur ökonomisch?",
+          "antwort": "Eine H100-GPU im europäischen Co-Location kostet 2025 grob 30.000 bis 40.000 Euro pro Jahr inklusive Strom und Wartung. Bei Auslastung von 50 Prozent liefert sie 30 bis 80 Milliarden Tokens jährlich — je nach Modellgröße. Faustregel: Ab konstantem zweistelligem Millionen-Token-Volumen pro Monat ist eigene Infrastruktur wirtschaftlich, plus Sie gewinnen Audit- und Kontrollrechte, die per API nicht verkauft werden. Bei sporadischer Nutzung oder frühen Projektphasen bleiben souveräne Cloud-Optionen die richtige Wahl."
+        },
+        {
+          "frage": "Wie wirken EU AI Act und DSGVO konkret zusammen?",
+          "antwort": "Beide gelten kumulativ. DSGVO-Artikel 22 verlangt menschliche Letztentscheidung bei automatisierten Verfahren mit erheblichen Auswirkungen; EU-AI-Act-Artikel 14 verlangt menschliche Aufsicht für Hochrisiko-Systeme mit echter Eingriffsbefugnis. In der Praxis: nicht eine Person, die formal zustimmt, sondern eine Person, die das System aussetzen kann und dafür die nötigen Werkzeuge hat — Inferenz-Logs, Begründungs-Pfade, Modell-Versions-Information. Der EU AI Act ergänzt die DSGVO um eine Architektur-Pflicht; sie ersetzt sie nicht."
+        },
+        {
+          "frage": "Welche Vertragsklauseln sind für Souveränitäts-Audits kritisch?",
+          "antwort": "Vier Klauseln entscheiden zwischen wechselbarem Stack und Lock-in: Erstens Daten-Portabilität — exportierbare Modell-Konfigurationen, Fine-Tunes und Vektor-Daten in offenen Formaten. Zweitens No-Training — Ihre Eingaben fließen nicht ins Modell zurück. Drittens Subprocessor-Transparenz — vollständige Liste mit Änderungs-Vorlauf von mindestens 30 Tagen. Viertens Audit-Rechte — Sie oder ein beauftragter Dritter dürfen Sicherheits- und Compliance-Prüfungen durchführen. Ohne diese vier ist jeder Anbieter-Wechsel ein Migrations-Großprojekt."
+        }
+      ]
+    },
+
+    "experten": {
+      "meta_title": "Souveräne KI — Vertiefung | Souveräne KI",
+      "meta_description": "Tiefe Auseinandersetzung mit souveräner KI: Architektur, Compliance, Audit, Föderation. Branchen-Vertiefungen für Verantwortliche.",
+      "h1": "Souveräne KI — Vertiefung",
+      "h2": "Architektur, Compliance und operative Realität in einem Bild — und vier Branchen-Vertiefungen, die in die Tiefe gehen.",
+      "lead": "Auf Experten-Ebene sind Begriffe Bewertungs-Achsen, nicht Erklärungs-Hilfen. Die Frage ist, wie ein Stack unter Last, Audit und Eskalation steht — und wo die Vertrauenswurzel sitzt, wenn der Vertragspartner ausfällt.",
+      "intro_headline": "Drei Bewertungs-Dimensionen, die in jeder Konstellation tragen müssen",
+      "intro_paragraphs": [
+        "Erste Dimension — Vertrauenswurzel. Vertragliche Souveränität (EU-Anbieter mit US-Mutter) reicht für viele Workloads nicht. Operative Souveränität (vollständig EU-eigene Infrastruktur ohne US-Subprocessor) trägt produktive Hochrisiko-Anwendungen. Physische Souveränität (eigene Co-Location oder On-Premise mit eigenem Hypervisor) ist der Stand für Kronjuwelen — Audit-Resistenz und Vertrags-Souveränität gleichzeitig. Confidential Computing (Intel TDX, AMD SEV-SNP) verschiebt die Wurzel von Vertragskette in Hardware-Attestation; produktiv reif für CPU-Inferenz, GPU-CC noch in Reifeprozess.",
+        "Zweite Dimension — Audit-Architektur. Annex IV des EU AI Act und die DSGVO-Rechenschaftspflicht verlangen eine Pipeline, die ihre eigene Geschichte erzählen kann. Vollständige Inferenz-Logs mit Modell-Versions-ID, Eingabe-Hash, Sampling-Parametern und Ausgabe-Hash; Replay-Fähigkeit über Modell-Snapshots in einer Registry; Daten-Lineage von Source bis Inferenz; Manipulations-Sicherheit über append-only Sinks mit kryptografischem Anchoring. Ohne diese Bausteine scheitert Konformitätsbewertung nach Artikel 43 nicht erst beim Audit, sondern bereits in der Vorbereitung.",
+        "Dritte Dimension — Resilienz unter Eskalation. Modell-Portabilität (offene Gewichte, OpenAI-kompatible Inferenz-API als Standard, austauschbare Backends), Daten-Portabilität (offene Vektor-Formate, dokumentierte Schema-Migration), Vertrags-Portabilität (Multi-Provider-Setup mit dokumentierter Migrations-Reihenfolge). Im Eskalations-Fall — Sanktions-bedingter API-Ausfall, politisch erzwungener Anbieterwechsel, plötzliche Lizenz-Änderung — entscheiden diese Achsen zwischen 'innerhalb von Tagen umgezogen' und 'Quartalsprojekt'. Tabletop-Übungen für solche Szenarien gehören zur Vorbereitung, nicht zur Reaktion.",
+        "Die vier Branchen-Vertiefungen darunter gehen in den jeweiligen Compliance-Pflichtenkatalog im Detail. Annex-VI-Konformitätsbewertung im Unternehmen-Pfad; AI-Act-plus-BSI-Grundschutz-Integration im Verwaltungs-Pfad; technische Implementierung mit Confidential Inference und Annex-IV-Pflichtenkatalog bei Tech; deterministische Reproduzierbarkeit, föderiertes Lernen und Forschungsprivileg in der Forschung."
+      ],
+      "faqs": [
+        {
+          "frage": "Welche technischen Schutzmaßnahmen halten unter Schrems-II-Logik?",
+          "antwort": "Standardvertragsklauseln allein reichen nicht. Tragend sind: Pseudonymisierung mit revertierbarem Mapping unter EU-Schlüsselhoheit; Confidential Computing für Inferenz-Isolation (Intel TDX, AMD SEV-SNP, NVIDIA H100 mit CC-On für GPU-Workloads); HSM-gestützte Bring-Your-Own-Key-Verfahren mit EU-Hardware-Anker; deterministisches Logging in EU-only Sinks. Für höchste Schutzstufen: air-gapped Inferenz-Cluster mit definierter Daten-Diode. Aufsichtsrechtlich werden diese Maßnahmen pro Anwendung einzeln bewertet — kein einheitlicher Pauschalschutz."
+        },
+        {
+          "frage": "Wie wird AI-Act-Annex-IV-Konformität operativ implementiert?",
+          "antwort": "Annex IV verlangt unter anderem: Modellbeschreibung mit Trainings-Methodik, Datenqualitäts-Belege nach Artikel 10, Performance-Metriken nach Aufgabenklasse, Risiko-Mitigationen nach Artikel 9, menschliche-Aufsicht-Mechanismen nach Artikel 14, Cybersecurity-Maßnahmen nach Artikel 15. Implementierungs-Bausteine: Model Cards (Mitchell et al. 2019), Datasheets für Datasets (Gebru et al.), kontinuierliche Eval-Reports mit Goldstandard-Coverage, Threat-Modeling pro Anwendungs-Kontext. Tooling: Hugging Face Model Cards Toolkit, MLflow mit AI-Act-Erweiterung, Eigenbau auf OpenTelemetry."
+        },
+        {
+          "frage": "Welche Audit-Architektur trägt aufsichtsrechtliche Prüfungen?",
+          "antwort": "Drei Anforderungen: Vollständigkeit (jeder Inferenz-Aufruf mit Eingabe-Hash, Modell-Versions-ID, Parameter-Fingerprint, Ausgabe-Hash); Replay-Fähigkeit (deterministische Reproduktion aus Input und Modell-State, fixed Seeds bei stochastischen Modellen); Manipulations-Sicherheit (append-only Log-Sinks, kryptografisches Anchoring über Hash-Chains). Strukturiertes Logging via OpenTelemetry, Sink in EU-only Object-Storage mit Object-Lock, periodische Hash-Verifikation. Daten-Lineage parallel — sonst scheitert Artikel-10-Konformität bei Re-Trainings."
+        },
+        {
+          "frage": "Wie wird ein Multi-Tier-Stack zwischen Schutzbedarf-Klassen aufgesetzt?",
+          "antwort": "Pro Workload-Klasse ist die zulässige Stack-Stufe vertraglich und technisch fixiert. Routing-Layer (LiteLLM oder Eigenbau) prüft Workload-Klassifizierung und routet zu zugelassenem Backend; Sicherheits-Constraint: keine Cross-Klassen-Leaks, vertrauliche Inputs landen niemals in unzulässigen Backends. Logging dokumentiert jeden Routing-Entscheid mit Klasse, Backend, Begründung. Routing-Konfiguration als versionierter Code unter Audit. Stufe 1 (vertraglich souverän) für isolierbare Workloads, Stufe 2 (operativ souverän) für Produktion, Stufe 3 (physisch souverän) für Kronjuwelen."
+        },
+        {
+          "frage": "Welche Resilienz-Strategien tragen politische Eskalationen?",
+          "antwort": "Drei Achsen, alle parallel zu pflegen: Modell-Portabilität mit OpenAI-kompatibler Inferenz-API als Schnittstellen-Standard und austauschbaren Backends (vLLM, SGLang, TGI, llama.cpp je nach Workload); Daten-Portabilität mit offenen Vektor-Formaten (pgvector, Qdrant), standardisierten Embeddings-Modellen, dokumentierter Schema-Migration; Vertrags-Portabilität mit Multi-Provider-Setup und dokumentierter Migrations-Reihenfolge zwischen Stack-Stufen. Tabletop-Übungen für Eskalations-Szenarien — Sanktions-bedingter API-Ausfall, plötzlicher Lizenzwechsel, politisch erzwungener Anbieterwechsel — gehören zur Vorbereitung."
+        }
+      ]
+    }
+  }
+}

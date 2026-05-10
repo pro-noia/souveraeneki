@@ -1,5 +1,24 @@
-import PlaceholderLanding from "@/components/PlaceholderLanding";
+import type { Metadata } from "next";
+import PersonaPage from "@/components/persona/PersonaPage";
+import {
+  resolvePersona,
+  buildPersonaMetadata,
+  buildPersonaJsonLd,
+} from "@/lib/personas";
+
+const persona = resolvePersona("technik", "einsteiger");
+
+export const metadata: Metadata = buildPersonaMetadata(persona);
 
 export default function Page() {
-  return <PlaceholderLanding title="Souveräne KI für Tech & Engineering – Einstieg" />;
+  const jsonLd = buildPersonaJsonLd(persona);
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <PersonaPage persona={persona} />
+    </>
+  );
 }

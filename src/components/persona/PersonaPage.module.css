@@ -1,0 +1,493 @@
+.page {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+}
+
+/* === Breadcrumb === */
+
+.breadcrumb {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-md) var(--container-padding) 0;
+  font-size: var(--text-small);
+  color: var(--text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  align-items: center;
+}
+
+.breadcrumb a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb a:hover {
+  color: var(--mondstein);
+}
+
+.breadcrumb span[aria-current="page"] {
+  color: var(--text-secondary);
+}
+
+.breadcrumbSep {
+  opacity: 0.5;
+}
+
+/* === Hero === */
+
+.hero {
+  position: relative;
+  padding: var(--space-2xl) var(--container-padding) var(--space-xl);
+  background: var(--bg-gradient);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.heroInner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-family: var(--font-mono-stack);
+  font-size: var(--text-caption);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mondstein);
+  margin: 0 0 var(--space-md);
+}
+
+.eyebrow .sep {
+  color: var(--text-muted);
+  margin: 0 0.6em;
+}
+
+.h1 {
+  font-size: var(--text-h1);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-md);
+  max-width: 24ch;
+}
+
+.h2 {
+  font-size: var(--text-body-lg);
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-lg);
+  max-width: 60ch;
+}
+
+.lead {
+  font-size: var(--text-body-lg);
+  line-height: 1.65;
+  color: var(--text-primary);
+  margin: 0;
+  max-width: 60ch;
+}
+
+/* === Section base === */
+
+.section {
+  padding: var(--space-2xl) var(--container-padding);
+}
+
+.sectionInner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.sectionInner.narrow {
+  max-width: 760px;
+}
+
+.sectionAlt {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sectionHeadline {
+  font-size: var(--text-h2);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-lg);
+  max-width: 36ch;
+}
+
+.sectionLead {
+  font-size: var(--text-body-lg);
+  line-height: 1.65;
+  color: var(--text-secondary);
+  max-width: 60ch;
+  margin: 0 0 var(--space-lg);
+}
+
+/* === Einordnung — paragraphs === */
+
+.prose p {
+  font-size: var(--text-body);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-md);
+  max-width: 65ch;
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+/* === Painpoints grid === */
+
+.painpointsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-lg);
+}
+
+@media (max-width: 880px) {
+  .painpointsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.painpoint {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.painpoint:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-1px);
+}
+
+.painpointIcon {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: oklch(0.50 0.090 200 / 0.12);
+  color: var(--petrol-bright);
+  border: 1px solid oklch(0.50 0.090 200 / 0.22);
+}
+
+.painpointIcon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.painpointHeadline {
+  font-size: var(--text-h3);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.painpointBody {
+  font-size: var(--text-body);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* === Pillars === */
+
+.pillarsList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+@media (max-width: 880px) {
+  .pillarsList {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pillar {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.pillarName {
+  font-family: var(--font-mono-stack);
+  font-size: var(--text-caption);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mondstein);
+  margin: 0;
+}
+
+.pillarFrage {
+  font-size: var(--text-h3);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.pillarBody {
+  font-size: var(--text-body);
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* === Use cases === */
+
+.useCaseList {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.useCase {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: var(--space-lg);
+}
+
+.useCaseTitle {
+  font-size: var(--text-h3);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-sm);
+}
+
+.useCaseRow {
+  font-size: var(--text-body);
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-xs);
+}
+
+.useCaseLabel {
+  font-family: var(--font-mono-stack);
+  font-size: var(--text-caption);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mondstein);
+  margin-right: 0.4em;
+}
+
+/* === FAQ === */
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.faqItem {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.faqItem[open] {
+  border-color: var(--border-hover);
+}
+
+.faqSummary {
+  list-style: none;
+  cursor: pointer;
+  padding: var(--space-md) var(--space-lg);
+  font-size: var(--text-body-lg);
+  font-weight: 500;
+  color: var(--text-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.faqSummary::-webkit-details-marker {
+  display: none;
+}
+
+.faqChevron {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: transform 0.2s ease;
+}
+
+.faqItem[open] .faqChevron {
+  transform: rotate(180deg);
+}
+
+.faqAnswer {
+  padding: 0 var(--space-lg) var(--space-lg);
+  font-size: var(--text-body);
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* === Stats / sources === */
+
+.stats {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border-subtle);
+  display: grid;
+  gap: var(--space-md);
+}
+
+.stat {
+  font-size: var(--text-small);
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.statClaim {
+  color: var(--text-secondary);
+}
+
+.statSource {
+  font-family: var(--font-mono-stack);
+  font-size: var(--text-caption);
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.statSource a {
+  color: var(--mondstein);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* === Glossar Sprungbrett === */
+
+.glossarGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-md);
+}
+
+.glossarCard {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: var(--space-md);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.glossarCard:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-1px);
+}
+
+.glossarTerm {
+  font-size: var(--text-body);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.glossarKategorie {
+  font-family: var(--font-mono-stack);
+  font-size: var(--text-caption);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mondstein);
+}
+
+/* === Cross-links === */
+
+.crossGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+}
+
+@media (max-width: 880px) {
+  .crossGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.crossBlock h3 {
+  font-size: var(--text-h3);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-md);
+}
+
+.crossList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.crossLink {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: var(--space-md);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.crossLink:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-1px);
+}
+
+.crossLabel {
+  font-size: var(--text-body);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.crossDescription {
+  font-size: var(--text-small);
+  color: var(--text-muted);
+}
+
+/* === Coming-soon hint === */
+
+.comingSoon {
+  margin: var(--space-lg) 0;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  font-size: var(--text-body);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
