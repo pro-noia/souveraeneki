@@ -22,13 +22,13 @@ Pflicht nach § 5 TMG sowie § 55 Abs. 2 RStV.
 
 | Platzhalter | Wodurch ersetzen | Quelle / Hinweis |
 |---|---|---|
-| `[Vor- und Nachname / Firma]` | Vollständiger Name oder Firmenname inkl. Rechtsform | Bei GmbH/UG: „Firma GmbH" oder „Firma UG (haftungsbeschränkt)" |
-| `[Straße und Hausnummer]` | Ladungsfähige Anschrift | Postfach reicht **nicht** |
-| `[PLZ Ort]` | Postleitzahl + Ort | |
-| `[Land]` | „Deutschland", „Schweiz", … | |
-| `[Name der vertretungsberechtigten Person]` | Geschäftsführer:in / Inhaber:in | Bei GmbH einzeln namentlich |
-| `[+49 …]` | Telefonnummer | optional, aber empfohlen |
-| `hallo@souveraeneki.de` | Echte Kontakt-E-Mail | falls abweichend |
+| `O. D. Cordt` | Vollständiger Name oder Firmenname inkl. Rechtsform | Bei GmbH/UG: „Firma GmbH" oder „Firma UG (haftungsbeschränkt)" |
+| `Gut Widdauen 1` | Ladungsfähige Anschrift | Postfach reicht **nicht** |
+| `40764 Langenfeld` | Postleitzahl + Ort | |
+| `Deutschland` | „Deutschland", „Schweiz", … | |
+| `O. D. Cordt` | Geschäftsführer:in / Inhaber:in | Bei GmbH einzeln namentlich |
+| `--` | Telefonnummer | optional, aber empfohlen |
+| `souveraeneKI{ät}cordt.net` | Echte Kontakt-E-Mail | falls abweichend |
 | `[Amtsgericht Ort]` | Registergericht | Nur wenn Firma im Handelsregister steht |
 | `[HRB …]` | Handelsregisternummer | Nur wenn HR-Eintrag existiert |
 | `[DE …]` | USt-IdNr. nach § 27a UStG | Nur wenn vorhanden |
@@ -83,13 +83,13 @@ einer Website ohne Tracking.
 
 | Platzhalter | Wodurch ersetzen | Hinweis |
 |---|---|---|
-| `[TT.MM.JJJJ]` im Lead | Heutiges Datum, z. B. `13.05.2026` | Bei jeder inhaltlichen Änderung aktualisieren |
-| `[Vor- und Nachname / Firma]` | Identisch zu Impressum | |
-| `[Straße und Hausnummer]` | Identisch zu Impressum | |
-| `[PLZ Ort]` | Identisch zu Impressum | |
-| `datenschutz@souveraeneki.de` | Eigene Datenschutz-E-Mail | Kann identisch zu `hallo@…` sein, sollte aber separat sein |
+| `[01.05.2026]` im Lead | Heutiges Datum, z. B. `13.05.2026` | Bei jeder inhaltlichen Änderung aktualisieren |
+| `O. D. COrdt` | Identisch zu Impressum | |
+| `Gut Widdauen 1` | Identisch zu Impressum | |
+| `40764 Langenfeld` | Identisch zu Impressum | |
+| `datenschutz{ät}cordt.net` | Eigene Datenschutz-E-Mail | Kann identisch zu `hallo@…` sein, sollte aber separat sein |
 | `[Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA — Auftragsverarbeitungsvertrag und Standardvertragsklauseln vereinbart]` in Section 3 (Hosting) | Belassen, wenn du auf Vercel hostest | Falls anderer Hoster — Anbieter + Adresse + AV-Vertrag-Hinweis ersetzen. Für Hetzner/Stackit/IONOS reicht: „… gehostet durch Hetzner Online GmbH, Industriestr. 25, 91710 Gunzenhausen, Deutschland. Auftragsverarbeitungsvertrag besteht." |
-| `[E-Mail-Dienstleister mit Sitz in der EU]` in Section 6 (Whitepaper) | Echten Dienstleister benennen, sobald angebunden | z. B. „Brevo, 7 rue de Madrid, 75008 Paris, Frankreich" |
+| `Brevo, 7 rue de Madrid, 75008 Paris, Frankreich` in Section 6 (Whitepaper) | Echten Dienstleister benennen, sobald angebunden | z. B. „Brevo, 7 rue de Madrid, 75008 Paris, Frankreich" |
 
 ### Wann du eine Section löschen oder ergänzen musst
 
@@ -133,9 +133,9 @@ E-Mail-Adressen.
 
 | Platzhalter | Wodurch ersetzen |
 |---|---|
-| `hallo@souveraeneki.de` | Allgemeine Kontakt-Mail |
-| `projekte@souveraeneki.de` | Mail für Pilot-Projekt-Anfragen — kann identisch sein, falls du keine zweite Adresse willst |
-| `[Vor- und Nachname / Firma]` + Anschrift | Wie Impressum |
+| `souveraeneki@cordt.net` | Allgemeine Kontakt-Mail |
+| `souveraeneki@cordt.net` | Mail für Pilot-Projekt-Anfragen — kann identisch sein, falls du keine zweite Adresse willst |
+| `O. D. Cordt` + Anschrift | Wie Impressum |
 
 Falls du nur eine E-Mail-Adresse hast: lösche die zweite Karte (`Pilot-
 Projekte`), das Layout passt sich automatisch an.
