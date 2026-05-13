@@ -1,18 +1,28 @@
 # Brevo-Setup für den Whitepaper-Lead-Magnet
 
+> **Aktueller Stand (2026-05-13)**: Das Whitepaper-PDF wird **direkt im
+> Browser zum Download angeboten** — kein automatischer E-Mail-Versand.
+> Brevo speichert nur den Kontakt (E-Mail + Unternehmen) zur späteren
+> Newsletter-Verwendung. Damit entfällt **alles rund um DKIM, SPF und
+> Absender-Verifikation** — das brauchst du erst, wenn du wirklich Mails
+> aus dem System verschicken willst.
+>
+> Daraus folgt: für den Start reichen **Schritte 1–3 + Schritt 5**
+> (PDF bereitstellen). **Schritte 4 und 6** sind erst nötig, wenn später
+> aktiver Newsletter-Versand starten soll.
+
 Diese Anleitung verknüpft das Whitepaper-Formular auf der Site mit deinem
 Brevo-Account. Nach dem Setup wird jede Anmeldung automatisch zur Liste
-„Whitepaper" in Brevo hinzugefügt — und (optional) eine Automation
-verschickt dann das Whitepaper-PDF.
+„Whitepaper" in Brevo hinzugefügt.
 
 Ablauf:
 
 1. Brevo: Liste anlegen → ID notieren
 2. Brevo: API-Key erzeugen → kopieren
 3. Vercel: zwei ENV-Variablen hinzufügen
-4. Brevo: Automation Workflow „Welcome → Whitepaper senden"
-5. Whitepaper-PDF hochladen
-6. End-to-End-Test
+4. *(später)* Brevo: Automation Workflow „Welcome → Whitepaper senden"
+5. Whitepaper-PDF unter `public/whitepaper.pdf` ablegen
+6. *(später)* DKIM + SPF einrichten, sobald Mail-Versand aktiviert wird
 
 ---
 
@@ -62,10 +72,16 @@ Variablen eintragen. Siehe `.env.example`.
 
 ---
 
-## 4. Automation Workflow „Whitepaper senden"
+## 4. *(später, optional)* Automation Workflow „Whitepaper senden"
 
-Ohne Automation landen die Leads zwar in Brevo, bekommen aber nichts in
-ihr Postfach. Setup so:
+> **Nur nötig, wenn du das Whitepaper zusätzlich per E-Mail verschicken
+> willst.** Im aktuellen Setup (Direct-Download) kommt das Whitepaper
+> direkt im Browser an — keine Automation, kein DKIM nötig. Diesen
+> Abschnitt kannst du überspringen und später nachholen.
+
+Wenn du irgendwann Mail-Versand aktivieren willst (z. B. für späteren
+Newsletter), brauchst du **zuerst DKIM + SPF** in deinem DNS-Editor
+(siehe Brevo → Senders & IP → Domains). Erst danach folgender Setup:
 
 1. Brevo → Sidebar **Automation** → **Create a new automation**
 2. Vorlage **„Welcome message"** wählen (oder **„From scratch"**)
@@ -100,27 +116,32 @@ ihr Postfach. Setup so:
 
 ---
 
-## 5. Whitepaper-PDF hochladen
+## 5. Whitepaper-PDF unter `public/whitepaper.pdf` ablegen
 
-Zwei Optionen:
+Das Frontend rendert nach Erfolgs-Submit einen Download-Button, der auf
+`/whitepaper.pdf` zeigt. Die Datei muss exakt unter diesem Pfad liegen.
 
-**A — Direkt im Repo (einfach, kostenlos):**
-1. PDF lokal vorbereiten, z. B. `whitepaper-souveraene-ki.pdf`
-2. In `public/whitepaper.pdf` ablegen
-3. `git add public/whitepaper.pdf && git commit -m "feat: whitepaper pdf" && git push`
-4. Nach Vercel-Deploy unter `https://souveräneki.de/whitepaper.pdf` erreichbar
-5. Im Brevo-Automation-Email-Editor diesen Link verwenden
+```bash
+# 1. PDF lokal vorbereiten — frei wählbarer Dateiname egal, beim Kopieren
+#    umbenennen.
+cp ~/Downloads/whitepaper-souveraene-ki.pdf public/whitepaper.pdf
 
-**B — In Brevo hochladen** (besseres Tracking, Brevo zählt Downloads):
-1. Brevo → **Library** (Sidebar) → **Files** → **Upload**
-2. PDF auswählen, hochladen
-3. Im Mail-Editor: Button einfügen → Aktion „Datei aus Bibliothek" → Datei
-   wählen
-4. Brevo generiert eine getrackte URL
+# 2. Größe prüfen — sollte unter 5 MB liegen, sonst Komprimierung empfohlen
+ls -lh public/whitepaper.pdf
 
-Empfehlung: Variante A wenn du das PDF eh schon hast und kein zusätzliches
-Tracking willst. B wenn du wissen willst, wie viele tatsächlich auf den
-Download klicken.
+# 3. Committen und pushen (Vercel deployt automatisch)
+git add public/whitepaper.pdf
+git commit -m "feat: whitepaper pdf for download"
+git push origin main
+```
+
+Nach Vercel-Deploy ist das PDF unter `https://souveräneki.de/whitepaper.pdf`
+erreichbar und der Download-Button im Whitepaper-Formular funktioniert
+End-to-End.
+
+**Wichtig**: solange die Datei fehlt, zeigt der Download-Button auf eine
+404er-Ressource. Das Formular funktioniert (Lead landet in Brevo), aber der
+Download startet nicht. Beheben durch Hochladen der Datei.
 
 ---
 

@@ -164,18 +164,20 @@ export default function DatenschutzPage() {
               6. Whitepaper-Anmeldung
             </h2>
             <p>
-              Für den Bezug des Whitepapers verarbeite ich Ihre
-              E-Mail-Adresse und Ihren Unternehmensnamen auf Grundlage Ihrer
-              Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Die Daten werden
-              ausschließlich für den Versand des Whitepapers und gelegentliche
-              fachlich relevante Folgeinformationen genutzt. Versand und
-              Listen-Verwaltung erfolgen über die Brevo (Sendinblue) SAS,
-              7 rue de Madrid, 75008 Paris, Frankreich. Mit Brevo besteht ein
-              Auftragsverarbeitungsvertrag nach Art. 28 DSGVO; die Verarbeitung
-              findet auf Servern innerhalb der EU statt. Sie können Ihre
-              Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen,
-              etwa per Abmeldelink in jeder E-Mail oder formlos per Nachricht
-              an die unter Ziffer 1 genannte E-Mail-Adresse.
+              Beim Bezug des Whitepapers verarbeite ich Ihre E-Mail-Adresse
+              und Ihren Unternehmensnamen auf Grundlage Ihrer Einwilligung
+              (Art. 6 Abs. 1 lit. a DSGVO). Das Whitepaper selbst wird direkt
+              im Browser zum Download bereitgestellt — ein automatischer
+              E-Mail-Versand des PDFs findet nicht statt. Ihre Kontaktdaten
+              werden in der Listenverwaltung der Brevo (Sendinblue) SAS,
+              7 rue de Madrid, 75008 Paris, Frankreich gespeichert, um Ihnen
+              gelegentlich fachlich relevante Folgeinformationen zukommen zu
+              lassen. Mit Brevo besteht ein Auftragsverarbeitungsvertrag nach
+              Art. 28 DSGVO; die Verarbeitung findet auf Servern innerhalb der
+              EU statt. Sie können Ihre Einwilligung jederzeit mit Wirkung für
+              die Zukunft widerrufen — per Abmeldelink in zukünftigen E-Mails
+              oder formlos per Nachricht an die unter Ziffer 1 genannte
+              E-Mail-Adresse.
             </p>
           </section>
 

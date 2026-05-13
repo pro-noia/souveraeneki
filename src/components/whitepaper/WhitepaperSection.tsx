@@ -67,13 +67,25 @@ export default function WhitepaperSection() {
           <div className={styles.success} role="status" aria-live="polite">
             <h3 className={styles.successHeadline}>Vielen Dank.</h3>
             <p className={styles.successBody}>
-              Das Whitepaper liegt in den nächsten Minuten in Ihrem Postfach.
-              Falls die E-Mail nicht ankommt, prüfen Sie bitte den Spam-Ordner —
-              oder schreiben Sie uns kurz an{" "}
-              <a href="mailto:souveraeneki@cordt.net" style={{ color: "var(--mondstein)", textDecoration: "underline" }}>
+              Ihr Whitepaper liegt zum Download bereit.
+            </p>
+            <a
+              href="/whitepaper.pdf"
+              download="Souveraene-KI-Whitepaper.pdf"
+              className="btn-primary"
+              style={{
+                alignSelf: "flex-start",
+                marginTop: "var(--space-xs)",
+              }}
+            >
+              Whitepaper herunterladen (PDF)
+            </a>
+            <p className={styles.privacy}>
+              Falls der Download nicht startet, schreiben Sie kurz an{" "}
+              <a href="mailto:souveraeneki@cordt.net">
                 souveraeneki@cordt.net
-              </a>
-              .
+              </a>{" "}
+              — ich schicke das PDF dann manuell.
             </p>
           </div>
         ) : (
