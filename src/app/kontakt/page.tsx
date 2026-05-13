@@ -80,11 +80,11 @@ export default function KontaktPage() {
               Anliegen.
             </p>
             <a
-              href="mailto:hallo@souveraeneki.de"
+              href="mailto:souveraeneki@cordt.net"
               className="text-[var(--accent-light)] font-medium underline transition-colors duration-200 hover:text-[var(--text-primary)]"
               style={{ fontSize: "var(--text-body)" }}
             >
-              hallo@souveraeneki.de
+              souveraeneki@cordt.net
             </a>
           </div>
 
@@ -111,15 +111,16 @@ export default function KontaktPage() {
               className="text-[var(--text-secondary)] leading-relaxed mb-[var(--space-md)]"
               style={{ fontSize: "var(--text-small)" }}
             >
-              Sie möchten souveräne KI in Ihrer Organisation pilotieren? Sagen
-              Sie uns kurz, in welcher Branche und auf welcher Ebene.
+              Sie möchten souveräne KI in Ihrer Organisation pilotieren?
+              Schreiben Sie mir kurz, in welcher Branche und auf welcher
+              Ebene.
             </p>
             <a
-              href="mailto:projekte@souveraeneki.de"
+              href="mailto:souveraeneki@cordt.net?subject=Pilot-Projekt"
               className="text-[var(--accent-light)] font-medium underline transition-colors duration-200 hover:text-[var(--text-primary)]"
               style={{ fontSize: "var(--text-body)" }}
             >
-              projekte@souveraeneki.de
+              souveraeneki@cordt.net
             </a>
           </div>
         </div>
@@ -146,13 +147,13 @@ export default function KontaktPage() {
               className="text-[var(--text-secondary)] leading-relaxed"
               style={{ fontSize: "var(--text-body)" }}
             >
-              [Vor- und Nachname / Firma]
+              O. D. Cordt
               <br />
-              [Straße und Hausnummer]
+              Gut Widdauen 1
               <br />
-              [PLZ Ort]
+              40764 Langenfeld
               <br />
-              [Land]
+              Deutschland
             </p>
           </div>
         </div>
@@ -161,9 +162,8 @@ export default function KontaktPage() {
           className="mt-[var(--space-2xl)] text-[var(--text-muted)] max-w-[680px] leading-relaxed"
           style={{ fontSize: "var(--text-small)" }}
         >
-          Hinweis zum Datenschutz: Mit Ihrer E-Mail an uns übermitteln Sie
-          personenbezogene Daten. Details zur Verarbeitung finden Sie in
-          unserer{" "}
+          Hinweis zum Datenschutz: Mit Ihrer E-Mail übermitteln Sie
+          personenbezogene Daten. Details zur Verarbeitung finden Sie in der{" "}
           <a
             href="/datenschutz"
             className="underline transition-colors duration-200 hover:text-[var(--text-secondary)]"

@@ -70,8 +70,8 @@ export default function WhitepaperSection() {
               Das Whitepaper liegt in den nächsten Minuten in Ihrem Postfach.
               Falls die E-Mail nicht ankommt, prüfen Sie bitte den Spam-Ordner —
               oder schreiben Sie uns kurz an{" "}
-              <a href="mailto:hallo@souveraeneki.de" style={{ color: "var(--mondstein)", textDecoration: "underline" }}>
-                hallo@souveraeneki.de
+              <a href="mailto:souveraeneki@cordt.net" style={{ color: "var(--mondstein)", textDecoration: "underline" }}>
+                souveraeneki@cordt.net
               </a>
               .
             </p>

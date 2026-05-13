@@ -48,7 +48,7 @@ export default function DatenschutzPage() {
             style={{ fontSize: "var(--text-body-lg)" }}
           >
             Informationen zur Verarbeitung personenbezogener Daten nach Art. 13
-            und 14 DSGVO. Stand: [TT.MM.JJJJ].
+            und 14 DSGVO. Stand: 13.05.2026.
           </p>
         </div>
       </header>
@@ -70,18 +70,18 @@ export default function DatenschutzPage() {
               Sinne der DSGVO ist:
             </p>
             <p className="mt-[var(--space-sm)]">
-              [Vor- und Nachname / Firma]
+              O. D. Cordt
               <br />
-              [Straße und Hausnummer]
+              Gut Widdauen 1
               <br />
-              [PLZ Ort]
+              40764 Langenfeld
               <br />
               E-Mail:{" "}
               <a
-                href="mailto:datenschutz@souveraeneki.de"
+                href="mailto:datenschutz@cordt.net"
                 className="underline transition-colors duration-200 hover:text-[var(--accent-light)]"
               >
-                datenschutz@souveraeneki.de
+                datenschutz@cordt.net
               </a>
             </p>
           </section>
@@ -94,9 +94,9 @@ export default function DatenschutzPage() {
               2. Allgemeines zur Datenverarbeitung
             </h2>
             <p>
-              Wir verarbeiten personenbezogene Daten unserer Nutzerinnen und
+              Ich verarbeite personenbezogene Daten der Nutzerinnen und
               Nutzer grundsätzlich nur, soweit dies zur Bereitstellung einer
-              funktionsfähigen Website sowie unserer Inhalte und Leistungen
+              funktionsfähigen Website sowie der Inhalte und Leistungen
               erforderlich ist. Rechtsgrundlage ist in der Regel Art. 6 Abs. 1
               DSGVO — je nach Verarbeitungsvorgang Buchstabe a (Einwilligung),
               b (Vertrag), c (rechtliche Verpflichtung) oder f (berechtigtes
@@ -112,9 +112,10 @@ export default function DatenschutzPage() {
               3. Hosting
             </h2>
             <p>
-              Diese Website wird gehostet durch [Vercel Inc., 340 S Lemon Ave
-              #4133, Walnut, CA 91789, USA — Auftragsverarbeitungsvertrag und
-              Standardvertragsklauseln vereinbart]. Beim Aufruf der Seite
+              Diese Website wird gehostet durch Vercel Inc., 340 S Lemon Ave
+              #4133, Walnut, CA 91789, USA. Mit Vercel besteht ein
+              Auftragsverarbeitungsvertrag (DPA) inklusive
+              Standardvertragsklauseln. Beim Aufruf der Seite
               werden technische Daten (IP-Adresse, Browsertyp, Betriebssystem,
               Referrer, Zeitstempel, übertragenes Datenvolumen) für maximal 30
               Tage in Server-Logfiles gespeichert. Rechtsgrundlage ist
@@ -163,15 +164,18 @@ export default function DatenschutzPage() {
               6. Whitepaper-Anmeldung
             </h2>
             <p>
-              Für den Bezug unseres Whitepapers verarbeiten wir Ihre
-              E-Mail-Adresse und gegebenenfalls Ihren Namen sowie Ihr
-              Unternehmen auf Grundlage Ihrer Einwilligung
-              (Art. 6 Abs. 1 lit. a DSGVO). Die Daten werden ausschließlich
-              für den Versand des Whitepapers und ggf. fachlich relevanter
-              Folgeinformationen genutzt. Versand erfolgt über
-              [E-Mail-Dienstleister mit Sitz in der EU]. Sie können Ihre
+              Für den Bezug des Whitepapers verarbeite ich Ihre
+              E-Mail-Adresse und Ihren Unternehmensnamen auf Grundlage Ihrer
+              Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Die Daten werden
+              ausschließlich für den Versand des Whitepapers und gelegentliche
+              fachlich relevante Folgeinformationen genutzt. Versand und
+              Listen-Verwaltung erfolgen über die Brevo (Sendinblue) SAS,
+              7 rue de Madrid, 75008 Paris, Frankreich. Mit Brevo besteht ein
+              Auftragsverarbeitungsvertrag nach Art. 28 DSGVO; die Verarbeitung
+              findet auf Servern innerhalb der EU statt. Sie können Ihre
               Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen,
-              etwa per Abmeldelink in jeder E-Mail.
+              etwa per Abmeldelink in jeder E-Mail oder formlos per Nachricht
+              an die unter Ziffer 1 genannte E-Mail-Adresse.
             </p>
           </section>
 
