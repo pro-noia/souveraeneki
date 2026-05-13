@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CookieResetLink from "@/components/ui/CookieResetLink";
 
 // Spalten temporär auskommentiert, bis die verlinkten Unterseiten existieren.
 // const footerColumns = [
@@ -80,7 +81,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Souveräne KI · Betrieben in Europa,
             ausschließlich unter europäischer Jurisdiktion.
           </p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-6 justify-center">
             <Link
               href="/impressum"
               className="text-[var(--text-muted)] text-[var(--text-caption)] transition-colors duration-200 hover:text-[var(--text-secondary)]"
@@ -93,6 +94,7 @@ export default function Footer() {
             >
               Datenschutz
             </Link>
+            <CookieResetLink />
           </div>
         </div>
       </div>

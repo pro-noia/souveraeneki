@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope, Cousine } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import CookieBanner from "@/components/ui/CookieBanner";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -51,6 +52,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   );
