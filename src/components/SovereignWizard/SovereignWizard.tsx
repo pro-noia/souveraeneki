@@ -89,7 +89,7 @@ export default function SovereignWizard() {
   }, [role]);
 
   return (
-    <section ref={wizardRef} className={styles.wizard}>
+    <section id="wizard" ref={wizardRef} className={styles.wizard}>
       <div className={styles.wizardInner}>
         <WizardProgress currentStep={step} totalSteps={2} />
 

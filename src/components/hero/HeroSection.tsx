@@ -27,10 +27,37 @@ export default function HeroSection() {
             <Link href="#whitepaper" className="btn-primary">
               Whitepaper laden
             </Link>
-            <Link href="/produkte" className="btn-secondary">
+            <Link href="#wizard" className="btn-secondary">
               Mehr erfahren
             </Link>
           </div>
+
+          {/* Scroll-Indicator — dezenter v-förmiger Chevron, deutet weiteres
+              Scrollen an. Klick scrollt sanft zum Wizard. */}
+          <Link
+            href="#wizard"
+            aria-label="Zum Wizard scrollen"
+            className="group mt-4 inline-flex items-center justify-center w-10 h-10 rounded-full transition-opacity duration-300 motion-reduce:animate-none"
+            style={{
+              color: "var(--text-muted)",
+              animation: "heroScrollBounce 2.4s ease-in-out infinite",
+            }}
+          >
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+              className="transition-colors duration-200 group-hover:text-[var(--accent-light)]"
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </Link>
         </div>
       </div>
     </section>

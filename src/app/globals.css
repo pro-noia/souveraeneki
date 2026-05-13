@@ -227,6 +227,21 @@ body {
 }
 
 /* ============================================
+   Hero scroll-indicator (v-shape bounce)
+   ============================================ */
+
+@keyframes heroScrollBounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 1;
+  }
+}
+
+/* ============================================
    Reduced motion
    ============================================ */
 
