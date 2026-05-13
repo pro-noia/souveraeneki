@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "images:glossar": "node scripts/generate-glossar-images.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.575.0",
