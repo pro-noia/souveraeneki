@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "images:glossar": "node scripts/generate-glossar-images.mjs"
+    "images:glossar": "node scripts/generate-glossar-images.mjs",
+    "pptx:whitepaper": ".venv/bin/python scripts/generate-whitepaper-pptx.py"
   },
   "dependencies": {
     "lucide-react": "^0.575.0",

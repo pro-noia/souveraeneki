@@ -42,6 +42,9 @@ yarn-error.log*
 .claude/skills/
 skills-lock.json
 
+# python venv for local scripts (not deployed)
+.venv/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
