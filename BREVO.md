@@ -1,6 +1,6 @@
-# Brevo-Setup für den Whitepaper-Lead-Magnet
+# Brevo-Setup für den Praxisleitfaden-Lead-Magnet
 
-> **Aktueller Stand (2026-05-13)**: Das Whitepaper-PDF wird **direkt im
+> **Aktueller Stand (2026-05-13)**: Das Praxisleitfaden-PDF wird **direkt im
 > Browser zum Download angeboten** — kein automatischer E-Mail-Versand.
 > Brevo speichert nur den Kontakt (E-Mail + Unternehmen) zur späteren
 > Newsletter-Verwendung. Damit entfällt **alles rund um DKIM, SPF und
@@ -11,17 +11,17 @@
 > (PDF bereitstellen). **Schritte 4 und 6** sind erst nötig, wenn später
 > aktiver Newsletter-Versand starten soll.
 
-Diese Anleitung verknüpft das Whitepaper-Formular auf der Site mit deinem
+Diese Anleitung verknüpft das Praxisleitfaden-Formular auf der Site mit deinem
 Brevo-Account. Nach dem Setup wird jede Anmeldung automatisch zur Liste
-„Whitepaper" in Brevo hinzugefügt.
+„Praxisleitfaden" in Brevo hinzugefügt.
 
 Ablauf:
 
 1. Brevo: Liste anlegen → ID notieren
 2. Brevo: API-Key erzeugen → kopieren
 3. Vercel: zwei ENV-Variablen hinzufügen
-4. *(später)* Brevo: Automation Workflow „Welcome → Whitepaper senden"
-5. Whitepaper-PDF unter `public/whitepaper.pdf` ablegen
+4. *(später)* Brevo: Automation Workflow „Welcome → Praxisleitfaden senden"
+5. Praxisleitfaden-PDF unter `public/Souveraene-KI_Praxisleitfaden_Mai2026.pdf` ablegen
 6. *(später)* DKIM + SPF einrichten, sobald Mail-Versand aktiviert wird
 
 ---
@@ -30,7 +30,7 @@ Ablauf:
 
 1. https://app.brevo.com → Sidebar **Contacts** → **Lists**
 2. Button **„Create a new list"** oben rechts
-3. Name z. B. **„Whitepaper Souveräne KI"**, Ordner egal
+3. Name z. B. **„Praxisleitfaden Souveräne KI"**, Ordner egal
 4. **Create** klicken
 5. In der Listen-Übersicht steht jetzt diese Liste mit einer **ID** (kleine
    Zahl, z. B. `3`, `7`, oder ähnlich) — diese ID notieren
@@ -72,10 +72,10 @@ Variablen eintragen. Siehe `.env.example`.
 
 ---
 
-## 4. *(später, optional)* Automation Workflow „Whitepaper senden"
+## 4. *(später, optional)* Automation Workflow „Praxisleitfaden senden"
 
-> **Nur nötig, wenn du das Whitepaper zusätzlich per E-Mail verschicken
-> willst.** Im aktuellen Setup (Direct-Download) kommt das Whitepaper
+> **Nur nötig, wenn du das Praxisleitfaden zusätzlich per E-Mail verschicken
+> willst.** Im aktuellen Setup (Direct-Download) kommt das Praxisleitfaden
 > direkt im Browser an — keine Automation, kein DKIM nötig. Diesen
 > Abschnitt kannst du überspringen und später nachholen.
 
@@ -87,19 +87,19 @@ Newsletter), brauchst du **zuerst DKIM + SPF** in deinem DNS-Editor
 2. Vorlage **„Welcome message"** wählen (oder **„From scratch"**)
 3. **Trigger** konfigurieren:
    - Typ: **„Contact added to a list"**
-   - Liste: **„Whitepaper Souveräne KI"** (aus Schritt 1)
+   - Liste: **„Praxisleitfaden Souveräne KI"** (aus Schritt 1)
 4. **Action**: **„Send an email"**
    - **From** Absender-Adresse: deine verifizierte Brevo-Absender-Adresse,
      idealerweise `souveraeneki@cordt.net`
      (Verifizierung unter Brevo → **Senders & IP** → **Add a sender**)
-   - **Subject**: z. B. „Ihr Whitepaper: Souveräne KI in der Praxis"
+   - **Subject**: z. B. „Ihr Praxisleitfaden: Souveräne KI in der Praxis"
    - **Email content**: Mail-Editor öffnen — Layout-Editor oder HTML
    - Mail-Text-Vorschlag:
 
      > Vielen Dank für Ihr Interesse an souveräner KI in Europa.
      >
-     > Das Whitepaper liegt hier als PDF zum Download bereit:
-     > **[Whitepaper herunterladen](https://souveräneki.de/whitepaper.pdf)**
+     > Das Praxisleitfaden liegt hier als PDF zum Download bereit:
+     > **[Praxisleitfaden herunterladen](https://souveräneki.de/Souveraene-KI_Praxisleitfaden_Mai2026.pdf)**
      >
      > In den kommenden Wochen schicke ich Ihnen gelegentlich kurze fachliche
      > Updates zum Thema souveräne KI — EU AI Act, neue Foundation Models,
@@ -116,27 +116,27 @@ Newsletter), brauchst du **zuerst DKIM + SPF** in deinem DNS-Editor
 
 ---
 
-## 5. Whitepaper-PDF unter `public/whitepaper.pdf` ablegen
+## 5. Praxisleitfaden-PDF unter `public/Souveraene-KI_Praxisleitfaden_Mai2026.pdf` ablegen
 
 Das Frontend rendert nach Erfolgs-Submit einen Download-Button, der auf
-`/whitepaper.pdf` zeigt. Die Datei muss exakt unter diesem Pfad liegen.
+`/Souveraene-KI_Praxisleitfaden_Mai2026.pdf` zeigt. Die Datei muss exakt unter diesem Pfad liegen.
 
 ```bash
 # 1. PDF lokal vorbereiten — frei wählbarer Dateiname egal, beim Kopieren
 #    umbenennen.
-cp ~/Downloads/whitepaper-souveraene-ki.pdf public/whitepaper.pdf
+cp ~/Downloads/whitepaper-souveraene-ki.pdf public/Souveraene-KI_Praxisleitfaden_Mai2026.pdf
 
 # 2. Größe prüfen — sollte unter 5 MB liegen, sonst Komprimierung empfohlen
-ls -lh public/whitepaper.pdf
+ls -lh public/Souveraene-KI_Praxisleitfaden_Mai2026.pdf
 
 # 3. Committen und pushen (Vercel deployt automatisch)
-git add public/whitepaper.pdf
+git add public/Souveraene-KI_Praxisleitfaden_Mai2026.pdf
 git commit -m "feat: whitepaper pdf for download"
 git push origin main
 ```
 
-Nach Vercel-Deploy ist das PDF unter `https://souveräneki.de/whitepaper.pdf`
-erreichbar und der Download-Button im Whitepaper-Formular funktioniert
+Nach Vercel-Deploy ist das PDF unter `https://souveräneki.de/Souveraene-KI_Praxisleitfaden_Mai2026.pdf`
+erreichbar und der Download-Button im Praxisleitfaden-Formular funktioniert
 End-to-End.
 
 **Wichtig**: solange die Datei fehlt, zeigt der Download-Button auf eine
@@ -147,12 +147,12 @@ Download startet nicht. Beheben durch Hochladen der Datei.
 
 ## 6. End-to-End-Test
 
-1. Lokal: `npm run dev`, http://localhost:3000/#whitepaper
+1. Lokal: `npm run dev`, http://localhost:3000/#praxisleitfaden
 2. Formular mit Testmail (z. B. einer privaten Adresse) absenden
-3. In Brevo → Contacts → Lists → „Whitepaper Souveräne KI" — der Eintrag
+3. In Brevo → Contacts → Lists → „Praxisleitfaden Souveräne KI" — der Eintrag
    sollte innerhalb von 5 Sek. auftauchen
 4. Wenn Automation aktiv ist: Mail kommt innerhalb von 1–5 Min an
-5. Klick auf den Whitepaper-Link → PDF lädt
+5. Klick auf den Praxisleitfaden-Link → PDF lädt
 
 Falls auf `localhost` getestet wird und ENV-Variablen lokal **nicht** gesetzt
 sind, fällt der Endpoint auf Logging zurück (Terminal-Output:
@@ -199,7 +199,7 @@ Für den Anfang reicht das aktuelle Single-Opt-In-Setup.
 ## Was später kommt
 
 - **Double-Opt-In** sobald viele Anmeldungen reinkommen
-- **Newsletter-Folge-Workflow** (Drip): nach Whitepaper-Download in
+- **Newsletter-Folge-Workflow** (Drip): nach Praxisleitfaden-Download in
   X Tagen Mail mit weiterführendem Content
 - **Domain-Authentifizierung** (DKIM/SPF/DMARC) für `cordt.net` damit Mails
   nicht im Spam landen — Anleitung im Brevo-Account unter

@@ -1,7 +1,7 @@
-# Whitepaper pptx generieren
+# Praxisleitfaden pptx generieren
 
 Wandelt [souveraene-ki-whitepaper.docx](../souveraene-ki-whitepaper.docx) in
-ein **editierbares** [public/whitepaper.pptx](../public/whitepaper.pptx) im
+ein **editierbares** [public/Souveraene-KI_Praxisleitfaden_Mai2026.pptx](../public/Souveraene-KI_Praxisleitfaden_Mai2026.pptx) im
 Site-Brand-Look mit weißem Hintergrund (druckfreundlich).
 
 Resultat: 20 Slides, ~70 KB, 16:9 (13,33″ × 7,5″), editierbar in PowerPoint,
@@ -21,19 +21,19 @@ fehlt, wirft `npm run pptx:whitepaper` einen klaren Fehler.
 
 ```bash
 npm run pptx:whitepaper
-# → public/whitepaper.pptx (überschreibt vorhandene Datei ohne Nachfrage)
+# → public/Souveraene-KI_Praxisleitfaden_Mai2026.pptx (überschreibt vorhandene Datei ohne Nachfrage)
 ```
 
 Output:
 
 ```
-✓ public/whitepaper.pptx geschrieben — 20 Slides, 71.6 KB
+✓ public/Souveraene-KI_Praxisleitfaden_Mai2026.pptx geschrieben — 20 Slides, 71.6 KB
 ```
 
 ## Prüfen
 
 ```bash
-open public/whitepaper.pptx       # öffnet in Keynote
+open public/Souveraene-KI_Praxisleitfaden_Mai2026.pptx       # öffnet in Keynote
 ```
 
 Erwartete Reihenfolge:
@@ -105,7 +105,7 @@ verfügbar markieren. Dann pptx erneut öffnen.
 
 Slide-Inhalte sind im Skript [generate-whitepaper-pptx.py](generate-whitepaper-pptx.py)
 direkt eingebettet (kein automatisches Re-Parsing des docx pro Slide —
-einmaliger semantischer Sync). Wenn das Whitepaper-docx sich inhaltlich
+einmaliger semantischer Sync). Wenn das Praxisleitfaden-docx sich inhaltlich
 ändert:
 
 1. Im Skript die betreffenden Slide-Builder-Aufrufe in `main()` aktualisieren
@@ -135,21 +135,21 @@ generieren.
 
 ## Im Frontend einbinden (optional)
 
-Die pptx liegt unter `/whitepaper.pptx` und ist nach Deploy unter
-`https://souveräneki.de/whitepaper.pptx` erreichbar. Aktuell zeigt
+Die pptx liegt unter `/Souveraene-KI_Praxisleitfaden_Mai2026.pptx` und ist nach Deploy unter
+`https://souveräneki.de/Souveraene-KI_Praxisleitfaden_Mai2026.pptx` erreichbar. Aktuell zeigt
 [WhitepaperSection.tsx](../src/components/whitepaper/WhitepaperSection.tsx)
 nach Form-Submit nur einen PDF-Download-Button. Optional kann ein zweiter
 Button daneben angeboten werden:
 
 ```tsx
 <a
-  href="/whitepaper.pptx"
-  download="Souveraene-KI-Whitepaper.pptx"
+  href="/Souveraene-KI_Praxisleitfaden_Mai2026.pptx"
+  download="Souveraene-KI-Praxisleitfaden.pptx"
   className="btn-secondary"
 >
   Auch als pptx (editierbar)
 </a>
 ```
 
-Für Empfänger, die das Whitepaper in eigenen Vortragsmaterialien
+Für Empfänger, die das Praxisleitfaden in eigenen Vortragsmaterialien
 weiterverwenden wollen.

@@ -28,8 +28,8 @@ export default function Header() {
           <Link href="/kontakt" className="btn-secondary !py-2 !px-5 text-[var(--text-small)]">
             Kontakt
           </Link>
-          <Link href="/#whitepaper" className="btn-primary !py-2 !px-5 text-[var(--text-small)]">
-            Whitepaper
+          <Link href="/#praxisleitfaden" className="btn-primary !py-2 !px-5 text-[var(--text-small)]">
+            Praxisleitfaden
           </Link>
         </div>
 
@@ -80,11 +80,11 @@ export default function Header() {
             Kontakt
           </Link>
           <Link
-            href="/#whitepaper"
+            href="/#praxisleitfaden"
             className="btn-primary text-center"
             onClick={() => setMobileOpen(false)}
           >
-            Whitepaper
+            Praxisleitfaden
           </Link>
         </div>
       )}

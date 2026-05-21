@@ -237,7 +237,7 @@ dezenter Charakter, ruhiger als humanistische Alternativen.
   „Recht" in `--lederrot-bright`.
 - Subhead nennt den Antagonisten (CLOUD Act / EU-Cloud-Marketing-Versprechen)
   ohne Marketing-Floskeln.
-- Zwei CTAs: Primary `[Whitepaper laden]` (Anchor `#whitepaper`),
+- Zwei CTAs: Primary `[Praxisleitfaden laden]` (Anchor `#praxisleitfaden`),
   Secondary `[Mehr erfahren]`.
 
 #### Hero Visual (rechte Hälfte)

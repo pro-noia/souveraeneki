@@ -161,12 +161,12 @@ export default function DatenschutzPage() {
               className="text-[var(--text-primary)] font-semibold tracking-[-0.02em] mb-[var(--space-md)]"
               style={{ fontSize: "var(--text-h3)" }}
             >
-              6. Whitepaper-Anmeldung
+              6. Praxisleitfaden-Anmeldung
             </h2>
             <p>
-              Beim Bezug des Whitepapers verarbeite ich Ihre E-Mail-Adresse
+              Beim Bezug des Praxisleitfadens verarbeite ich Ihre E-Mail-Adresse
               und Ihren Unternehmensnamen auf Grundlage Ihrer Einwilligung
-              (Art. 6 Abs. 1 lit. a DSGVO). Das Whitepaper selbst wird direkt
+              (Art. 6 Abs. 1 lit. a DSGVO). Der Praxisleitfaden selbst wird direkt
               im Browser zum Download bereitgestellt — ein automatischer
               E-Mail-Versand des PDFs findet nicht statt. Ihre Kontaktdaten
               werden in der Listenverwaltung der Brevo (Sendinblue) SAS,

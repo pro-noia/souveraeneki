@@ -89,11 +89,11 @@ einer Website ohne Tracking.
 | `40764 Langenfeld` | Identisch zu Impressum | |
 | `datenschutz{ät}cordt.net` | Eigene Datenschutz-E-Mail | Kann identisch zu `hallo@…` sein, sollte aber separat sein |
 | `[Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA — Auftragsverarbeitungsvertrag und Standardvertragsklauseln vereinbart]` in Section 3 (Hosting) | Belassen, wenn du auf Vercel hostest | Falls anderer Hoster — Anbieter + Adresse + AV-Vertrag-Hinweis ersetzen. Für Hetzner/Stackit/IONOS reicht: „… gehostet durch Hetzner Online GmbH, Industriestr. 25, 91710 Gunzenhausen, Deutschland. Auftragsverarbeitungsvertrag besteht." |
-| `Brevo, 7 rue de Madrid, 75008 Paris, Frankreich` in Section 6 (Whitepaper) | Echten Dienstleister benennen, sobald angebunden | z. B. „Brevo, 7 rue de Madrid, 75008 Paris, Frankreich" |
+| `Brevo, 7 rue de Madrid, 75008 Paris, Frankreich` in Section 6 (Praxisleitfaden) | Echten Dienstleister benennen, sobald angebunden | z. B. „Brevo, 7 rue de Madrid, 75008 Paris, Frankreich" |
 
 ### Wann du eine Section löschen oder ergänzen musst
 
-- **Section 6 (Whitepaper-Anmeldung)** — falls du das Whitepaper-Formular
+- **Section 6 (Praxisleitfaden-Anmeldung)** — falls du das Praxisleitfaden-Formular
   deaktivierst, kannst du die Section entfernen.
 - **Section 7 (Cookies)** — falls du später Analytics integrierst, musst du
   hier zwingend nachziehen: Tool, Rechtsgrundlage, Cookie-Liste, Opt-out.

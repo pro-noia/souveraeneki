@@ -48,3 +48,9 @@ skills-lock.json
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local working notes & research (not part of the site)
+/*.txt
+/*.docx
+/digital souveraenität.md
+/sovereign AI worst cases.md

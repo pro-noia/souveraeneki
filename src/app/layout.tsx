@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "Souveräne KI",
     title: "Souveränität ist keine Region. Souveränität ist Recht.",
     description:
-      "Souveräne KI baut auf europäischem Recht, nicht auf Geographie. Whitepaper für Entscheider — EU AI Act, CLOUD Act, Architektur-Optionen.",
+      "Souveräne KI baut auf europäischem Recht, nicht auf Geographie. Praxisleitfaden für Entscheider — EU AI Act, CLOUD Act, Architektur-Optionen.",
   },
   twitter: {
     card: "summary_large_image",

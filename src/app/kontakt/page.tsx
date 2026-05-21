@@ -6,7 +6,7 @@ const SITE = "https://xn--souverneki-v5a.de";
 export const metadata: Metadata = {
   title: "Kontakt | Souveräne KI",
   description:
-    "Kontakt zu Souveräne KI — für Fragen zu europäischer KI-Souveränität, Whitepaper, Pilot-Projekten und Kooperationen.",
+    "Kontakt zu Souveräne KI — für Fragen zu europäischer KI-Souveränität, Praxisleitfaden, Pilot-Projekten und Kooperationen.",
   alternates: {
     canonical: `${SITE}/kontakt`,
   },
@@ -44,7 +44,7 @@ export default function KontaktPage() {
             className="text-[var(--text-secondary)] leading-relaxed max-w-[680px]"
             style={{ fontSize: "var(--text-body-lg)" }}
           >
-            Fragen zu europäischer KI-Souveränität, Whitepaper-Bezug,
+            Fragen zu europäischer KI-Souveränität, Praxisleitfaden-Bezug,
             Pilot-Projekten oder Kooperationen? Wir freuen uns über Ihre
             Nachricht.
           </p>
@@ -76,7 +76,7 @@ export default function KontaktPage() {
               className="text-[var(--text-secondary)] leading-relaxed mb-[var(--space-md)]"
               style={{ fontSize: "var(--text-small)" }}
             >
-              Für allgemeine Anfragen, Whitepaper-Themen und redaktionelle
+              Für allgemeine Anfragen, Praxisleitfaden-Themen und redaktionelle
               Anliegen.
             </p>
             <a

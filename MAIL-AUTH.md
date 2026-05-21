@@ -2,8 +2,8 @@
 
 > **Aktuell nicht aktiv.** Diese Anleitung beschreibt, wie du E-Mail-Versand
 > über Brevo authentifizierst, sobald du das brauchst — z. B. für
-> Newsletter oder automatische Whitepaper-Mails. Die Site verschickt zur
-> Zeit keine Mails (Whitepaper kommt per Direct-Download), Brevo speichert
+> Newsletter oder automatische Praxisleitfaden-Mails. Die Site verschickt zur
+> Zeit keine Mails (Praxisleitfaden kommt per Direct-Download), Brevo speichert
 > nur Kontakte. Bis du Versand aktivierst, sind die Records hier irrelevant.
 
 ## Was du brauchst und warum

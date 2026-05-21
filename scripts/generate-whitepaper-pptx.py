@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Generiert public/whitepaper.pptx aus souveraene-ki-whitepaper.docx.
+Generiert public/Souveraene-KI_Praxisleitfaden_Mai2026.pptx aus
+souveraene-ki-whitepaper.docx.
 
 Brand-Light-Theme: weißer Hintergrund (druckfreundlich), dunkler Headline-Text,
 Petrol-Akzent (#3a90aa), Manrope für Display + Cousine-Mono für Eyebrows.
@@ -2269,7 +2270,7 @@ def build_sources(prs):
 
 def main():
     repo_root = Path(__file__).resolve().parent.parent
-    output = repo_root / "public" / "whitepaper.pptx"
+    output = repo_root / "public" / "Souveraene-KI_Praxisleitfaden_Mai2026.pptx"
     output.parent.mkdir(parents=True, exist_ok=True)
 
     prs = Presentation()

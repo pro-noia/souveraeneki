@@ -49,11 +49,11 @@ export default function WhitepaperSection() {
   const companyInvalid = errorKey === "invalid_company";
 
   return (
-    <section id="whitepaper" className={styles.section} aria-labelledby="whitepaper-headline">
+    <section id="praxisleitfaden" className={styles.section} aria-labelledby="praxisleitfaden-headline">
       <div className={styles.inner}>
-        <p className={styles.eyebrow}>Whitepaper · 22 Seiten · PDF</p>
+        <p className={styles.eyebrow}>Praxisleitfaden · 22 Seiten · PDF</p>
 
-        <h2 id="whitepaper-headline" className={styles.headline}>
+        <h2 id="praxisleitfaden-headline" className={styles.headline}>
           Souveräne KI in der Praxis.
         </h2>
 
@@ -67,18 +67,18 @@ export default function WhitepaperSection() {
           <div className={styles.success} role="status" aria-live="polite">
             <h3 className={styles.successHeadline}>Vielen Dank.</h3>
             <p className={styles.successBody}>
-              Ihr Whitepaper liegt zum Download bereit.
+              Ihr Praxisleitfaden liegt zum Download bereit.
             </p>
             <a
-              href="/whitepaper.pdf"
-              download="Souveraene-KI-Whitepaper.pdf"
+              href="/Souveraene-KI_Praxisleitfaden_Mai2026.pdf"
+              download="Souveraene-KI_Praxisleitfaden_Mai2026.pdf"
               className="btn-primary"
               style={{
                 alignSelf: "flex-start",
                 marginTop: "var(--space-xs)",
               }}
             >
-              Whitepaper herunterladen (PDF)
+              Praxisleitfaden herunterladen (PDF)
             </a>
             <p className={styles.privacy}>
               Falls der Download nicht startet, schreiben Sie kurz an{" "}
@@ -96,11 +96,11 @@ export default function WhitepaperSection() {
               noValidate
             >
               <div className={styles.field}>
-                <label htmlFor="whitepaper-email" className={styles.label}>
+                <label htmlFor="praxisleitfaden-email" className={styles.label}>
                   E-Mail-Adresse
                 </label>
                 <input
-                  id="whitepaper-email"
+                  id="praxisleitfaden-email"
                   type="email"
                   required
                   autoComplete="email"
@@ -108,17 +108,17 @@ export default function WhitepaperSection() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   aria-invalid={emailInvalid || undefined}
-                  aria-describedby={errorMessage ? "whitepaper-error" : undefined}
+                  aria-describedby={errorMessage ? "praxisleitfaden-error" : undefined}
                   disabled={status === "submitting"}
                 />
               </div>
 
               <div className={styles.field}>
-                <label htmlFor="whitepaper-company" className={styles.label}>
+                <label htmlFor="praxisleitfaden-company" className={styles.label}>
                   Unternehmen
                 </label>
                 <input
-                  id="whitepaper-company"
+                  id="praxisleitfaden-company"
                   type="text"
                   required
                   autoComplete="organization"
@@ -126,7 +126,7 @@ export default function WhitepaperSection() {
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
                   aria-invalid={companyInvalid || undefined}
-                  aria-describedby={errorMessage ? "whitepaper-error" : undefined}
+                  aria-describedby={errorMessage ? "praxisleitfaden-error" : undefined}
                   disabled={status === "submitting"}
                 />
               </div>
@@ -136,11 +136,11 @@ export default function WhitepaperSection() {
                 className={`btn-primary ${styles.submit}`}
                 disabled={status === "submitting"}
               >
-                {status === "submitting" ? "Senden …" : "Whitepaper anfordern"}
+                {status === "submitting" ? "Senden …" : "Praxisleitfaden anfordern"}
               </button>
 
               {errorMessage && (
-                <p id="whitepaper-error" className={styles.error} role="alert">
+                <p id="praxisleitfaden-error" className={styles.error} role="alert">
                   {errorMessage}
                 </p>
               )}
@@ -148,7 +148,7 @@ export default function WhitepaperSection() {
 
             <p className={styles.privacy}>
               Ihre E-Mail-Adresse nutzen wir ausschließlich für die Zustellung des
-              Whitepapers und gelegentliche Updates zu souveräner KI. Abmeldung
+              Praxisleitfadens und gelegentliche Updates zu souveräner KI. Abmeldung
               jederzeit per Link in jeder E-Mail. Mehr in unserer{" "}
               <Link href="/datenschutz">Datenschutzerklärung</Link>.
             </p>

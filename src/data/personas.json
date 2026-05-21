@@ -393,7 +393,7 @@
         },
         {
           "frage": "Wo fängt ein Unternehmen praktisch an?",
-          "antwort": "Mit drei Schritten. Erstens: KI-Inventur — welche Anwendungen laufen schon, welche sind geplant. Zweitens: Schutzbedarf pro Anwendung — Daten-Sensibilität, Regulierungs-Kategorie nach EU AI Act, geschäftliche Kritikalität. Drittens: Architektur-Entscheidung pro Klasse — souveräner Stack für Hochrisiko und Vertrauliches, hybride oder offene Stacks für den Rest. Das Whitepaper am Ende dieser Seite liefert die Vorlagen dazu."
+          "antwort": "Mit drei Schritten. Erstens: KI-Inventur — welche Anwendungen laufen schon, welche sind geplant. Zweitens: Schutzbedarf pro Anwendung — Daten-Sensibilität, Regulierungs-Kategorie nach EU AI Act, geschäftliche Kritikalität. Drittens: Architektur-Entscheidung pro Klasse — souveräner Stack für Hochrisiko und Vertrauliches, hybride oder offene Stacks für den Rest. Der Praxisleitfaden am Ende dieser Seite liefert die Vorlagen dazu."
         }
       ],
       "stats": [
@@ -513,7 +513,7 @@
         },
         {
           "frage": "Wo fängt eine Behörde praktisch an?",
-          "antwort": "Drei Schritte: Erstens KI-Inventur — welche Anwendungen laufen, welche sind geplant. Zweitens Risikoklassifizierung nach EU AI Act und Schutzbedarf nach BSI-Grundschutz. Drittens Architektur-Entscheidung pro Klasse. Für Hochrisiko-KI mit Bürgerschnittstelle: souveräner Stack zwingend. Für Verwaltungsoptimierung ohne personenbezogene Daten: hybride Stacks akzeptabel. Das Whitepaper am Ende dieser Seite liefert die Bewertungsraster."
+          "antwort": "Drei Schritte: Erstens KI-Inventur — welche Anwendungen laufen, welche sind geplant. Zweitens Risikoklassifizierung nach EU AI Act und Schutzbedarf nach BSI-Grundschutz. Drittens Architektur-Entscheidung pro Klasse. Für Hochrisiko-KI mit Bürgerschnittstelle: souveräner Stack zwingend. Für Verwaltungsoptimierung ohne personenbezogene Daten: hybride Stacks akzeptabel. Der Praxisleitfaden am Ende dieser Seite liefert die Bewertungsraster."
         }
       ],
       "stats": [
@@ -879,7 +879,7 @@
         },
         {
           "frage": "Wo fängt man am besten an?",
-          "antwort": "Drei Schritte. Erstens: KI-Inventur — welche Anwendungen laufen schon, welche sind geplant. Zweitens: Schutzbedarf je Anwendung klassifizieren — DSGVO-Relevanz, EU-AI-Act-Risikoklasse, Geschäfts-Kritikalität. Drittens: pro Klasse die passende Stack-Stufe wählen — souverän zwingend für Hochrisiko und Vertrauliches, hybride oder offene Stacks für isolierbare Workloads. Das Whitepaper am Ende dieser Seite liefert die Bewertungsraster."
+          "antwort": "Drei Schritte. Erstens: KI-Inventur — welche Anwendungen laufen schon, welche sind geplant. Zweitens: Schutzbedarf je Anwendung klassifizieren — DSGVO-Relevanz, EU-AI-Act-Risikoklasse, Geschäfts-Kritikalität. Drittens: pro Klasse die passende Stack-Stufe wählen — souverän zwingend für Hochrisiko und Vertrauliches, hybride oder offene Stacks für isolierbare Workloads. Der Praxisleitfaden am Ende dieser Seite liefert die Bewertungsraster."
         }
       ]
     },

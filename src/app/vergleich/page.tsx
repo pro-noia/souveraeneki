@@ -235,7 +235,7 @@ function DemoCard({
           cursor: "pointer",
         }}
       >
-        Whitepaper laden
+        Praxisleitfaden laden
       </button>
 
       <div
@@ -682,7 +682,7 @@ export default function VergleichPage() {
                   fontWeight: 500,
                 }}
               >
-                Aktion · Whitepaper laden
+                Aktion · Praxisleitfaden laden
               </span>
               <span
                 style={{

@@ -16,7 +16,7 @@ brand
 
 Souveräne KI ist eine europäische KI-Plattform, die Datensouveränität, Sicherheit und volle Kontrolle über die KI-Infrastruktur zur Kernzusage macht. Die Site existiert, um diese Position zu erklären, glaubwürdig zu belegen und qualifizierte Leads zu sammeln.
 
-**Primäre Conversion:** Newsletter- / Whitepaper-Anmeldung. Die Site optimiert auf Aufklärung, nicht auf Demo-Anfragen. Erfolg heißt: ein Entscheider lädt das Whitepaper, leitet es intern weiter, kommt drei Wochen später wieder.
+**Primäre Conversion:** Newsletter- / Praxisleitfaden-Anmeldung. Die Site optimiert auf Aufklärung, nicht auf Demo-Anfragen. Erfolg heißt: ein Entscheider lädt den Praxisleitfaden, leitet ihn intern weiter, kommt drei Wochen später wieder.
 
 **Sekundäre Funktion:** SEO-Hub. Glossar und 15 Persona-Landingpages tragen organischen Traffic für die deutschsprachige KI-Souveränitäts-Konversation.
 
@@ -40,7 +40,7 @@ Die Marke nimmt eine erkennbare Gegenposition zu Hyperscaler-Dominanz ein, ohne 
 
 **Haltung statt Hochglanz.** Die Site nimmt Position ein. Jede Section soll erkennbar machen, *wofür* und *wogegen* die Plattform steht — sonst wird sie austauschbar mit der nächsten AI-Marketingsite.
 
-**Aufklärung ist die Conversion.** Da der Hauptlead Whitepaper / Newsletter ist, gewinnt Substanz vor Verkaufsdruck. Jede Section trägt eine erkennbare Aussage; Marketing-Floskeln („revolutionary", „seamless", „empowering") sind verboten.
+**Aufklärung ist die Conversion.** Da der Hauptlead Praxisleitfaden / Newsletter ist, gewinnt Substanz vor Verkaufsdruck. Jede Section trägt eine erkennbare Aussage; Marketing-Floskeln („revolutionary", „seamless", „empowering") sind verboten.
 
 **Editorial vor Marketing.** Wizard und Glossar sind die Hauptware. Layout dient dem Lesen, nicht dem Scrollen. Lange Lesestrecken sind willkommen, wenn sie etwas erklären, das B2B-Entscheider intern weitergeben können.
 

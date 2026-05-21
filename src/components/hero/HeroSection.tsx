@@ -24,8 +24,8 @@ export default function HeroSection() {
           <HeroHeadlines />
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="#whitepaper" className="btn-primary">
-              Whitepaper laden
+            <Link href="#praxisleitfaden" className="btn-primary">
+              Praxisleitfaden laden
             </Link>
             <Link href="#wizard" className="btn-secondary">
               Mehr erfahren
