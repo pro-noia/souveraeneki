@@ -128,19 +128,19 @@ erhalten. Neue Komponenten sollten direkt die benannten Rollen ziehen.
 
 ---
 
-### Typography — Manrope + Cousine
+### Typography — Source Sans 3 + Cousine
 
 ```css
---font-heading:    var(--font-manrope), 'Helvetica Neue', system-ui, sans-serif;
---font-body:       var(--font-manrope), 'Helvetica Neue', system-ui, sans-serif;
+--font-heading:    var(--font-source-sans), 'Helvetica Neue', system-ui, sans-serif;
+--font-body:       var(--font-source-sans), 'Helvetica Neue', system-ui, sans-serif;
 --font-mono-stack: var(--font-cousine), ui-monospace, 'SF Mono', Menlo, monospace;
 ```
 
 Geladen via `next/font/google` in [src/app/layout.tsx](src/app/layout.tsx).
 Inter und JetBrains Mono sind verboten (Reflex-Reject-Liste in
-`.agents/skills/impeccable/reference/brand.md`). Albert Sans wurde
-vorübergehend genutzt und durch Manrope ersetzt — geometrische Präzision,
-dezenter Charakter, ruhiger als humanistische Alternativen.
+`.agents/skills/impeccable/reference/brand.md`). Albert Sans und Manrope
+wurden vorher genutzt und durch Source Sans 3 ersetzt — humanist Sans mit
+ruhigen Buchstabenformen, stabiles Rendering auf jedem Render-Stack.
 
 #### Type Scale (Modular, ≥1.25 Ratio)
 

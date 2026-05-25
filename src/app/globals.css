@@ -91,8 +91,8 @@
   --spectrum-bad:        var(--rost-bright);
 
   /* === Typography === */
-  --font-heading: var(--font-manrope), 'Helvetica Neue', system-ui, sans-serif;
-  --font-body:    var(--font-manrope), 'Helvetica Neue', system-ui, sans-serif;
+  --font-heading: var(--font-source-sans), 'Helvetica Neue', system-ui, sans-serif;
+  --font-body:    var(--font-source-sans), 'Helvetica Neue', system-ui, sans-serif;
   --font-mono-stack: var(--font-cousine), ui-monospace, 'SF Mono', Menlo, monospace;
 
   --text-hero:    clamp(3rem, 6.5vw, 5rem);
@@ -132,7 +132,7 @@
   --color-text-muted:        var(--text-muted);
   --color-border-subtle:     var(--border-subtle);
   --color-border-hover:      var(--border-hover);
-  --font-sans:               var(--font-manrope);
+  --font-sans:               var(--font-source-sans);
   --font-mono:               var(--font-cousine);
 }
 

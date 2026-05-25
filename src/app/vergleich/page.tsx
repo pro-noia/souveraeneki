@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import {
   Albert_Sans,
   Bricolage_Grotesque,
-  Manrope,
+  Source_Sans_3,
   Cousine,
 } from "next/font/google";
 
@@ -20,10 +20,10 @@ const bricolage = Bricolage_Grotesque({
   display: "swap",
 });
 
-const manrope = Manrope({
+const sourceSans = Source_Sans_3({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--cmp-manrope",
+  variable: "--cmp-source-sans",
   display: "swap",
 });
 
@@ -86,11 +86,11 @@ interface FontSpec {
 
 const FONTS: FontSpec[] = [
   {
-    id: "manrope",
-    name: "Manrope",
+    id: "source-sans",
+    name: "Source Sans 3",
     description:
-      "Aktuell · Geometrische Präzision, dezenter Charakter ohne Cool-Corporate-Reflex. Sehr ruhig, klare Buchstabenkanten.",
-    variable: "var(--cmp-manrope)",
+      "Aktuell · Humanist-Sans von Adobe für UI/Lesetext, ruhige Buchstabenformen mit leichter Wärme. Stabil auf jedem Render-Stack.",
+    variable: "var(--cmp-source-sans)",
     isCurrent: true,
   },
   {
@@ -267,11 +267,11 @@ function DemoCard({
 
 export default function VergleichPage() {
   const monoFamily = `${cousine.style.fontFamily}, ui-monospace, monospace`;
-  const currentFont = `${manrope.style.fontFamily}, system-ui, sans-serif`;
+  const currentFont = `${sourceSans.style.fontFamily}, system-ui, sans-serif`;
 
   return (
     <main
-      className={`${albert.variable} ${bricolage.variable} ${manrope.variable} ${cousine.variable}`}
+      className={`${albert.variable} ${bricolage.variable} ${sourceSans.variable} ${cousine.variable}`}
       style={{ paddingTop: "calc(var(--space-section) + 4rem)" }}
     >
       <div
@@ -322,7 +322,7 @@ export default function VergleichPage() {
           >
             Drei Karten pro Akzent- und Schrift-Achse — derselbe Hero-Ausschnitt
             in jeder Variante. Aktuell live: <em>Petrol</em> (Akzent) und{" "}
-            <em>Manrope</em> (Schrift). Darunter: drei vorgeschlagene Sekundärfarben
+            <em>Source Sans 3</em> (Schrift). Darunter: drei vorgeschlagene Sekundärfarben
             für die Komplettpalette, gerendert in Token-Karten plus einem
             UI-Beispielblock.
           </p>
@@ -343,7 +343,7 @@ export default function VergleichPage() {
               Akzentfarbe
             </h2>
             <p style={{ color: "var(--text-muted)", fontSize: "var(--text-small)", margin: 0 }}>
-              Schriftart konstant: Manrope · Mono: Cousine
+              Schriftart konstant: Source Sans 3 · Mono: Cousine
             </p>
           </div>
 
@@ -362,7 +362,7 @@ export default function VergleichPage() {
                 accentOklch={accent.oklch}
                 accentBrightOklch={accent.brightOklch}
                 accentName={accent.name}
-                fontName="Manrope"
+                fontName="Source Sans 3"
                 description={accent.description}
                 isCurrent={accent.isCurrent}
                 variantLabel={`Akzent · ${accent.name}`}
@@ -720,7 +720,7 @@ export default function VergleichPage() {
           </strong>
           <p style={{ color: "var(--text-secondary)", fontSize: "var(--text-small)", lineHeight: 1.6, margin: 0 }}>
             <strong style={{ color: "var(--petrol-bright)" }}>Petrol</strong>{" "}
-            (Akzent) und <strong style={{ color: "var(--text-primary)" }}>Manrope</strong>{" "}
+            (Akzent) und <strong style={{ color: "var(--text-primary)" }}>Source Sans 3</strong>{" "}
             (Schrift) sind global aktiv. Die drei vorgeschlagenen Sekundärfarben
             (Rost · Bernstein · Salbei) sind als Tokens definiert, aber das
             <code> SovereigntySpectrum</code> rendert sie noch nicht semantisch

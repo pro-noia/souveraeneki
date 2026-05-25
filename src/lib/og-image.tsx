@@ -101,7 +101,7 @@ function Layout({ eyebrow, headline }: LayoutProps) {
           <div
             style={{
               fontSize: 28,
-              fontFamily: "Manrope",
+              fontFamily: "Source Sans 3",
               fontWeight: 600,
               color: COLORS.pergament,
               letterSpacing: "-0.01em",
@@ -130,7 +130,7 @@ function Layout({ eyebrow, headline }: LayoutProps) {
           <div
             style={{
               fontSize: 64,
-              fontFamily: "Manrope",
+              fontFamily: "Source Sans 3",
               fontWeight: 600,
               color: COLORS.pergament,
               lineHeight: 1.05,
@@ -161,14 +161,14 @@ function Layout({ eyebrow, headline }: LayoutProps) {
 }
 
 async function loadFonts() {
-  const [manrope, cousine] = await Promise.all([
-    loadGoogleFont("Manrope", 600),
+  const [sourceSans, cousine] = await Promise.all([
+    loadGoogleFont("Source Sans 3", 600),
     loadGoogleFont("Cousine", 700),
   ]);
   return [
     {
-      name: "Manrope",
-      data: manrope,
+      name: "Source Sans 3",
+      data: sourceSans,
       weight: 600 as const,
       style: "normal" as const,
     },

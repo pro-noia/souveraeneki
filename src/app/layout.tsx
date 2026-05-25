@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Manrope, Cousine } from "next/font/google";
+import { Source_Sans_3, Cousine } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CookieBanner from "@/components/ui/CookieBanner";
 import "./globals.css";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const sourceSans = Source_Sans_3({
+  variable: "--font-source-sans",
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
@@ -48,7 +48,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de">
-      <body className={`${manrope.variable} ${cousine.variable} antialiased`}>
+      <body className={`${sourceSans.variable} ${cousine.variable} antialiased`}>
         <Header />
         <main>{children}</main>
         <Footer />
