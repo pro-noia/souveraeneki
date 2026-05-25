@@ -47,8 +47,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de">
-      <body className={`${sourceSans.variable} ${cousine.variable} antialiased`}>
+    <html lang="de" className={`${sourceSans.variable} ${cousine.variable}`}>
+      <body className="antialiased">
         <Header />
         <main>{children}</main>
         <Footer />
