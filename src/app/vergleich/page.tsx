@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import {
   Albert_Sans,
   Bricolage_Grotesque,
-  Source_Sans_3,
   Cousine,
 } from "next/font/google";
 
@@ -20,12 +19,9 @@ const bricolage = Bricolage_Grotesque({
   display: "swap",
 });
 
-const sourceSans = Source_Sans_3({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--cmp-source-sans",
-  display: "swap",
-});
+// System-Font-Stack als CSS-Variable, keine next/font Instance — SF Pro
+// (Apple), Segoe UI (Windows), nativer Default (Linux) je nach OS.
+const SYSTEM_FONT_STACK = "-apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', sans-serif";
 
 const cousine = Cousine({
   subsets: ["latin"],
@@ -86,11 +82,11 @@ interface FontSpec {
 
 const FONTS: FontSpec[] = [
   {
-    id: "source-sans",
-    name: "Source Sans 3",
+    id: "system-ui",
+    name: "System UI (SF Pro / Segoe UI)",
     description:
-      "Aktuell · Humanist-Sans von Adobe für UI/Lesetext, ruhige Buchstabenformen mit leichter Wärme. Stabil auf jedem Render-Stack.",
-    variable: "var(--cmp-source-sans)",
+      "Aktuell · Nativer System-Font des Betriebssystems — SF Pro auf macOS/iOS, Segoe UI auf Windows, native Default auf Linux. Null-Latency, perfektes OS-Hinting, kein Webfont-Loading.",
+    variable: SYSTEM_FONT_STACK,
     isCurrent: true,
   },
   {
@@ -267,11 +263,11 @@ function DemoCard({
 
 export default function VergleichPage() {
   const monoFamily = `${cousine.style.fontFamily}, ui-monospace, monospace`;
-  const currentFont = `${sourceSans.style.fontFamily}, system-ui, sans-serif`;
+  const currentFont = SYSTEM_FONT_STACK;
 
   return (
     <main
-      className={`${albert.variable} ${bricolage.variable} ${sourceSans.variable} ${cousine.variable}`}
+      className={`${albert.variable} ${bricolage.variable} ${cousine.variable}`}
       style={{ paddingTop: "calc(var(--space-section) + 4rem)" }}
     >
       <div
@@ -322,7 +318,7 @@ export default function VergleichPage() {
           >
             Drei Karten pro Akzent- und Schrift-Achse — derselbe Hero-Ausschnitt
             in jeder Variante. Aktuell live: <em>Petrol</em> (Akzent) und{" "}
-            <em>Source Sans 3</em> (Schrift). Darunter: drei vorgeschlagene Sekundärfarben
+            <em>System UI</em> (Schrift). Darunter: drei vorgeschlagene Sekundärfarben
             für die Komplettpalette, gerendert in Token-Karten plus einem
             UI-Beispielblock.
           </p>
@@ -343,7 +339,7 @@ export default function VergleichPage() {
               Akzentfarbe
             </h2>
             <p style={{ color: "var(--text-muted)", fontSize: "var(--text-small)", margin: 0 }}>
-              Schriftart konstant: Source Sans 3 · Mono: Cousine
+              Schriftart konstant: System UI · Mono: Cousine
             </p>
           </div>
 
@@ -362,7 +358,7 @@ export default function VergleichPage() {
                 accentOklch={accent.oklch}
                 accentBrightOklch={accent.brightOklch}
                 accentName={accent.name}
-                fontName="Source Sans 3"
+                fontName="System UI"
                 description={accent.description}
                 isCurrent={accent.isCurrent}
                 variantLabel={`Akzent · ${accent.name}`}
@@ -720,7 +716,7 @@ export default function VergleichPage() {
           </strong>
           <p style={{ color: "var(--text-secondary)", fontSize: "var(--text-small)", lineHeight: 1.6, margin: 0 }}>
             <strong style={{ color: "var(--petrol-bright)" }}>Petrol</strong>{" "}
-            (Akzent) und <strong style={{ color: "var(--text-primary)" }}>Source Sans 3</strong>{" "}
+            (Akzent) und <strong style={{ color: "var(--text-primary)" }}>System UI</strong>{" "}
             (Schrift) sind global aktiv. Die drei vorgeschlagenen Sekundärfarben
             (Rost · Bernstein · Salbei) sind als Tokens definiert, aber das
             <code> SovereigntySpectrum</code> rendert sie noch nicht semantisch

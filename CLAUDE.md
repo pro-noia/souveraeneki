@@ -128,19 +128,28 @@ erhalten. Neue Komponenten sollten direkt die benannten Rollen ziehen.
 
 ---
 
-### Typography — Source Sans 3 + Cousine
+### Typography — System UI + Cousine
 
 ```css
---font-heading:    var(--font-source-sans), 'Helvetica Neue', system-ui, sans-serif;
---font-body:       var(--font-source-sans), 'Helvetica Neue', system-ui, sans-serif;
---font-mono-stack: var(--font-cousine), ui-monospace, 'SF Mono', Menlo, monospace;
+--font-system-stack: -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', sans-serif;
+--font-heading:      var(--font-system-stack);
+--font-body:         var(--font-system-stack);
+--font-mono-stack:   var(--font-cousine), ui-monospace, 'SF Mono', Menlo, monospace;
 ```
 
-Geladen via `next/font/google` in [src/app/layout.tsx](src/app/layout.tsx).
+Sans-Stack ist der native System-Font des OS — SF Pro auf macOS/iOS,
+Segoe UI auf Windows, default auf Linux. Kein Webfont-Loading, null Latency,
+perfektes OS-Hinting. Nur Cousine (Mono) wird via `next/font/google` in
+[src/app/layout.tsx](src/app/layout.tsx) geladen — die einzige Schrift mit
+Webfont-Cost.
+
+Wir hatten vorher Albert Sans, Manrope und Source Sans 3 versucht. Alle
+drei rendering-instabil oder ästhetisch nicht im Brand-Korridor. System UI
+ist der finale Stand. SF Pro darf nicht als Webfont serviert werden
+(Apple-Lizenz), daher der `-apple-system`-Stack.
+
 Inter und JetBrains Mono sind verboten (Reflex-Reject-Liste in
-`.agents/skills/impeccable/reference/brand.md`). Albert Sans und Manrope
-wurden vorher genutzt und durch Source Sans 3 ersetzt — humanist Sans mit
-ruhigen Buchstabenformen, stabiles Rendering auf jedem Render-Stack.
+`.agents/skills/impeccable/reference/brand.md`).
 
 #### Type Scale (Modular, ≥1.25 Ratio)
 

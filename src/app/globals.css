@@ -91,8 +91,11 @@
   --spectrum-bad:        var(--rost-bright);
 
   /* === Typography === */
-  --font-heading: var(--font-source-sans), 'Helvetica Neue', system-ui, sans-serif;
-  --font-body:    var(--font-source-sans), 'Helvetica Neue', system-ui, sans-serif;
+  /* SF Pro auf Apple-Plattformen, Segoe UI auf Windows, native auf Linux —
+     -apple-system/BlinkMacSystemFont vor system-ui für maximale Coverage. */
+  --font-system-stack: -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', sans-serif;
+  --font-heading: var(--font-system-stack);
+  --font-body:    var(--font-system-stack);
   --font-mono-stack: var(--font-cousine), ui-monospace, 'SF Mono', Menlo, monospace;
 
   --text-hero:    clamp(3rem, 6.5vw, 5rem);
@@ -132,7 +135,7 @@
   --color-text-muted:        var(--text-muted);
   --color-border-subtle:     var(--border-subtle);
   --color-border-hover:      var(--border-hover);
-  --font-sans:               var(--font-source-sans);
+  --font-sans:               var(--font-system-stack);
   --font-mono:               var(--font-cousine);
 }
 

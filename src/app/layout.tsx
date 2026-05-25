@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
-import { Source_Sans_3, Cousine } from "next/font/google";
+import { Cousine } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CookieBanner from "@/components/ui/CookieBanner";
 import "./globals.css";
 
-const sourceSans = Source_Sans_3({
-  variable: "--font-source-sans",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
-
+// Sans-Stack ist system-ui (auf Apple-Plattformen = SF Pro, sonst nativer
+// System-Font). SF Pro darf nicht als Webfont serviert werden — Apple-Lizenz.
 const cousine = Cousine({
   variable: "--font-cousine",
   subsets: ["latin"],
@@ -47,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className={`${sourceSans.variable} ${cousine.variable}`}>
+    <html lang="de" className={cousine.variable}>
       <body className="antialiased">
         <Header />
         <main>{children}</main>
