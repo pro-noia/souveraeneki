@@ -22,6 +22,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: "Nicht gefunden" };
   }
 
+  const ogImage = {
+    url: `/images/glossar/${eintrag.slug}.jpg`,
+    width: 1344,
+    height: 768,
+    alt: `${eintrag.begriff} — Souveräne KI Glossar`,
+    type: "image/jpeg",
+  };
+
   return {
     title: eintrag.meta_title,
     description: eintrag.meta_description,
@@ -30,7 +38,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: eintrag.meta_description,
       type: "article",
       url: `https://xn--souverneki-v5a.de/glossar/${eintrag.slug}`,
-      images: [`/images/glossar/${eintrag.slug}.jpg`],
+      images: [ogImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: eintrag.meta_title,
+      description: eintrag.meta_description,
+      images: [ogImage.url],
     },
     alternates: {
       canonical: `https://xn--souverneki-v5a.de/glossar/${eintrag.slug}`,

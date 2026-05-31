@@ -220,3 +220,127 @@ export async function renderGlossarIndexOg(
     fonts,
   });
 }
+
+// Spezieller Home-OG-Layout: kein Eyebrow, dreizeilige Hero-Headline mit
+// Petrol-Akzent auf dem letzten Wort — echo zur Hero-Section im Site-Header.
+function HomeLayout() {
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        background: COLORS.bg,
+        position: "relative",
+      }}
+    >
+      {/* Petrol-Akzent oben */}
+      <div
+        style={{
+          height: 6,
+          width: "100%",
+          background: COLORS.petrol,
+          display: "flex",
+        }}
+      />
+
+      <div
+        style={{
+          flex: 1,
+          padding: "72px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }}
+      >
+        {/* Logo top-left */}
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <div
+            style={{
+              width: 18,
+              height: 18,
+              background: COLORS.petrol,
+              borderRadius: 3,
+            }}
+          />
+          <div
+            style={{
+              fontSize: 28,
+              fontFamily: "Source Sans 3",
+              fontWeight: 600,
+              color: COLORS.pergament,
+              letterSpacing: "-0.01em",
+            }}
+          >
+            Souveräne KI
+          </div>
+        </div>
+
+        {/* Dreizeilige Headline bottom-left */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            lineHeight: 1.05,
+            letterSpacing: "-0.02em",
+            fontFamily: "Source Sans 3",
+            fontWeight: 600,
+            maxWidth: 1056,
+          }}
+        >
+          <div
+            style={{
+              fontSize: 84,
+              color: COLORS.pergament,
+              display: "flex",
+            }}
+          >
+            Sie nutzen KI.
+          </div>
+          <div
+            style={{
+              fontSize: 84,
+              color: COLORS.pergament,
+              display: "flex",
+              marginTop: 8,
+            }}
+          >
+            Aber besitzen Sie sie
+          </div>
+          <div
+            style={{
+              fontSize: 84,
+              color: COLORS.petrol,
+              display: "flex",
+              marginTop: 8,
+            }}
+          >
+            auch?
+          </div>
+        </div>
+      </div>
+
+      {/* Diagonal-Akzent unten rechts */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          right: 0,
+          width: 540,
+          height: 540,
+          background:
+            "radial-gradient(circle at bottom right, rgba(58,144,170,0.22) 0%, rgba(58,144,170,0) 65%)",
+        }}
+      />
+    </div>
+  );
+}
+
+export async function renderHomeOg(): Promise<ImageResponse> {
+  const fonts = await loadFonts();
+  return new ImageResponse(<HomeLayout />, {
+    ...OG_SIZE,
+    fonts,
+  });
+}
