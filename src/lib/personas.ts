@@ -118,7 +118,7 @@ const glossar = glossarData as GlossarEintrag[];
 // URL Helpers
 // ============================================================
 
-const SITE_ORIGIN = "https://xn--souverneki-v5a.de";
+export const SITE_ORIGIN = "https://xn--souverneki-v5a.de";
 
 export function personaSlug(audience: AudienceSlug, level: LevelSlug): string {
   return `souveraene-ki-fuer-${audience}-${level}`;

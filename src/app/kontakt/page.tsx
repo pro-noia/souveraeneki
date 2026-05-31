@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Mail, MapPin, MessageCircle } from "lucide-react";
+import { buildContactPageJsonLd } from "@/lib/structured-data";
 
 const SITE = "https://xn--souverneki-v5a.de";
 
@@ -18,6 +19,12 @@ export default function KontaktPage() {
       className="min-h-screen"
       style={{ background: "var(--bg-primary)" }}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(buildContactPageJsonLd()),
+        }}
+      />
       <header
         className="relative overflow-hidden"
         style={{ background: "var(--bg-gradient)" }}

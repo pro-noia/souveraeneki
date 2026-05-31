@@ -129,6 +129,30 @@ export default function DatenschutzPage() {
               className="text-[var(--text-primary)] font-semibold tracking-[-0.02em] mb-[var(--space-md)]"
               style={{ fontSize: "var(--text-h3)" }}
             >
+              3a. Reichweiten-Messung (Vercel Web Analytics)
+            </h2>
+            <p>
+              Zur Optimierung des Angebots setze ich Vercel Web Analytics ein,
+              ein datenschutzfreundliches Reichweiten-Messverfahren des
+              Hosting-Anbieters Vercel Inc. (340 S Lemon Ave #4133, Walnut,
+              CA 91789, USA). Erfasst werden ausschließlich aggregierte
+              Nutzungsdaten (z. B. Seitenaufrufe, Browser-Typ, ungefähre
+              Herkunftsregion auf Länderebene). Es werden keine Cookies
+              gesetzt, IP-Adressen werden vor der Verarbeitung anonymisiert
+              und nicht gespeichert. Eine Wiedererkennung einzelner
+              Nutzerinnen und Nutzer findet nicht statt. Rechtsgrundlage ist
+              Art. 6 Abs. 1 lit. f DSGVO; das berechtigte Interesse liegt in
+              der bedarfsgerechten Weiterentwicklung dieser Website. Mit
+              Vercel besteht der bereits unter Ziffer 3 genannte
+              Auftragsverarbeitungsvertrag.
+            </p>
+          </section>
+
+          <section className="mb-[var(--space-2xl)]">
+            <h2
+              className="text-[var(--text-primary)] font-semibold tracking-[-0.02em] mb-[var(--space-md)]"
+              style={{ fontSize: "var(--text-h3)" }}
+            >
               4. SSL-/TLS-Verschlüsselung
             </h2>
             <p>
